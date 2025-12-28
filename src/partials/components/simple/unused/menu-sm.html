@@ -1,0 +1,18 @@
+<ul tabindex="0" class="{{menuSmClass}}">
+  {{#each items.before}}
+  <li><a>{{this}}</a></li>
+  {{/each}}
+  {{#if sub}}
+  <li>
+    <a>{{sub.subHeading}}</a>
+    <ul class="{{sub.menuSmClass}}">
+      {{#each sub.listItems}}
+      <li><a>{{this}}</a></li>
+      {{/each}}
+    </ul>
+  </li>
+  {{/if}}
+  {{#each items.after}}
+  <li><a>{{this}}</a></li>
+  {{/each}}
+</ul>

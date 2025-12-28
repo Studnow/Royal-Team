@@ -1,0 +1,16 @@
+{{>li listItems=items.before}}
+<li>
+  <details>
+    <summary class="{{listItems.subHeadingClass}}">{{listItems.subHeading}}</summary>
+    <ul class="{{subListClass}}">
+
+      <li>
+        <h2 class="menu-title">{{title}}</h2>
+        <ul>
+          {{>li listItems=items.subItems}}
+        </ul>
+      </li>
+    </ul>
+  </details>
+</li>
+{{>li listItems=items.after}}

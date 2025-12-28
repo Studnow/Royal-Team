@@ -1,0 +1,9 @@
+{{#each listItems}}
+{{#if (eq type "link")}}
+<li>{{>link this}}</li>
+{{else if (eq type "button")}}
+<li>{{>button this}}</li>
+{{else}}
+<li>{{this}}</li>
+{{/if}}
+{{/each}}

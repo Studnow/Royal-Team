@@ -1,0 +1,7 @@
+<ul {{#if class}} class="{{listClass}}" {{/if}}>
+  {{#if sub}}
+  {{>list-sublist items=listItems}}
+  {{else}}
+  {{>li this}}
+  {{/if}}
+</ul>

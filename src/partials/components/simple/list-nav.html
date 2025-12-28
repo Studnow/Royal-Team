@@ -1,0 +1,8 @@
+<nav {{#if class}} class="{{class}}" {{/if}}>
+  {{#if title}}
+  <h3 class="footer-title text-h3-clamp">{{title}}</h3>
+  {{/if}}
+  {{#each listItems}}
+  {{>link this}}
+  {{/each}}
+</nav>

@@ -1,0 +1,21 @@
+<div class="drawer">
+  <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <!-- Page content here -->
+    <!-- <label for="my-drawer" class="btn btn-primary drawer-button">Open drawer</label> -->
+    <div id="app" class="app">
+      {{>modal layout.modal}}
+      {{>header layout.header}}
+      {{>default}}
+      {{>footer layout.footer}}
+    </div>
+  </div>
+  <div class="drawer-side z-10">
+    <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+      <!-- Sidebar content here -->
+      {{>list layout.header.center.menu}}
+      {{>accordion layout.drawer.accordion}}
+    </ul>
+  </div>
+</div>

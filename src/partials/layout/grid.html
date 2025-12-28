@@ -1,0 +1,11 @@
+{{#each components}}
+{{#isArray this}}
+<div class="{{../colClass}}">
+  {{#each this}}
+  {{> (lookup . 'type') this }}
+  {{/each}}
+</div>
+{{else}}
+{{> (lookup this 'type') this }}
+{{/isArray}}
+{{/each}}

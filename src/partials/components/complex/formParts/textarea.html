@@ -1,0 +1,6 @@
+{{!-- textarea.html - partial to render a textarea field --}}
+<textarea id="{{name}}" name="{{name}}" class="textarea textarea-bordered w-full {{textareaClass}}" rows="{{rows}}" placeholder="{{placeholder}}">{{#if value}}{{value}}{{/if}}</textarea>
+
+{{#if help}}
+  <p class="text-xs text-muted mt-1">{{help}}</p>
+{{/if}}

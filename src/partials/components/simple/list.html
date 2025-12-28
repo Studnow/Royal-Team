@@ -1,0 +1,12 @@
+<div class="flex flex-col {{class}}">
+  {{#if title}}
+  <h3 {{#if class}} class="text-h3-clamp" {{/if}}>{{title}}</h3>
+  {{/if}}
+  <{{listType}} class="{{listClass}}">
+    {{#if sub}}
+    {{>list-sublist listItems sub=sub actions=actions}}
+    {{else}}
+    {{>li this}}
+    {{/if}}
+    </ul>
+</div>

@@ -1,0 +1,31 @@
+{{#if fullWidth}}
+<div class="relative px-4">
+  {{/if}}
+  <div id="{{id}}" class="splide">
+    {{#if sliderParts.customControl.control}}
+    {{>sliderParts/customControl controls}}
+    {{/if}}
+    <div class="splide__track">
+      <ul class="splide__list">
+        {{#isArray slides.slideData}}
+        {{#each slides.slideData}}
+        {{!-- Можно переходить на уровень выше внутри #each, объект this = объекту вызванному в each --}}
+        <li class="splide__slide">
+          {{>card this}}
+          {{!-- {{#>slide common=../sliderParts items=this section=../template }}
+          <!-- <p>Something new or sign</p> heroData=../heroData -->
+          {{/slide}} --}}
+        </li>
+        {{~/each}}
+        {{else}}
+        {{#times slides}}
+        <li class="splide__slide text-center">{{>card items=null}}
+        </li>
+        {{~/times}}
+        {{/isArray}}
+      </ul>
+    </div>
+  </div>
+  {{#if fullWidth}}
+</div>
+{{/if}}

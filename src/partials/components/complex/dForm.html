@@ -1,0 +1,95 @@
+<form id="{{id}}" {{#if action}} action="{{action}}" {{/if}} {{#if method}} method="{{method}}" {{/if}}
+  class="{{formClass}}">
+  {{#if fields.Name}}
+  <div class="form-control {{controlClass}}">
+    <label for="name" class="label">
+      <span class="label-text">{{placeholder.name}}</span>
+    </label>
+    <input id="name" name="name" type="text" class="input input-bordered w-full" placeholder="{{placeholder.name}}" />
+  </div>
+  {{/if}}
+
+  {{#if fields.Phone}}
+  <div class="form-control {{controlClass}}">
+    <label for="phone" class="label">
+      <span class="label-text">{{placeholder.name}}</span>
+    </label>
+    <input id="phone" name="phone" type="text" class="input input-bordered w-full"
+      placeholder="{{placeholder.phone}}" />
+  </div>
+  {{/if}}
+
+  {{#if fields.Email}}
+  <div class="form-control {{controlClass}}">
+    <label for="email" class="label">
+      <span class="label-text">Email</span>
+    </label>
+    <input id="email" name="email" type="email" class="input input-bordered w-full"
+      placeholder="{{placeholder.email}}" />
+  </div>
+  {{/if}}
+
+  {{#if fields.check}}
+  <div class="form-control {{controlClass}}">
+    <label class="cursor-pointer label">
+      <span class="label-text">Согласие с условиями</span>
+      <input type="checkbox" class="checkbox" />
+    </label>
+  </div>
+  {{/if}}
+
+  {{#if fields.radio}}
+  <div class="form-control {{controlClass}}">
+    <span class="label-text">Выберите опцию:</span>
+    <label class="cursor-pointer label">
+      <input type="radio" name="option" value="1" class="radio" />
+      <span class="label-text">Опция 1</span>
+    </label>
+    <label class="cursor-pointer label">
+      <input type="radio" name="option" value="2" class="radio" />
+      <span class="label-text">Опция 2</span>
+    </label>
+  </div>
+  {{/if}}
+
+  {{#if fields.select}}
+  <div class="form-control {{controlClass}}">
+    <label for="select" class="label">
+      <span class="label-text">Выберите значение</span>
+    </label>
+    <select id="select" name="select" class="select select-bordered w-full">
+      <option disabled selected>Выберите</option>
+      <option>Опция 1</option>
+      <option>Опция 2</option>
+    </select>
+  </div>
+  {{/if}}
+
+  {{#if fields.rating}}
+  {{>rating rating}}
+  {{/if}}
+
+  {{#if fields.toggle}}
+  <div class="form-control {{controlClass}}">
+    <label class="label cursor-pointer">
+      <span class="label-text">Запомнить меня</span>
+      <input type="checkbox" class="toggle" checked="checked" />
+    </label>
+  </div>
+  {{/if}}
+
+  {{#if fields.range}}
+  <input type="range" min="0" max="100" value="25" class="range" step="25" />
+  <div class="flex w-full justify-between px-2 text-xs">
+    <span>|</span>
+    <span>|</span>
+    <span>|</span>
+    <span>|</span>
+    <span>|</span>
+  </div>
+  {{/if}}
+
+  {{#if fields.button}}
+  {{>button button}}
+  {{/if}}
+</form>

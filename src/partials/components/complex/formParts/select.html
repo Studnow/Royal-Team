@@ -1,0 +1,15 @@
+{{!-- select.html - renders a select field. Expects options as array of strings or {value,label,selected} --}}
+<select id="{{name}}" name="{{name}}" class="select select-bordered w-full {{selectClass}}">
+  {{#if placeholder}}<option disabled selected value="">{{placeholder}}</option>{{/if}}
+  {{#each options}}
+    {{#if label}}
+      <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+    {{else}}
+      <option value="{{this}}">{{this}}</option>
+    {{/if}}
+  {{/each}}
+</select>
+
+{{#if help}}
+  <p class="text-xs text-muted mt-1">{{help}}</p>
+{{/if}}

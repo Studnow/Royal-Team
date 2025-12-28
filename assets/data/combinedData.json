@@ -1,0 +1,947 @@
+{
+  "/index.html": {
+    "meta": {
+      "title": "Название страницы",
+      "description": "Описание страницы",
+      "favicon": "/fire1.svg",
+      "ogImage": "/assets/img/og-image.jpg",
+      "ogUrl": "/"
+    },
+    "mainClass": "mb-4 w-full",
+    "layout": {
+      "header": {
+        "navbar": {
+          "headerClass": " bg-base-200",
+          "containerClass": " mx-auto py-6",
+          "navbarClass": " bg-transparent justify-between",
+          "navbarStart": " w-1/6 lg:w-1/3",
+          "navbarCenter": " flex w-1/2 lg:1/2 justify-center",
+          "navbarEnd": " w-1/4 lg:w-1/4"
+        },
+        "logo": {
+          "containerClass": "btn btn-link text-neutral no-underline text-base flex justify-start items-center w-12 px-0 md:w-full lg:px-2",
+          "img": "/logo.png",
+          "imgClass": "w-12",
+          "text": "Гид по недвижимости",
+          "spanClass": "hidden lg:inline-block text-sm xl:text-base",
+          "w": "48",
+          "h": "48"
+        },
+        "center": {
+          "components": {
+            "showMenu": true,
+            "showContacts": false
+          },
+          "menu": {
+            "type": "menu",
+            "menuClass": "menu menu-horizontal px-1 hidden lg:flex text-neutral",
+            "menuSmClass": "menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow",
+            "items": {
+              "before": [
+                "Home",
+                "About"
+              ],
+              "after": [
+                "Contacts",
+                "Prices"
+              ]
+            },
+            "sub": {
+              "subHeading": "Vehicles",
+              "menuClass": "p-2 bg-base-200 w-36 z-10 text-primary-content",
+              "menuSmClass": "p-2 bg-base-100 w-36 z-10",
+              "listItems": [
+                "Chevrolet",
+                "my Car",
+                "Your Car"
+              ]
+            }
+          },
+          "list": {
+            "class": "flex justify-start w-full lg:justify-center",
+            "list-items": [
+              {
+                "link": true,
+                "class": "btn btn-link no-underline flex items-start p-2 gap-2 border border-bottom border-2",
+                "icon": {
+                  "id": "envelope",
+                  "w": "36",
+                  "h": "36",
+                  "iconClass": "",
+                  "containerClass": "icon"
+                },
+                "span": {
+                  "text": "+7 978 221 26 88",
+                  "class": "border-b-2 border-accent py-1 hidden md:block"
+                },
+                "href": "tel:+7 978 221 26 88"
+              },
+              {
+                "link": true,
+                "class": "btn btn-link no-underline flex items-start p-2 gap-2",
+                "icon": {
+                  "id": "phone",
+                  "w": "36",
+                  "h": "36",
+                  "iconClass": "",
+                  "containerClass": "icon"
+                },
+                "span": {
+                  "text": "info@gidrealter.ru",
+                  "class": "border-b-2 border-accent py-1 hidden md:block"
+                },
+                "href": "mailto: info@gidrealter.ru"
+              }
+            ]
+          }
+        },
+        "right": {
+          "class": "btn btn-outline bg-base-100 text-xs md:text-base text-accent border-2 hover:bg-accent hover:border-accent",
+          "text": "Заказать звонок",
+          "drawer": true
+        }
+      },
+      "footer": {
+        "containerClass": "footer bg-base-100 text-center place-items-center text-base-content p-10",
+        "logo": {
+          "img": "/logo.png",
+          "text": "Гид по недвижимости",
+          "class": "text-sm xl:text-base"
+        },
+        "socialClass": "w-10 h-10",
+        "social": [
+          {
+            "title": "yt",
+            "href": "#s",
+            "icon": "yt"
+          },
+          {
+            "title": "vk",
+            "href": "#s",
+            "icon": "vk"
+          },
+          {
+            "title": "ig",
+            "href": "#s",
+            "icon": "instagram"
+          },
+          {
+            "title": "fb",
+            "href": "#s",
+            "icon": "fb"
+          },
+          {
+            "title": "tg",
+            "href": "#s",
+            "icon": "tg"
+          },
+          {
+            "title": "ok",
+            "href": "#s",
+            "icon": "ok"
+          }
+        ],
+        "business": [
+          "ИП Твердохлеб Е.В.",
+          "ИНН 920158336626"
+        ],
+        "policy": [
+          "Политика конфиденциальности",
+          "Copyright (c) 202"
+        ]
+      },
+      "drawer": {
+        "tabName": "my_tabs",
+        "tabs": [
+          {
+            "tabLabel": "Tab 1",
+            "checked": "",
+            "content": "Tab content 1"
+          },
+          {
+            "tabLabel": "Tab 2",
+            "checked": "checked",
+            "content": "Tab content 2"
+          },
+          {
+            "tabLabel": "Tab 3",
+            "checked": "",
+            "content": "Tab content 3"
+          },
+          {
+            "tabLabel": "Tab 4",
+            "checked": "",
+            "content": "Tab content 4"
+          }
+        ],
+        "accordion": {
+          "type": "accordion",
+          "class": "mb-4 px-6 mx-auto",
+          "heading": {
+            "container": true,
+            "titleLevel": 3,
+            "title": "My Accordion",
+            "description": "The accordion is only open one at a time.",
+            "class": {
+              "containerClass": "",
+              "title": "",
+              "description": ""
+            }
+          },
+          "body": [
+            {
+              "title": "How do I create an account?",
+              "text": "Click the \"Sign Up\" button in the top right corner and follow the registration process."
+            },
+            {
+              "title": "I forgot my password. What should I do?",
+              "text": "Click on \"Forgot Password\" on the login page and follow the instructions sent to your email."
+            },
+            {
+              "title": "How do I update my profile information?",
+              "text": "Go to \"My Account\" settings and select \"Edit Profile\" to make changes."
+            }
+          ]
+        }
+      },
+      "modal": {
+        "id": "my_modal_1",
+        "class": "mb-4 px-6 mx-auto",
+        "heading": {
+          "container": true,
+          "titleLevel": 3,
+          "title": "Hello modalk",
+          "description": "Press ESC or button to close this window",
+          "class": {
+            "containerClass": "",
+            "title": "",
+            "description": ""
+          }
+        },
+        "body": {
+          "form": true,
+          "modalForm": {
+            "type": "dForm",
+            "form": {
+              "method": "",
+              "heading": {
+                "container": true,
+                "titleLevel": "3",
+                "title": "Оставьте заявку и получите чек-лист по покупке недвижимости",
+                "description": false,
+                "class": {
+                  "containerClass": "",
+                  "title": "lg:w-1/2 text-3xl lg:text-4xl",
+                  "description": "mb-12 font-sans lg:text-2xl font-normal max-w-lg xl:max-w-3xl"
+                }
+              },
+              "formClass": "gap-4 flex flex-col md:flex-row lg:w-[55%] mb-4",
+              "controlClass": "",
+              "img": {
+                "modern": "/assets/img/compressed/form_1.webp",
+                "path": "/assets/img/compressed/form_1.png",
+                "title": "Tablet & pen",
+                "class": "relative right-10 md:absolute lg:right-10 xl:-top-10 md:w-80 md:hidden lg:block lg:w-1/3",
+                "w": "786",
+                "h": "452"
+              },
+              "fields": {
+                "Email": false,
+                "Name": true,
+                "Phone": true,
+                "button": true,
+                "check": false,
+                "radio": true,
+                "select": false,
+                "file": false,
+                "range": false,
+                "rating": true,
+                "text": false,
+                "textArea": false,
+                "toggle": false
+              },
+              "placeholder": {
+                "name": "Имя",
+                "phone": "Номер телефона"
+              },
+              "submit": {
+                "text": "Получить чек-лист",
+                "class": "btn btn-primary text-base-100 text-base"
+              }
+            },
+            "form_2": {
+              "heading": {
+                "container": true,
+                "titleLevel": "3",
+                "title": "Оставьте заявку и получите чек-лист по покупке недвижимости",
+                "description": false,
+                "class": {
+                  "containerClass": "",
+                  "title": "mb-12 lg:w-1/2",
+                  "description": "mb-12 font-sans lg:text-2xl font-normal max-w-lg xl:max-w-3xl"
+                }
+              },
+              "formClass": "gap-4 flex flex-col md:flex-row max-w-screen-lg",
+              "controlClass": "",
+              "img": {
+                "modern": "/assets/img/compressed/form_2.webp",
+                "path": "/assets/img/compressed/form_2.png",
+                "title": "Tablet & pen",
+                "class": "relative md:absolute lg:right-10 lg:-top-10 md:hidden lg:block lg:w-1/3 xl:w-1/4",
+                "w": "786",
+                "h": "452"
+              },
+              "fields": {
+                "Email": false,
+                "Name": true,
+                "Phone": true,
+                "button": true,
+                "check": false,
+                "radio": false,
+                "select": false,
+                "file": false,
+                "range": false,
+                "rating": false,
+                "text": false,
+                "textArea": false,
+                "toggle": false
+              },
+              "placeholder": {
+                "name": "Имя",
+                "phone": "Номер телефона"
+              },
+              "submit": {
+                "text": "Получить чек-лист",
+                "class": "btn btn-primary text-base-100 lg:text-lg"
+              }
+            }
+          }
+        },
+        "footer": ""
+      }
+    },
+    "sections": [
+      {
+        "template": "hero",
+        "fullWidth": true,
+        "style": {
+          "sectionClass": "hero",
+          "sectionContentClass": "hero-content",
+          "sectionFooterClass": "",
+          "sectionFullWidthClass": "hero"
+        },
+        "heading": {
+          "container": true,
+          "titleLevel": "2",
+          "title": "Секция Hero",
+          "captionText": false,
+          "description": false,
+          "class": {
+            "container": "",
+            "title": "mb-12 text-h2-clamp",
+            "description": "mb-12 font-sans lg:text-2xl font-normal max-w-lg xl:max-w-3xl"
+          }
+        },
+        "components": [
+          {
+            "type": "card",
+            "cardClass": "col-span-3 bg-neutral",
+            "cardFigureClass": "",
+            "cardBodyClass": "card-body",
+            "cardPicture": true,
+            "cardActions": true,
+            "hero": false,
+            "cardHeading": {
+              "title": "Карточка",
+              "description": "Это карточка, которая может содержать заголовок, описание и изображение.",
+              "class": {
+                "classTitle": "card-title text-h3-clamp font-extrabold",
+                "classDesc": ""
+              }
+            },
+            "cardImg": {
+              "modern": true,
+              "alt": "house history",
+              "class": "rounded-lg w-full h-full object-cover",
+              "name": "waterfall",
+              "ext": "png",
+              "w": "640",
+              "h": "640"
+            },
+            "cardBtn": {
+              "cardActionsClass": "",
+              "isLink": false,
+              "textClass": "",
+              "url": "#",
+              "text": "Перейти в раздел",
+              "type": "link",
+              "class": "no-underline flex gap-2 hover:text-accent bg-secondary hover:bg-secondary-hover text-primary",
+              "icon": {
+                "id": "arrow",
+                "iconClass": "rotate-90",
+                "w": "28",
+                "h": "24"
+              }
+            }
+          },
+          {
+            "type": "list",
+            "list": {
+              "title": "Price list",
+              "class": "bg-neutral"
+            }
+          }
+        ],
+        "footer": "this is footer"
+      },
+      {
+        "template": "cards",
+        "fullWidth": false,
+        "style": {
+          "sectionClass": "cards flex flex-col items-center justify-center responsive-container",
+          "sectionContentClass": "grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center",
+          "sectionFooterClass": ""
+        },
+        "heading": {
+          "container": true,
+          "titleLevel": "2",
+          "title": "Секция карточек",
+          "captionText": "Карточки",
+          "description": false,
+          "class": {
+            "container": "",
+            "title": "mb-12 text-h2-clamp",
+            "description": "mb-12 font-sans lg:text-2xl font-normal max-w-lg xl:max-w-3xl"
+          }
+        },
+        "components": [
+          {
+            "type": "card",
+            "cardClass": "col-span-3 bg-neutral",
+            "cardFigureClass": "",
+            "cardBodyClass": "card-body",
+            "cardPicture": true,
+            "cardActions": true,
+            "hero": false,
+            "cardHeading": {
+              "title": "Карточка",
+              "description": "Это карточка, которая может содержать заголовок, описание и изображение.",
+              "class": {
+                "classTitle": "card-title text-h3-clamp font-extrabold",
+                "classDesc": ""
+              }
+            },
+            "cardImg": {
+              "modern": true,
+              "alt": "house history",
+              "class": "rounded-lg w-full h-full object-cover",
+              "name": "waterfall",
+              "ext": "png",
+              "w": "640",
+              "h": "640"
+            },
+            "cardBtn": {
+              "cardActionsClass": "",
+              "isLink": false,
+              "textClass": "",
+              "url": "#",
+              "text": "Перейти в раздел",
+              "type": "link",
+              "class": "no-underline flex gap-2 hover:text-accent bg-secondary hover:bg-secondary-hover text-primary",
+              "icon": {
+                "id": "arrow",
+                "iconClass": "rotate-90",
+                "w": "28",
+                "h": "24"
+              }
+            }
+          },
+          {
+            "type": "card",
+            "cardClass": "col-span-3 bg-neutral",
+            "cardFigureClass": "",
+            "cardBodyClass": "card-body",
+            "cardPicture": true,
+            "cardActions": true,
+            "hero": false,
+            "cardHeading": {
+              "title": "Карточка",
+              "description": "Это карточка, которая может содержать заголовок, описание и изображение.",
+              "class": {
+                "classTitle": "card-title text-h3-clamp font-extrabold",
+                "classDesc": ""
+              }
+            },
+            "cardImg": {
+              "modern": true,
+              "alt": "house history",
+              "class": "rounded-lg w-full h-full object-cover",
+              "name": "waterfall",
+              "ext": "png",
+              "w": "640",
+              "h": "640"
+            },
+            "cardBtn": {
+              "cardActionsClass": "",
+              "isLink": false,
+              "textClass": "",
+              "url": "#",
+              "text": "Перейти в раздел",
+              "type": "link",
+              "class": "no-underline flex gap-2 hover:text-accent bg-secondary hover:bg-secondary-hover text-primary",
+              "icon": {
+                "id": "arrow",
+                "iconClass": "rotate-90",
+                "w": "28",
+                "h": "24"
+              }
+            }
+          },
+          {
+            "type": "card",
+            "cardClass": "col-span-3 bg-neutral",
+            "cardFigureClass": "",
+            "cardBodyClass": "card-body",
+            "cardPicture": true,
+            "cardActions": true,
+            "hero": false,
+            "cardHeading": {
+              "title": "Карточка",
+              "description": "Это карточка, которая может содержать заголовок, описание и изображение.",
+              "class": {
+                "classTitle": "card-title text-h3-clamp font-extrabold",
+                "classDesc": ""
+              }
+            },
+            "cardImg": {
+              "modern": true,
+              "alt": "house history",
+              "class": "rounded-lg w-full h-full object-cover",
+              "name": "waterfall",
+              "ext": "png",
+              "w": "640",
+              "h": "640"
+            },
+            "cardBtn": {
+              "cardActionsClass": "",
+              "isLink": false,
+              "textClass": "",
+              "url": "#",
+              "text": "Перейти в раздел",
+              "type": "link",
+              "class": "no-underline flex gap-2 hover:text-accent bg-secondary hover:bg-secondary-hover text-primary",
+              "icon": {
+                "id": "arrow",
+                "iconClass": "rotate-90",
+                "w": "28",
+                "h": "24"
+              }
+            }
+          },
+          {
+            "type": "card",
+            "cardClass": "col-span-3 bg-neutral",
+            "cardFigureClass": "",
+            "cardBodyClass": "card-body",
+            "cardPicture": true,
+            "cardActions": true,
+            "hero": false,
+            "cardHeading": {
+              "title": "Карточка",
+              "description": "Это карточка, которая может содержать заголовок, описание и изображение.",
+              "class": {
+                "classTitle": "card-title text-h3-clamp font-extrabold",
+                "classDesc": ""
+              }
+            },
+            "cardImg": {
+              "modern": true,
+              "alt": "house history",
+              "class": "rounded-lg w-full h-full object-cover",
+              "name": "waterfall",
+              "ext": "png",
+              "w": "640",
+              "h": "640"
+            },
+            "cardBtn": {
+              "cardActionsClass": "",
+              "isLink": false,
+              "textClass": "",
+              "url": "#",
+              "text": "Перейти в раздел",
+              "type": "link",
+              "class": "no-underline flex gap-2 hover:text-accent bg-secondary hover:bg-secondary-hover text-primary",
+              "icon": {
+                "id": "arrow",
+                "iconClass": "rotate-90",
+                "w": "28",
+                "h": "24"
+              }
+            }
+          },
+          {
+            "type": "card",
+            "cardClass": "col-span-3 bg-neutral",
+            "cardFigureClass": "",
+            "cardBodyClass": "card-body",
+            "cardPicture": true,
+            "cardActions": true,
+            "hero": false,
+            "cardHeading": {
+              "title": "Карточка",
+              "description": "Это карточка, которая может содержать заголовок, описание и изображение.",
+              "class": {
+                "classTitle": "card-title text-h3-clamp font-extrabold",
+                "classDesc": ""
+              }
+            },
+            "cardImg": {
+              "modern": true,
+              "alt": "house history",
+              "class": "rounded-lg w-full h-full object-cover",
+              "name": "waterfall",
+              "ext": "png",
+              "w": "640",
+              "h": "640"
+            },
+            "cardBtn": {
+              "cardActionsClass": "",
+              "isLink": false,
+              "textClass": "",
+              "url": "#",
+              "text": "Перейти в раздел",
+              "type": "link",
+              "class": "no-underline flex gap-2 hover:text-accent bg-secondary hover:bg-secondary-hover text-primary",
+              "icon": {
+                "id": "arrow",
+                "iconClass": "rotate-90",
+                "w": "28",
+                "h": "24"
+              }
+            }
+          },
+          {
+            "type": "card",
+            "cardClass": "col-span-3 bg-neutral",
+            "cardFigureClass": "",
+            "cardBodyClass": "card-body",
+            "cardPicture": true,
+            "cardActions": true,
+            "hero": false,
+            "cardHeading": {
+              "title": "Карточка",
+              "description": "Это карточка, которая может содержать заголовок, описание и изображение.",
+              "class": {
+                "classTitle": "card-title text-h3-clamp font-extrabold",
+                "classDesc": ""
+              }
+            },
+            "cardImg": {
+              "modern": true,
+              "alt": "house history",
+              "class": "rounded-lg w-full h-full object-cover",
+              "name": "waterfall",
+              "ext": "png",
+              "w": "640",
+              "h": "640"
+            },
+            "cardBtn": {
+              "cardActionsClass": "",
+              "isLink": false,
+              "textClass": "",
+              "url": "#",
+              "text": "Перейти в раздел",
+              "type": "link",
+              "class": "no-underline flex gap-2 hover:text-accent bg-secondary hover:bg-secondary-hover text-primary",
+              "icon": {
+                "id": "arrow",
+                "iconClass": "rotate-90",
+                "w": "28",
+                "h": "24"
+              }
+            }
+          }
+        ],
+        "footer": "this is footer"
+      },
+      {
+        "template": "slider",
+        "fullWidth": true,
+        "style": {
+          "sectionClass": "slider",
+          "sectionContentClass": "slider-content container",
+          "sectionFooterClass": ""
+        },
+        "heading": {
+          "container": true,
+          "titleLevel": "2",
+          "title": "Секция слайдера",
+          "captionText": "Карточки",
+          "description": false,
+          "class": {
+            "container": "",
+            "title": "mb-12 text-h2-clamp",
+            "description": "mb-12 font-sans lg:text-2xl font-normal max-w-lg xl:max-w-3xl"
+          }
+        },
+        "components": [
+          {
+            "type": "splide-slider",
+            "id": "hero-slider",
+            "fullWidth": true,
+            "sliderParts": {
+              "customControl": {
+                "control": false,
+                "controlClass": "",
+                "controlIcon": "arrow",
+                "iconClass": "text-base-100"
+              },
+              "pagination": {},
+              "icon": "play"
+            },
+            "slides": {
+              "slideData": [
+                {
+                  "type": "card",
+                  "cardClass": "hero w-full px-4 place-content-center bg-secondary",
+                  "cardFigureClass": "flex-col-reverse md:flex-row-reverse",
+                  "cardBodyClass": "2xl:mb-44",
+                  "cardPicture": true,
+                  "cardActions": true,
+                  "hero": true,
+                  "cardHeading": {
+                    "title": "Раковины и мойки из бетона",
+                    "description": "Эксклюзивная раковина, которая подчеркнет безупречный вкус и стиль своего владельца",
+                    "class": {
+                      "containerClass": "w-3/5",
+                      "title": "mb-10 font-extrabold text-h1-clamp",
+                      "description": "mb-10 font-sans text-secondary lg:text-xl font-normal max-w-lg"
+                    },
+                    "titleLevel": "1"
+                  },
+                  "cardImg": {
+                    "modern": true,
+                    "alt": "house history",
+                    "class": "rounded-lg w-full h-full object-cover",
+                    "name": "waterfall",
+                    "ext": "png",
+                    "w": "696",
+                    "h": "799",
+                    "imgClass": "w-full",
+                    "path": "/assets/img/compressed/waterfall.png"
+                  },
+                  "cardBtn": {
+                    "cardActionsClass": "",
+                    "isLink": false,
+                    "textClass": "",
+                    "url": "#",
+                    "text": "Перейти в каталог",
+                    "type": "button",
+                    "class": "btn btn-accent text-base-100 w-full md:w-80 h-14 rounded-none",
+                    "icon": {
+                      "id": "arrow",
+                      "iconClass": "rotate-90",
+                      "w": "28",
+                      "h": "24"
+                    },
+                    "isIcon": false
+                  },
+                  "heroContentClass": "hero-content flex-col-reverse 2xl:flex-row-reverse px-0"
+                },
+                {
+                  "type": "card",
+                  "cardClass": "hero w-full px-4 place-content-center bg-secondary",
+                  "cardFigureClass": "flex-col-reverse md:flex-row-reverse",
+                  "cardBodyClass": "2xl:mb-44",
+                  "cardPicture": true,
+                  "cardActions": true,
+                  "hero": true,
+                  "cardHeading": {
+                    "title": "Раковины и мойки из бетона",
+                    "description": "Эксклюзивная раковина, которая подчеркнет безупречный вкус и стиль своего владельца",
+                    "class": {
+                      "containerClass": "w-3/5",
+                      "title": "mb-10 font-extrabold text-h1-clamp",
+                      "description": "mb-10 font-sans text-secondary lg:text-xl font-normal max-w-lg"
+                    },
+                    "titleLevel": "1"
+                  },
+                  "cardImg": {
+                    "modern": true,
+                    "alt": "house history",
+                    "class": "rounded-lg w-full h-full object-cover",
+                    "name": "waterfall",
+                    "ext": "png",
+                    "w": "696",
+                    "h": "799",
+                    "imgClass": "w-full",
+                    "path": "/assets/img/compressed/waterfall.png"
+                  },
+                  "cardBtn": {
+                    "cardActionsClass": "",
+                    "isLink": false,
+                    "textClass": "",
+                    "url": "#",
+                    "text": "Перейти в каталог",
+                    "type": "button",
+                    "class": "btn btn-accent text-base-100 w-full md:w-80 h-14 rounded-none",
+                    "icon": {
+                      "id": "arrow",
+                      "iconClass": "rotate-90",
+                      "w": "28",
+                      "h": "24"
+                    },
+                    "isIcon": false
+                  },
+                  "heroContentClass": "hero-content flex-col-reverse 2xl:flex-row-reverse px-0"
+                },
+                {
+                  "type": "card",
+                  "cardClass": "hero w-full px-4 place-content-center bg-secondary",
+                  "cardFigureClass": "flex-col-reverse md:flex-row-reverse",
+                  "cardBodyClass": "2xl:mb-44",
+                  "cardPicture": true,
+                  "cardActions": true,
+                  "hero": true,
+                  "cardHeading": {
+                    "title": "Раковины и мойки из бетона",
+                    "description": "Эксклюзивная раковина, которая подчеркнет безупречный вкус и стиль своего владельца",
+                    "class": {
+                      "containerClass": "w-3/5",
+                      "title": "mb-10 font-extrabold text-h1-clamp",
+                      "description": "mb-10 font-sans text-secondary lg:text-xl font-normal max-w-lg"
+                    },
+                    "titleLevel": "1"
+                  },
+                  "cardImg": {
+                    "modern": true,
+                    "alt": "house history",
+                    "class": "rounded-lg w-full h-full object-cover",
+                    "name": "waterfall",
+                    "ext": "png",
+                    "w": "696",
+                    "h": "799",
+                    "imgClass": "w-full",
+                    "path": "/assets/img/compressed/waterfall.png"
+                  },
+                  "cardBtn": {
+                    "cardActionsClass": "",
+                    "isLink": false,
+                    "textClass": "",
+                    "url": "#",
+                    "text": "Перейти в каталог",
+                    "type": "button",
+                    "class": "btn btn-accent text-base-100 w-full md:w-80 h-14 rounded-none",
+                    "icon": {
+                      "id": "arrow",
+                      "iconClass": "rotate-90",
+                      "w": "28",
+                      "h": "24"
+                    },
+                    "isIcon": false
+                  },
+                  "heroContentClass": "hero-content flex-col-reverse 2xl:flex-row-reverse px-0"
+                },
+                {
+                  "type": "card",
+                  "cardClass": "hero w-full px-4 place-content-center bg-secondary",
+                  "cardFigureClass": "flex-col-reverse md:flex-row-reverse",
+                  "cardBodyClass": "2xl:mb-44",
+                  "cardPicture": true,
+                  "cardActions": true,
+                  "hero": true,
+                  "cardHeading": {
+                    "title": "Раковины и мойки из бетона",
+                    "description": "Эксклюзивная раковина, которая подчеркнет безупречный вкус и стиль своего владельца",
+                    "class": {
+                      "containerClass": "w-3/5",
+                      "title": "mb-10 font-extrabold text-h1-clamp",
+                      "description": "mb-10 font-sans text-secondary lg:text-xl font-normal max-w-lg"
+                    },
+                    "titleLevel": "1"
+                  },
+                  "cardImg": {
+                    "modern": true,
+                    "alt": "house history",
+                    "class": "rounded-lg w-full h-full object-cover",
+                    "name": "waterfall",
+                    "ext": "png",
+                    "w": "696",
+                    "h": "799",
+                    "imgClass": "w-full",
+                    "path": "/assets/img/compressed/waterfall.png"
+                  },
+                  "cardBtn": {
+                    "cardActionsClass": "",
+                    "isLink": false,
+                    "textClass": "",
+                    "url": "#",
+                    "text": "Перейти в каталог",
+                    "type": "button",
+                    "class": "btn btn-accent text-base-100 w-full md:w-80 h-14 rounded-none",
+                    "icon": {
+                      "id": "arrow",
+                      "iconClass": "rotate-90",
+                      "w": "28",
+                      "h": "24"
+                    },
+                    "isIcon": false
+                  },
+                  "heroContentClass": "hero-content flex-col-reverse 2xl:flex-row-reverse px-0"
+                },
+                {
+                  "type": "card",
+                  "cardClass": "hero w-full px-4 place-content-center bg-secondary",
+                  "cardFigureClass": "flex-col-reverse md:flex-row-reverse",
+                  "cardBodyClass": "2xl:mb-44",
+                  "cardPicture": true,
+                  "cardActions": true,
+                  "hero": true,
+                  "cardHeading": {
+                    "title": "Раковины и мойки из бетона",
+                    "description": "Эксклюзивная раковина, которая подчеркнет безупречный вкус и стиль своего владельца",
+                    "class": {
+                      "containerClass": "w-3/5",
+                      "title": "mb-10 font-extrabold text-h1-clamp",
+                      "description": "mb-10 font-sans text-secondary lg:text-xl font-normal max-w-lg"
+                    },
+                    "titleLevel": "1"
+                  },
+                  "cardImg": {
+                    "modern": true,
+                    "alt": "house history",
+                    "class": "rounded-lg w-full h-full object-cover",
+                    "name": "waterfall",
+                    "ext": "png",
+                    "w": "696",
+                    "h": "799",
+                    "imgClass": "w-full",
+                    "path": "/assets/img/compressed/waterfall.png"
+                  },
+                  "cardBtn": {
+                    "cardActionsClass": "",
+                    "isLink": false,
+                    "textClass": "",
+                    "url": "#",
+                    "text": "Перейти в каталог",
+                    "type": "button",
+                    "class": "btn btn-accent text-base-100 w-full md:w-80 h-14 rounded-none",
+                    "icon": {
+                      "id": "arrow",
+                      "iconClass": "rotate-90",
+                      "w": "28",
+                      "h": "24"
+                    },
+                    "isIcon": false
+                  },
+                  "heroContentClass": "hero-content flex-col-reverse 2xl:flex-row-reverse px-0"
+                }
+              ]
+            }
+          }
+        ],
+        "footer": "this is footer"
+      }
+    ]
+  }
+}

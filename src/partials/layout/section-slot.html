@@ -1,0 +1,30 @@
+<section class="section section-{{template}} {{style.sectionClass}}">
+  {{#if overlay}}
+  <div class="hero-overlay bg-opacity-80 bg-base-100"></div>
+  {{/if}}
+  {{#if fullWidth}}
+  <div class="responsive-container {{style.sectionFullWidthClass}}">
+    {{/if}}
+    {{#if (and heading (not (eq template "hero")))}}
+    {{>section-title heading }}
+    {{/if}}
+
+    <div class="section__content {{style.sectionContentClass}}">
+      {{#if (eq template "example")}}
+      {{>example this}}
+      {{else}}
+      {{>grid}}
+      {{/if}}
+    </div>
+
+    {{#if footer}}
+    <div class="section__footer {{style.sectionFooterClass}}">
+      {{>button}}
+      {{{footer}}}
+    </div>
+    {{/if}}
+
+    {{#if fullWidth}}
+  </div>
+  {{/if}}
+</section>

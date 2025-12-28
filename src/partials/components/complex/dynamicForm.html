@@ -1,0 +1,60 @@
+{{!--
+  dynamicForm.html
+  Handlebars template (extension is .html but file is processed by your Handlebars plugin).
+
+  Usage: pass a form config object into this partial. The object shape expected:
+  {
+    id, action, method, formClass,
+    fields: [
+      { type, name, label, placeholder, required, class, value, rows, options, partial, help, inputClass, textareaClass, selectClass, group }
+    ]
+  }
+
+  Notes:
+  - For complex/custom controls use `partial` with the name of an already-registered partial (e.g. "button", "rating").
+  - `options` should be an array of strings or objects { value, label, selected } for selects.
+  - For textarea provide `rows` (this template treats any field with `rows` as a textarea).
+  - Each field wrapper receives `group` as a class `group-<name>` so you can style/group via CSS.
+--}}
+
+<form id="{{id}}"{{#if action}} action="{{action}}"{{/if}}{{#if method}} method="{{method}}"{{/if}} class="{{formClass}}">
+  {{#each fields}}
+    <div class="form-control {{class}} {{#if group}}group-{{group}}{{/if}}" data-field-name="{{name}}" {{#if required}}aria-required="true"{{/if}}>
+
+      {{!-- Label is rendered inside field partial when wrapLabel is used. For other cases render label here. --}}
+      {{#if label}}
+        {{#unless wrapLabel}}
+        <label for="{{name}}" class="label">
+          <span class="label-text">{{label}}</span>
+        </label>
+        {{/unless}}
+      {{/if}}
+
+      {{!-- Custom partial (rating, button, custom widgets) --}}
+      {{#if partial}}
+        {{!-- partial name must be registered (e.g. "button", "rating"); pass field.props if present, otherwise pass the whole field as context --}}
+        {{#if props}}
+          {{> (lookup . "partial") props}}
+        {{else}}
+          {{> (lookup . "partial") this}}
+        {{/if}}
+
+      {{!-- Select (if options provided) --}}
+      {{else if options}}
+        {{> complex/formParts/select this}}
+
+      {{!-- Textarea (any field with `rows` property) --}}
+      {{else if rows}}
+        {{> complex/formParts/textarea this}}
+
+      {{!-- Default: use field partial for inputs (supports wrapLabel variant) --}}
+      {{else}}
+        {{> complex/formParts/field this}}
+      {{/if}}
+
+      {{#if help}}
+        <p class="text-xs text-muted mt-1">{{help}}</p>
+      {{/if}}
+    </div>
+  {{/each}}
+</form>

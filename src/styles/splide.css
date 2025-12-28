@@ -1,0 +1,80 @@
+.splide {
+  max-width: calc(100vw - 32px);
+}
+
+.splide__arrow {
+  @apply md:!w-14 md:!h-14;
+}
+
+.splide__arrow svg {
+  @apply md:!w-10 md:!h-10;
+}
+
+/* .splide__arrow--prev {
+  @apply !-left-4 md:!-left-6;
+}
+.splide__arrow--next {
+  @apply !-right-4 md:!-right-6;
+} */
+
+#main-slider .splide__arrow {
+  @apply !rounded-none !bg-transparent top-full md:!top-[26%] lg:!top-[50%] 2xl:!top-1/2;
+  border: 1px solid oklch(var(--s)) !important;
+}
+
+#main-slider .splide__arrow--prev {
+  @apply xl:!left-4 2xl:!left-2;
+}
+
+#main-slider .splide__arrow--next {
+  @apply md:!right-4 2xl:!right-2;
+}
+
+#main-slider .splide__pagination {
+  @apply bottom-[67.5%] lg:bottom-0 justify-between gap-6 hidden md:flex container mx-auto;
+}
+
+#main-slider .splide__pagination {
+  @apply bottom-[67.5%] lg:bottom-0 hidden md:flex container mx-auto gap-6 justify-between;
+
+  &.many-slides {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+
+    .splide__pagination__page {
+      flex: none;
+      min-width: max-content;
+    }
+  }
+}
+
+#main-slider .splide__pagination__page {
+  @apply relative !bg-transparent !w-auto !h-auto hover:!text-primary py-4;
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Вариант 1: через vertical-align */
+#main-slider .splide__pagination__page::before {
+  content: attr(data-number);
+  vertical-align: super;
+  font-size: 10px;
+  margin-right: 4px;
+}
+
+#main-slider .splide__pagination__page::after {
+  content: attr(data-text);
+  color: inherit;
+}
+
+#main-slider .splide__pagination__page.is-active {
+  /* background-color: transparent !important; */
+  @apply text-primary bg-transparent;
+}
+
+.card .btn svg {
+  @apply text-base-100 hover:!text-secondary transition-all ease-in-out duration-75;
+}

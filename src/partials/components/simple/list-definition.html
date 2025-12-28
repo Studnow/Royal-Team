@@ -1,0 +1,15 @@
+{{!-- components/dl.html context list.js/definitionList --}}
+<dl class="space-y-4 {{class}}">
+  {{#each items}}
+  <div class="flex flex-wrap">
+    <dt class="font-semibold mr-2 mb-1">{{term}}</dt>
+    <dd class="">
+      {{#if link}}
+      <a href="{{link}}" class="link no-underline">{{value}}</a>
+      {{else}}
+      <span class="text-muted">{{value}}</span>
+      {{/if}}
+    </dd>
+  </div>
+  {{/each}}
+</dl>

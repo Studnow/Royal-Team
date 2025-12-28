@@ -1,0 +1,36 @@
+{
+  "design": {
+    "nodeKeys": [
+      "active-btns",
+      "Home",
+      "Home 2",
+      "hover-block",
+      "mob/Home",
+      "mob/Product page",
+      "popup-Ключевые особенности",
+      "Product page"
+    ],
+    "toExtract": [],
+    "bad_nodes": [],
+    "recommendations": "Добавьте имена из nodeKeys в toExtract в nodes_log.json. Исключите ненужные узлы через EXCLUDE_NODES."
+  },
+  "⚙️ component": {
+    "nodeKeys": [
+      "Наличие",
+      "advantage",
+      "Buttons",
+      "category",
+      "cover-link",
+      "favicon",
+      "Font",
+      "Header",
+      "icons",
+      "Logo",
+      "navigation",
+      "Theme"
+    ],
+    "toExtract": [],
+    "bad_nodes": [],
+    "recommendations": "Добавьте имена из nodeKeys в toExtract в nodes_log.json. Исключите ненужные узлы через EXCLUDE_NODES."
+  }
+}

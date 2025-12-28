@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="mytheme">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" /> -->
+
+  <link rel="icon" type="image/svg+xml" href="{{meta.favicon}}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{meta.description}}" />
+  <meta property="og:title" content="{{title}}" />
+  <meta property="og:description" content="{{meta.description}}" />
+  <meta property="og:image" content="{{meta.ogImage}}" />
+  <meta property="og:url" content="{{meta.ogUrl}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <title>{{meta.title}}</title>
+</head>
+
+<body class="">
+  {{#if layout.drawer}}
+  {{>drawer}}
+  {{else}}
+  <div id="app" class="app">
+
+    {{!-- No drawer content--}}
+    {{>modal layout.modal}}
+    {{>header layout.header}}
+    {{>default}}
+    {{>footer layout.footer}}
+
+    {{/if}}
+  </div>
+  <!-- # INSERT SCRIPT HERE -->
+  <script type="module" defer src="/src/main.js"></script>
+</body>
+
+</html>

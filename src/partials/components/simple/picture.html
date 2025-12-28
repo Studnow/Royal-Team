@@ -1,0 +1,22 @@
+{{#unless img}}
+<picture class="{{class}}">
+  {{#if modern}}
+  <source
+    type="webp"
+    srcset="{{#if path}}{{path.srcSet}}{{/if}}"
+    alt="{{alt}}"
+  />
+  <source
+    type="image/png"
+    srcset="{{#if srcSet}}{{srcSet.path}}{{#each srcSet.items}}{{item.name}}.{{item.ext}} {{size}}{{/each}}{{/if}}"
+    alt="{{alt}}"
+  />
+  {{/if}} <img class="{{imgClass}}" src="{{#if
+  src}}{{src.path}}{{src.item.name}}.{{src.item.ext}}{{else}}/assets/placeholders/{{type}}/{{name}}.{{ext}}{{/if}}"
+  {{#if w}}width="{{w}}" {{/if}} {{#if h}}height="{{h}}" {{/if}} alt="{{alt}}"
+  {{#if lazy}} loading="lazy" {{/if}} />
+</picture>
+{{else}} <img class="{{imgClass}}" src="{{#if
+  src}}{{src.path}}{{src.item.name}}.{{src.item.ext}}{{else}}/assets/placeholders/{{type}}/{{name}}.{{ext}}{{/if}}"
+  {{#if w}}width="{{w}}" {{/if}} {{#if h}}height="{{h}}" {{/if}} alt="{{alt}}" {{#if lazy}} loading="lazy" {{/if}} />
+{{/unless}}

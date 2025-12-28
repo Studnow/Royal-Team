@@ -1,0 +1,20 @@
+<div class="card {{cardClass}}">
+  {{#if cardPicture}}
+  <figure>
+    {{>picture picture}}
+  </figure>
+  {{/if}}
+  <div class="{{cardBodyClass}}">
+    {{#if heading.title}}
+    <h3 class="{{heading.titleClass}}">{{heading.title}}</h3>
+    {{/if}}
+    {{#if heading.description}}
+    <p class="{{heading.descriptionClass}}">{{heading.description}}</p>
+    {{/if}}
+    {{#if cardActions}}
+    <div class="card-actions {{cardBtn.cardActionsClass}}">
+      {{>button button}}
+    </div>
+    {{/if}}
+  </div>
+</div>

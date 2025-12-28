@@ -1,0 +1,7 @@
+<div class="carousel {{class}}">
+  {{#each slides}}
+    <div class="carousel-item {{#if (eq this.state "active")}}active{{/if}}">
+      {{this.content}}
+    </div>
+  {{/each}}
+</div>

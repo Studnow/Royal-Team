@@ -1,0 +1,10 @@
+{{#if items}}
+{{#if section}}
+{{>(concat section "Slide") (lookup . (concat section "Data")) }}
+{{else}}
+{{>card this}}
+{{/if}}
+{{>@partial-block}}
+{{else}}
+{{>card-placeholder}}
+{{/if}}
