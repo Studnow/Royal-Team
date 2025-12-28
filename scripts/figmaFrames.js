@@ -107,12 +107,35 @@ function findPage(document, pageName) {
 async function generateNodeLog() {
   try {
     console.log("📥 Загрузка данных Figma...");
-    const response = await fetch(`https://api.figma.com/v1/files/${FILE_KEY}`, {
+    // Функция для выполнения запроса с retry
+    async function fetchWithRetry(url, options, maxRetries = 3) {
+      for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        const response = await fetch(url, options);
+        if (response.ok) {
+          return response;
+        }
+        if (response.status === 429) {
+          console.log("📋 Заголовки ответа при 429:");
+          for (const [key, value] of response.headers.entries()) {
+            console.log(`  ${key}: ${value}`);
+          }
+          const retryAfter = response.headers.get("Retry-After");
+          const waitTime = retryAfter ? parseInt(retryAfter, 10) * 1000 : 60000; // по умолчанию 60 сек, если заголовок отсутствует
+          console.warn(
+            `⚠️ Rate limit exceeded (попытка ${attempt}/${maxRetries}). Ждём ${waitTime / 1000} сек перед повтором...`
+          );
+          await new Promise((resolve) => setTimeout(resolve, waitTime));
+          continue; // повторяем
+        }
+        // Для других ошибок бросаем исключение
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      throw new Error(`Не удалось выполнить запрос после ${maxRetries} попыток`);
+    }
+
+    const response = await fetchWithRetry(`https://api.figma.com/v1/files/${FILE_KEY}`, {
       headers: { "X-Figma-Token": FIGMA_API_KEY },
     });
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
     const figmaData = await response.json();
 
     // Обработка всех указанных страниц

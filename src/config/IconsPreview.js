@@ -4,7 +4,7 @@ import { resolve } from "path";
 import {ComponentsMap} from "../data/components/index";
 
 // icon preview for sorting on starting project
-const iconDir = resolve(__dirname, "../../assets/generated/icons"); // Путь к SVG
+const iconDir = resolve(__dirname, "../../assets/icons"); // Путь к SVG
 const icons = readdirSync(iconDir)
   .filter((file) => file.endsWith(".svg"))
   .map((file) => ({
