@@ -1,4 +1,15 @@
-import { button, list, listDefinition, logo, picture, link, icon, ComponentsMap, dynamicForm } from "../../data/components/index";
+import {
+  button,
+  list,
+  listDefinition,
+  logo,
+  picture,
+  link,
+  icon,
+  heading,
+  ComponentsMap,
+  dynamicForm,
+} from "../../data/components/index";
 
 import field from "../components/formParts/field.js";
 
@@ -43,29 +54,49 @@ export default {
   },
   right: {
     drawer: true,
-    colClass: ["inline", "absolute"],
+    colClass: ["inline-flex", "absolute bg-primary text-base-100 z-10 top-24"],
+    colId: ["header-menu-col", "calculator-widget"],
     components: [
-      [{
-        ...menu,
-        listClass:
-          menu.listClass + "justify-between bg-primary rounded-full flex-nowrap hidden lg:flex menu-horizontal",
-        type: "list-menu",
-        sub: false,
-        listItems: heroData.heroMenu.map((item) => ({
-          ...link,
-          class: link.class + "no-underline",
-          text: item,
-          textClass: link.textClass + "text-base-100 font-medium",
-          icon: false,
-        })),
-      },
-      // { ...button, icon: false },
-      {
-        type: "drawerBtn",
-        class: "btn btn-primary drawer-button lg:hidden",
-        icon: { ...icon, id: "burgerMenu", class: "h-8 w-8 rotate-180" },
-      },],
-      [{ ...listDefinition }, { ...field }],
+      [
+        {
+          ...menu,
+          listClass:
+            menu.listClass + "justify-between bg-primary rounded-full flex-nowrap hidden lg:flex menu-horizontal",
+          type: "list-menu",
+          sub: false,
+          listItems: heroData.heroMenu.map((item) => ({
+            ...link,
+            class: link.class + "no-underline",
+            text: item,
+            textClass: link.textClass + "text-base-100 font-medium",
+            icon: false,
+          })),
+        },
+        // { ...button, icon: false },
+        {
+          type: "drawerBtn",
+          class: "btn btn-primary drawer-button lg:hidden",
+          icon: { ...icon, id: "burgerMenu", class: "h-8 w-8 rotate-180" },
+        },
+      ],
+      [
+        { ...listDefinition, items: heroData.heroDefList },
+        {
+          type: "calculator",
+          class: "bg-base-100 p-6 grid grid-cols-1",
+          components: [
+            { ...heading, title: heroData.heroForm.title, titleLevel: 3, titleClass: "text-h3-clamp" },
+            {
+              ...field,
+              wrapLabel: true,
+              label: heroData.heroForm.calcResult,
+              class: field.labelClass + "flex flex-row-reverse",
+              placeholder: heroData.heroForm.field,
+            },
+            { ...button, text: heroData.heroForm.buttonText, icon: false, modal: "onclick='my_modal_1.showModal()'" },
+          ],
+        },
+      ],
     ],
   },
   drawer: {

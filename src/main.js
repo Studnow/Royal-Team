@@ -3,6 +3,7 @@ import "@splidejs/splide/css";
 // import "./sass/header.sass";
 
 // import "./js/counter"
+import "./js/calculator"
 import Splide from "@splidejs/splide";
 
 const heroSlider = new Splide("#main-slider", {

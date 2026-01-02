@@ -2,7 +2,11 @@
 <dl class="space-y-4 {{class}}">
   {{#each items}}
   <div class="flex flex-wrap">
-    <dt class="font-semibold mr-2 mb-1">{{term}}</dt>
+    <dt class="font-semibold mr-2 mb-1">{{#if link}}
+    <a href="{{link}}" class="link no-underline">{{term}}</a>
+    {{else}}
+    <span class="text-muted">{{term}}</span>
+    {{/if}}</dt>
     <dd class="">
       {{#if link}}
       <a href="{{link}}" class="link no-underline">{{value}}</a>

@@ -2,11 +2,11 @@ export default {
   hero: {
     heading: { title: "Safe and reliable auto transport services nationwide" },
     heroMenu: ["About", "How it work", "Equipment", "Price", "FAQ"],
-    heroContacts: [
-      { num: "1.000.000 +", caption: "Satisfied Customers" },
-      { num: "1.070.000 +", caption: "Vehicles Delivered" },
-      { num: "16 +", caption: "Years Experience" },
-      { num: "253-264-9577", caption: "call us" },
+    heroDefList: [
+      { term: "1.000.000 +", value: "Satisfied Customers" },
+      { term: "1.070.000 +", value: "Vehicles Delivered" },
+      { term: "16 +", value: "Years Experience" },
+      { term: "253-264-9577", value: "call us", link: "tel:253-264-9577" },
     ],
     heroForm: {
       calcResult: "= 1.000 $",
@@ -26,36 +26,32 @@ export default {
         alt: "Payment After Assignment",
       },
       {
-        name: "hero",
-        ext: "png",
+        src: { path: "assets/images/", item: { name: "equipment_open", ext: "png" } },
+        alt: "equipment_open",
       },
       {
-        name: "equipment_open",
-        ext: "png",
+        src: { path: "assets/images/", item: { name: "equipment_enclosed", ext: "png" } },
+        alt: "equipment_enclosed",
       },
       {
-        name: "equipment_enclosed",
-        ext: "png",
+        src: { path: "assets/images/", item: { name: "hero", ext: "png" } },
+        alt: "Payment After Assignment",
       },
       {
-        name: "hero",
-        ext: "png",
+        src: { path: "assets/images/", item: { name: "hero", ext: "png" } },
+        alt: "Payment After Assignment",
       },
       {
-        name: "hero",
-        ext: "png",
+        src: { path: "assets/images/", item: { name: "equipment_open", ext: "png" } },
+        alt: "equipment_open",
       },
       {
-        name: "equipment_open",
-        ext: "png",
+        src: { path: "assets/images/", item: { name: "equipment_enclosed", ext: "png" } },
+        alt: "equipment_enclosed",
       },
       {
-        name: "equipment_enclosed",
-        ext: "png",
-      },
-      {
-        name: "hero",
-        ext: "png",
+        src: { path: "assets/images/", item: { name: "hero", ext: "png" } },
+        alt: "Payment After Assignment",
       },
     ],
   },

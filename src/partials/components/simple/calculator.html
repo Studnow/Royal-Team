@@ -1,1 +1,1 @@
-<div class="calculator {{class}}">{{#each field}}{{> (lookup . "type") this}}{{/each}}</div>
+<div class="calculator {{class}}">{{>section-title heading }}{{#each components}}{{> (lookup . "type") this}}{{/each}}</div>

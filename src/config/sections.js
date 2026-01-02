@@ -67,11 +67,11 @@ export const sectionsMap = {
     ...heroSection,
     template: "hero",
     fullWidth: false,
-    overlay: true,
+    overlay: false,
     style: {
-      ...sectionStyles.heroTwoColumns,
+      ...sectionStyles.wide,
     },
-    colClass: "w-1/2",
+    colClass: "col-span-12",
     components: [
       [
         {
@@ -81,6 +81,7 @@ export const sectionsMap = {
           titleLevel: "1",
           titleClass: "text-h1-clamp font-extrabold text-primary",
           container: true,
+          containerClass: "absolute bottom-0 z-10 max-w-5xl",
         },
         // button,
         {
@@ -90,7 +91,13 @@ export const sectionsMap = {
             slideData: heroData.slides.map((item) => ({
               ...cardSlide,
               heading: false,
-              picture: { ...cardSlide.picture, src: { path: item.src?.path, item: item.src?.item } },
+              picture: {
+                ...cardSlide.picture,
+                src: { path: item.src?.path, item: item.src?.item },
+                w: "1920",
+                h: "910",
+              },
+              cardActions: false,
             })),
           },
         },
@@ -120,7 +127,12 @@ export const sectionsMap = {
       captionText: aboutData.heading.captionTop,
     },
     colClass: "col-span-12 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
-    components: aboutData.aboutCards.map((aboutCard) => ({...card, cardClass: card.cardClass + " col-span-3", heading: {...heading, title: aboutCard.title, description: aboutCard.description}, cardActions: false })), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
+    components: aboutData.aboutCards.map((aboutCard) => ({
+      ...card,
+      cardClass: card.cardClass + " col-span-3",
+      heading: { ...heading, title: aboutCard.title, description: aboutCard.description },
+      cardActions: false,
+    })), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
   },
 
   // howitwork: {
