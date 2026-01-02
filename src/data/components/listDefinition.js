@@ -1,6 +1,6 @@
 export default {
-  type: "dl",
-  class: "lg:col-span-6",
+  type: "list-definition",
+  class: "lg:col-span-6 z-10",
   items: [
     { term: "Адрес:", value: "Московская обл., г. Ивантеевка, ул. Заречная 1" },
     { term: "Телефон:", value: "+7 (985) 178-42-08", link: "tel:+79851784208" },

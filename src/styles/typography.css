@@ -8,7 +8,9 @@
   h6 {
     @apply font-bold text-accent;
   }
-
+h1 {
+  font-family: Unbounded;
+}
   /* h1 {
     font-size: var(--htitle);
   }

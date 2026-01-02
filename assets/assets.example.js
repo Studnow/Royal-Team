@@ -2,10 +2,19 @@ export default {
   sectionName: {
     // СТРОКИ
     title: "Section",
-    description: "section description text",
+    description: "description",
     captionBottom: "Caption text",
     buttonText: "Отправить",
     phone: "",
+
+    // Заголовок секции
+    heading: {
+      title: "Section",
+      description: "description",
+      captionBottom: "Caption text",
+      buttonText: "Отправить",
+      phone: "",
+    },
 
     // ОБЪЕКТ
     logo: { name: "placeholders/avatars/avatar-left", ext: "png" },
@@ -42,7 +51,7 @@ export default {
           phone: "",
           icon: { id: "", ext: "svg" },
           image: { name: "hero-banner-360x200", ext: "jpg" },
-          buttonText: "Перейти"
+          buttonText: "Перейти",
         },
         {
           title: "Title 2",
@@ -51,7 +60,7 @@ export default {
           phone: "",
           icon: { id: "", ext: "svg" },
           image: { name: "hero-banner-360x200", ext: "jpg" },
-          buttonText: "Перейти"
+          buttonText: "Перейти",
         },
         {
           title: "Title 3",
@@ -60,9 +69,13 @@ export default {
           phone: "",
           icon: { id: "", ext: "svg" },
           image: { name: "hero-banner-360x200", ext: "jpg" },
-          buttonText: "Перейти"
+          buttonText: "Перейти",
         },
       ],
+      img: {
+        src: { path: "assets/images/", items: [{ name: "hero-banner-360x200", ext: "jpg" }] },
+        alt: "Payment After Assignment",
+      },
     },
 
     icons: {

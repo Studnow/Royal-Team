@@ -6,7 +6,7 @@ export default {
   textClass: "",
   url: "/!#",
   text: "Посмотреть",
-  class: "link link-primary",
+  class: "link link-secondary",
   icon: defaultIcon,
 };
 export const socialLink = {

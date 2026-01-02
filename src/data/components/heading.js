@@ -5,7 +5,7 @@ export const heading = {
   title: "Секция карточек",
   caption: false,
   captionText: "Это секция с карточками",
-  captionClass: "text-caption text-primary mb-4",
+  captionClass: "text-caption text-secondary mb-4",
   description: false,
   containerClass: "",
   titleClass: "mb-12 text-h2-clamp",
@@ -21,6 +21,7 @@ export const headingHero = {
     descriptionClass:
       "text-subtitle text-neutral font-bold md:w-2/3 flex-grow-0",
   };
+
 export const headingSlideCard = {
   ...heading,
   container: false, // card не имеет условия для контейнера

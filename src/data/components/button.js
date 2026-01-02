@@ -8,6 +8,6 @@ export default {
   url: "/!#",
   text: "Посмотреть",
   btnType: "button", // submit, reset, button
-  class: "btn-primary",
+  class: "btn-accent",
   icon,
 };

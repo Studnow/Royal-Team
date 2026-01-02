@@ -1,5 +1,5 @@
 export default {
-  type: 'text',
+  type: 'formParts/field',
   name: 'example_field',
   label: 'Пример поля',
   placeholder: 'Введите значение',

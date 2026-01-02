@@ -1,11 +1,15 @@
 {{#each components}}
 {{#isArray this}}
-<div class="{{../colClass}}">
-  {{#each this}}
-  {{> (lookup . 'type') this }}
+  {{#isArray ../colClass}}
+<div class="{{lookup ../colClass @index}}">
+  {{else}}
+  <div class="{{../colClass}}">
+    {{/isArray}}
+    {{#each this}}
+    {{> (lookup . 'type') this }}
+    {{/each}}
+  </div>
+  {{else}}
+  {{> (lookup this 'type') this }}
+  {{/isArray}}
   {{/each}}
-</div>
-{{else}}
-{{> (lookup this 'type') this }}
-{{/isArray}}
-{{/each}}

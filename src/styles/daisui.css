@@ -11,3 +11,10 @@
 /* .btn {
   @apply active:hover:!scale-95;
 } */
+
+.menu>li:hover {
+  @apply bg-slate-700 rounded-full;
+}
+.menu {
+  flex-wrap: nowrap;
+}
