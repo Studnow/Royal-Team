@@ -108,18 +108,20 @@ export const sectionsMap = {
       // })),
     ],
   },
-  // about: {
-  //   ...baseSection,
-  //   template: "section",
-  //   style: { ...sectionStyles.wide },
-  //   heading: {
-  //     ...heading,
-  //     title: assets.sectionName.title + " 4 cards",
-  //     caption: false,
-  //   },
-  //   colClass: "col-span-8 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
-  //   components: Array(6).fill({ ...card, cardClass: card.cardClass + " col-span-3" }), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
-  // },
+  about: {
+    ...baseSection,
+    template: "section",
+    style: { ...sectionStyles.wide },
+    heading: {
+      ...heading,
+      title: aboutData.heading.title,
+      description: aboutData.heading.description,
+      caption: true,
+      captionText: aboutData.heading.captionTop,
+    },
+    colClass: "col-span-12 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
+    components: aboutData.aboutCards.map((aboutCard) => ({...card, cardClass: card.cardClass + " col-span-3", heading: {...heading, title: aboutCard.title, description: aboutCard.description}, cardActions: false })), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
+  },
 
   // howitwork: {
   //   ...baseSection,
