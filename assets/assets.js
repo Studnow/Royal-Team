@@ -170,8 +170,8 @@ export default {
   ],
   reviews: {
     heading: {
-      title: "Reviews",
-      description: "Over 1,000,000 Satisfied Customers and 16 Years of Experience",
+      captionTop: "Reviews",
+      title: "Over 1,000,000 Satisfied Customers and 16 Years of Experience",
     },
     reviewsSlides: [
       {
@@ -179,7 +179,16 @@ export default {
         description:
           "RoyalTeam made transporting my car absolutely hassle-free. Personal approach, constant communication, and precise timing — everything was top-notch.",
       },
-      { buttonText: "Want to Work with You" },
+      {
+        title: "Michael S., New York",
+        description:
+          "RoyalTeam made transporting my car absolutely hassle-free. Personal approach, constant communication, and precise timing — everything was top-notch.",
+      },
+      {
+        title: "Michael S., New York",
+        description:
+          "RoyalTeam made transporting my car absolutely hassle-free. Personal approach, constant communication, and precise timing — everything was top-notch.",
+      },
     ],
     reviewsCards: [
       {
@@ -195,6 +204,7 @@ export default {
         description: "Since 2009 continuously improving service quality and setting new industry standards.",
       },
     ],
+    buttonText: "Want to Work with You",
     images: [
       {
         name: "example_image",

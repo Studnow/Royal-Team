@@ -149,7 +149,7 @@ export const sectionsMap = {
     },
     colClass: ["col-span-6 flex flex-wrap gap-4", "col-span-6 flex flex-wrap gap-4"],
     components: [
-      [{ ...picture, src: howitworkData.img.src, alt: howitworkData.img}],
+      [{ ...picture, src: howitworkData.img.src, alt: howitworkData.img }],
       howitworkData.howitworkCards.map((howitworkCard) => ({
         ...card,
         heading: {
@@ -165,62 +165,72 @@ export const sectionsMap = {
   },
   brandImages: {
     ...baseSection,
-    style: { ...sectionStyles.wide },
-    heading: {
-      ...heading,
-      title: assets.sectionName.title + " 4 cards",
-      caption: false,
-    },
-    colClass: "col-span-8 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
-    components: brandImagesData.map((brandImage) => ({ ...picture, src: brandImage.src})), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
+    style: { ...sectionStyles.flexContent, sectionClass: sectionStyles.flexContent.sectionClass + " py-8 mb-8" },
+    heading: false,
+    colClass: "col-span-12 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
+    components: brandImagesData.map((brandImage) => ({ ...picture, src: brandImage.src })), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
   },
-  // reviews: {
-  //   ...baseSection,
-  //   template: "slider",
-  //   fullWidth: true,
-  //   style: {
-  //     ...sectionStyles.wide,
-  //     sectionClass: sectionStyles.wide.sectionClass + "slider",
-  //     sectionContentClass: sectionStyles.wide.sectionContentClass + " lg:grid-cols-1 slider-content container",
-  //   },
-  //   heading: {
-  //     ...heading,
-  //     title: assets.sectionName.title + " slider",
-  //     container: false,
-  //     caption: false,
-  //     captionClass: "text-caption text-primary mb-4",
-  //   },
-  //   colClasses: "",
-  //   components: [
-  //     {
-  //       ...slider,
-  //       slides: {
-  //         ...slider.slides,
-  //         slideData: assets.sectionName.nested.items.map((item) => ({
-  //           ...cardSlide,
-  //           cardClass: cardSlide.cardClass + "",
-  //           heading: {
-  //             ...headingSlideCard,
-  //             title: item.title,
-  //             description: item.description,
-  //           },
-  //           picture: {
-  //             ...picture,
-  //             name: item.image.name,
-  //             ext: item.image.ext,
-  //             alt: item.title,
-  //           },
-  //           button: {
-  //             ...button,
-  //             class: "btn-primary",
-  //             icon: false,
-  //             text: item.buttonText,
-  //           },
-  //         })),
-  //       },
-  //     },
-  //   ],
-  // },
+  reviews: {
+    ...baseSection,
+    template: "slider",
+    fullWidth: true,
+    style: {
+      ...sectionStyles.wide,
+      sectionClass: sectionStyles.wide.sectionClass + "slider",
+      sectionContentClass:
+        sectionStyles.wide.sectionContentClass + " slider-content container grid-rows-2",
+    },
+    heading: false,
+    colClass: ["col-span-6 row-span-2", "col-span-6 flex", "col-span-6 flex"],
+    components: [
+      [
+        {
+          ...slider,
+          id: "reviews-slider",
+          slides: {
+            ...slider.slides,
+            slideData: reviewsData.reviewsSlides.map((item) => ({
+              ...cardSlide,
+              cardClass: cardSlide.cardClass + "",
+              heading: {
+                ...headingSlideCard,
+                title: item.title,
+                description: item.description,
+              },
+              // picture: {
+              //   ...picture,
+              //   name: item.image.name,
+              //   ext: item.image.ext,
+              //   alt: item.title,
+              // },
+            })),
+          },
+        },
+        {
+          ...button,
+          class: "btn-accent",
+          icon: false,
+          text: reviewsData.buttonText,
+        },
+      ],
+      [
+        {
+          ...heading,
+          title: reviewsData.heading.title,
+          container: true,
+          caption: true,
+          captionText: reviewsData.heading.captionTop,
+          captionClass: "text-caption text-primary mb-4",
+        },
+      ],
+      reviewsData.reviewsCards.map((revievsCard) => ({
+        ...card,
+        heading: { ...heading, title: revievsCard.title, description: revievsCard.description },
+        cardActions: false,
+        cardPicture: false,
+      })),
+    ],
+  },
 
   // equipment: {
   //   ...baseSection,

@@ -7,7 +7,22 @@ import "./js/calculator"
 import Splide from "@splidejs/splide";
 
 const heroSlider = new Splide("#main-slider", {
-  arrows: true,
+  arrows: false,
+  // perPage: 2,
+  pagination: false,
+  // classes: {
+  //   pagination: "splide__pagination main-pagination",
+  //   page: "splide__pagination__page main-page",
+  // },
+  breakpoints: {
+    1024: {
+      perPage: 1,
+    },
+  },
+  gap: "2rem",
+});
+const reviewsSlider = new Splide("#reviews-slider", {
+  arrows: false,
   // perPage: 2,
   pagination: false,
   // classes: {
@@ -61,6 +76,7 @@ const heroSlider = new Splide("#main-slider", {
 //   }, 100);
 // });
 heroSlider.mount();
+reviewsSlider.mount();
 
 // document.querySelectorAll("nav a").forEach((link) => {
 //   if (link.href === window.location.href) {

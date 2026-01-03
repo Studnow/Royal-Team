@@ -13,6 +13,12 @@ export const sectionStyles = {
     sectionContentClass: "grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center flex-grow",
     sectionFooterClass: "",
   },
+  flexContent: {
+    sectionClass: "flex flex-col items-center overflow-hidden",
+    sectionFullWidthClass: "responsive-container",
+    sectionContentClass: "flex flex-col md:flex-row gap-6 place-items-center",
+    sectionFooterClass: "",
+  },
   narrow: {
     sectionClass: "flex flex-col max-w-4xl overflow-hidden",
     sectionFullWidthClass: "responsive-container",
