@@ -119,7 +119,7 @@ export default {
       title: "Three Simple Steps to Safe Auto Transport",
     },
     img: {
-      src: { path: "assets/images/", items: [{ name: "howitwork", ext: "png" }] },
+      src: { path: "assets/images/", item: { name: "howitwork", ext: "png" } },
       alt: "Auto Transport",
     },
     howitworkCards: [
@@ -148,23 +148,23 @@ export default {
   },
   brandImages: [
     {
-      src: { path: "assets/images/", items: [{ name: "brand1", ext: "png" }] },
+      src: { path: "assets/images/", item: { name: "brand1", ext: "png" } },
       alt: "Payment After Assignment",
     },
     {
-      src: { path: "assets/images/", items: [{ name: "brand2", ext: "png" }] },
+      src: { path: "assets/images/", item: { name: "brand2", ext: "png" } },
       alt: "Payment After Assignment",
     },
     {
-      src: { path: "assets/images/", items: [{ name: "brand3", ext: "png" }] },
+      src: { path: "assets/images/", item: { name: "brand3", ext: "png" } },
       alt: "Payment After Assignment",
     },
     {
-      src: { path: "assets/images/", items: [{ name: "brand2", ext: "png" }] },
+      src: { path: "assets/images/", item: { name: "brand2", ext: "png" } },
       alt: "Payment After Assignment",
     },
     {
-      src: { path: "assets/images/", items: [{ name: "brand1", ext: "png" }] },
+      src: { path: "assets/images/", item: { name: "brand1", ext: "png" } },
       alt: "Payment After Assignment",
     },
   ],

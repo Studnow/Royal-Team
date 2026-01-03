@@ -130,35 +130,50 @@ export const sectionsMap = {
     components: aboutData.aboutCards.map((aboutCard) => ({
       ...card,
       cardClass: card.cardClass + " col-span-3",
-      heading: { ...heading, title: aboutCard.title, description: aboutCard.description },
+      heading: {
+        ...heading,
+        title: aboutCard.title,
+        description: aboutCard.description,
+      },
       cardActions: false,
     })), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
   },
 
-  // howitwork: {
-  //   ...baseSection,
-  //   template: "cards",
-  //   fullWidth: false,
-  //   style: { ...sectionStyles.wide },
-  //   heading: {
-  //     ...heading,
-  //     title: assets.sectionName.title + " 2 cards",
-  //   },
-  //   colClass: "col-span-4 flex flex-wrap gap-4",
-  //   components: [Array(3).fill(card), Array(3).fill(card)], // вместо вручную card,card,...
-  // },
-  // brandImages: {
-  //   ...baseSection,
-  //   template: "section",
-  //   style: { ...sectionStyles.wide },
-  //   heading: {
-  //     ...heading,
-  //     title: assets.sectionName.title + " 4 cards",
-  //     caption: false,
-  //   },
-  //   colClass: "col-span-8 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
-  //   components: Array(6).fill({ ...card, cardClass: card.cardClass + " col-span-3" }), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
-  // },
+  howitwork: {
+    ...baseSection,
+    fullWidth: true,
+    style: { ...sectionStyles.wide },
+    heading: {
+      ...heading,
+      title: howitworkData.heading.title,
+    },
+    colClass: ["col-span-6 flex flex-wrap gap-4", "col-span-6 flex flex-wrap gap-4"],
+    components: [
+      [{ ...picture, src: howitworkData.img.src, alt: howitworkData.img}],
+      howitworkData.howitworkCards.map((howitworkCard) => ({
+        ...card,
+        heading: {
+          ...heading,
+          title: howitworkCard.title,
+          description: howitworkCard.description,
+        },
+        cardPicture: false,
+        cardBodyClass: card.cardBodyClass + " max-h-auto",
+        cardActions: false,
+      })),
+    ], // вместо вручную card,card,...
+  },
+  brandImages: {
+    ...baseSection,
+    style: { ...sectionStyles.wide },
+    heading: {
+      ...heading,
+      title: assets.sectionName.title + " 4 cards",
+      caption: false,
+    },
+    colClass: "col-span-8 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
+    components: brandImagesData.map((brandImage) => ({ ...picture, src: brandImage.src})), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
+  },
   // reviews: {
   //   ...baseSection,
   //   template: "slider",
