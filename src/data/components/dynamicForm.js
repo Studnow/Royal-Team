@@ -12,7 +12,7 @@ export default {
   id: 'contactForm',
   action: '/send-contact',
   method: 'post',
-  formClass: 'col-span-12 gap-4 flex flex-col md:flex-row lg:w-[55%] mb-4 flex-wrap',
+  formClass: 'col-span-12 gap-6 flex flex-col md:flex-row lg:w-[80%] mb-4 flex-wrap p-6',
 
   /*
     fields: array of field descriptors. Each descriptor supports:

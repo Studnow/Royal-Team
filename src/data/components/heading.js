@@ -8,8 +8,8 @@ export const heading = {
   captionClass: "text-caption text-secondary mb-4",
   description: false,
   containerClass: "",
-  titleClass: "mb-12 text-h2-clamp",
-  descriptionClass: "mb-12 font-sans lg:text-2xl font-normal max-w-lg xl:max-w-3xl",
+  titleClass: "text-h2-clamp",
+  descriptionClass: "font-sans lg:text-h5-clamp font-normal max-w-lg xl:max-w-3xl",
 };
 
 export const headingHero = {
@@ -28,7 +28,7 @@ export const headingSlideCard = {
   containerClass: "self-center",
   titleLevel: "2",
   titleClass: "text-h2-clamp mb-2",
-  descriptionClass: "text-subtitle font-bold md:w-2/3 flex-grow-0",
+  descriptionClass: "text-subtitle font-bold flex-grow-0",
 };
 
 export default heading;

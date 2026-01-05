@@ -1,0 +1,10 @@
+{{#if wrapLabel}}
+<label for="{{name}}" class="label {{#if class}}{{class}}{{/if}}">
+  {{#if label}}<span class="label-text">{{label}}</span>{{/if}}
+  <input id="{{name}}" name="{{name}}" type="{{type}}" class="checkbox {{inputClass}}"
+    placeholder="{{placeholder}}" {{#if required}}required{{/if}} value="{{value}}" />
+</label>
+{{else}}
+<input id="{{name}}" name="{{name}}" type="{{type}}" class="checkbox {{inputClass}}"
+  placeholder="{{placeholder}}" {{#if required}}required{{/if}} value="{{value}}" />
+{{/if}}

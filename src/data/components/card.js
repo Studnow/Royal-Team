@@ -7,7 +7,7 @@ export const card = {
   type: "card",
   cardClass: "bg-base-100",
   cardFigureClass: "",
-  cardBodyClass: "card-body h-full",
+  cardBodyClass: "card-body",
   cardPicture: true,
   cardActions: true,
   heading: {

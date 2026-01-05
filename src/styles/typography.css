@@ -6,7 +6,7 @@
   h4,
   h5,
   h6 {
-    @apply font-bold text-accent;
+    @apply font-bold;
   }
 h1 {
   font-family: Unbounded;

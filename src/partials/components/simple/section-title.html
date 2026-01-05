@@ -8,7 +8,15 @@
   <h{{titleLevel}} class="{{titleClass}}">{{title}}</h{{titleLevel}}>
   {{/if}}
   {{#if description}}
-  <p class="text-primary-content {{descriptionClass}}">{{description}}</p>
+  {{#isArray description}}
+  <div class="description {{descriptionClass}}">
+    {{#each description}}
+    <p class="text-primary text-h3-clamp">{{this}}</p>
+    {{/each}}
+  </div>
+  {{else}}
+  <p class="{{descriptionClass}}">{{description}}</p>
+  {{/isArray}}
   {{/if}}
 </div>
 
@@ -21,7 +29,7 @@
 <h{{titleLevel}} class="{{titleClass}}">{{title}}</h{{titleLevel}}>
 {{/if}}
 {{#if description}}
-<p class="text-primary-content {{descriptionClass}}">{{description}}</p>
+<p class="{{descriptionClass}}">{{description}}</p>
 {{/if}}
 
 {{/if}}

@@ -1,11 +1,11 @@
 {{#if section}}{{>section-title heading}}{{/if}}
 {{#each listItems}}
-<div class="collapse bg-base-100 border border-base-300 text-accent">
+<div class="collapse bg-base-100 border border-base-300 text-primary collapse-arrow">
   <input type="radio" name="my-accordion-1" checked="checked" />
   <div class="collapse-title font-semibold">{{title}}</div>
   <div class="collapse-content text-sm flex flex-col justify-items-start gap-y-4">
-    {{#each items}}
-    {{>link}}
+    {{#each description}}
+    <p class="collapse-text">{{this}}</p>
     {{/each}}</div>
 </div>
 {{/each}}

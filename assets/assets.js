@@ -214,8 +214,8 @@ export default {
   },
   equipment: {
     heading: {
-      title: "Equipment",
-      description: "Choose the Optimal Transport Option for Your Vehicle",
+      caption: "Equipment",
+      title: "Choose the Optimal Transport Option for Your Vehicle",
     },
     equipmentCards: [
       {
@@ -230,7 +230,7 @@ export default {
         ],
         buttonText: "Choose Open Transport",
         img: {
-          src: { path: "assets/images/", items: [{ name: "equipment_open", ext: "png" }] },
+          src: { path: "assets/images/", item: { name: "equipment_open", ext: "png" } },
           alt: "Payment After Assignment",
         },
       },
@@ -246,7 +246,7 @@ export default {
         ],
         buttonText: "Choose Enclosed Transport",
         img: {
-          src: { path: "assets/images/", items: [{ name: "equipment_enclosed", ext: "png" }] },
+          src: { path: "assets/images/", item: { name: "equipment_enclosed", ext: "png" } },
           alt: "Payment After Assignment",
         },
       },
@@ -264,7 +264,7 @@ export default {
       title: "How Auto Transport Pricing is Determined",
     },
     img: {
-      src: { path: "assets/images/", items: [{ name: "price", ext: "png" }] },
+      src: { path: "assets/images/", item: { name: "price", ext: "png" } },
       alt: "Auto Transport",
     },
     priceCards: [
@@ -301,9 +301,6 @@ export default {
     heading: {
       title: "Auto Transport to Any Location in the United States",
       description: "Our extensive carrier network covers all 50 states, including remote regions",
-      captionBottom: "Caption text",
-      buttonText: "Отправить",
-      phone: "",
     },
     promoCards: {
       title: "We Transport All Vehicle Types:",
@@ -311,28 +308,28 @@ export default {
         {
           title: "Passenger Cars",
           img: {
-            src: { path: "assets/images/", items: [{ name: "promo_passenger_cars", ext: "png" }] },
+            src: { path: "assets/images/", item: { name: "promo_passenger_cars", ext: "png" } },
             alt: "Passenger Cars Transport",
           },
         },
         {
           title: "SUVs & Pickups",
           img: {
-            src: { path: "assets/images/", items: [{ name: "promo_suv_pickups", ext: "png" }] },
+            src: { path: "assets/images/", item: { name: "promo_suv_pickups", ext: "png" } },
             alt: "Suvs & Pickups Transport",
           },
         },
         {
           title: "Sports Cars",
           img: {
-            src: { path: "assets/images/", items: [{ name: "promo_sportcars", ext: "png" }] },
+            src: { path: "assets/images/", item: { name: "promo_sportcars", ext: "png" } },
             alt: "Sports Cars Transport",
           },
         },
         {
           title: "Motorcycles",
           img: {
-            src: { path: "assets/images/", items: [{ name: "promo_motorcycles", ext: "png" }] },
+            src: { path: "assets/images/", item: { name: "promo_motorcycle", ext: "png" } },
             alt: "Mororcycle Transport",
           },
         },
@@ -362,28 +359,35 @@ export default {
       items: [
         {
           title: "Can I leave personal items in my car during transport?",
-          description:
-            "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
+          description: [
+            [
+              "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
+            ],
+          ],
         },
         {
           title: "Is my vehicle insured during transport?",
-          description:
+          description: [
             "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
+          ],
         },
         {
           title: "When will my vehicle be picked up?",
-          description:
+          description: [
             "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
+          ],
         },
         {
           title: "Can I track my vehicle's location?",
-          description:
+          description: [
             "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
+          ],
         },
         {
           title: "What is door-to-door delivery?",
-          description:
+          description: [
             "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
+          ],
         },
       ],
     },
@@ -392,9 +396,11 @@ export default {
       description:
         "Trust vehicle transportation to RoyalTeam professionals. We guarantee safe, on-time delivery and complete information support at every stage.",
       fields: [
-        { label: "Origin Address", select: { placeholder: "Open Transport", items: [""] } },
-        { label: "Destination Address", checkbox: "Vehicle over 4000 lbs" },
-        { buttonText: "Submit Transport Request" },
+        { inputClass: "bg-base-200", placeholder: "Origin Address" },
+        { inputClass: "bg-base-200", placeholder: "Destination Address" },
+        { placeholder: "Open Transport", options: ["a", "b"] },
+        { partial: "formParts/checkbox", class: "flex-row items-center flex-row-reverse gap-2", label: "Vehicle over 4000 lbs", inputClass: "checkbox", type: "checkbox", name: "vehicle", placeholder: "Vehicle over 4000 lbs" },
+        { partial: "button", class: "btn-accent", text: "Submit Transport Request" },
       ],
     },
   },
@@ -525,7 +531,9 @@ export default {
       "Services",
       "Company",
       "Contact Info",
-      "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
+      [
+        "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
+      ],
       "Direct carrier with 16 years of experience and $1M insurance coverage. Your trusted partner for safe auto transport nationwide.",
       "© 2025 RoyalTeam Auto Transport. All rights reserved.",
       "Motorcycle Transport",

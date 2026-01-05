@@ -55,7 +55,7 @@ export default {
   right: {
     drawer: true,
     colClass: ["inline-flex", "absolute bg-primary text-base-100 z-10 top-24"],
-    colId: ["header-menu-col", "calculator-widget"],
+    colId: ["", "calculator-widget"],
     components: [
       [
         {

@@ -177,8 +177,7 @@ export const sectionsMap = {
     style: {
       ...sectionStyles.wide,
       sectionClass: sectionStyles.wide.sectionClass + "slider",
-      sectionContentClass:
-        sectionStyles.wide.sectionContentClass + " slider-content container grid-rows-2",
+      sectionContentClass: sectionStyles.wide.sectionContentClass + " slider-content container grid-rows-2",
     },
     heading: false,
     colClass: ["col-span-6 row-span-2", "col-span-6 flex", "col-span-6 flex"],
@@ -232,58 +231,150 @@ export const sectionsMap = {
     ],
   },
 
-  // equipment: {
-  //   ...baseSection,
-  //   template: "test",
-  //   style: {
-  //     ...sectionStyles.wide,
-  //     sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-cols-2",
-  //   },
-  //   heading: {
-  //     ...heading,
-  //     title: assets.sectionName.title + " test",
-  //     container: false,
-  //   },
-  //   components: [{ ...list, listClass: list.listClass + "menu-vertical" }, picture],
-  // },
-  // price: {
-  //   ...baseSection,
-  //   template: "test",
-  //   style: {
-  //     ...sectionStyles.wide,
-  //     sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-cols-2",
-  //   },
-  //   heading: {
-  //     ...heading,
-  //     title: assets.sectionName.title + " test",
-  //     container: false,
-  //   },
-  //   components: [{ ...list, listClass: list.listClass + "menu-vertical" }, picture],
-  // },
-  // promo: {
-  //   ...baseSection,
-  //   template: "test",
-  //   style: {
-  //     ...sectionStyles.wide,
-  //     sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-cols-2",
-  //   },
-  //   heading: {
-  //     ...heading,
-  //     title: assets.sectionName.title + " test",
-  //     container: false,
-  //   },
-  //   components: [{ ...list, listClass: list.listClass + "menu-vertical" }, picture],
-  // },
+  equipment: {
+    ...baseSection,
+    template: "test",
+    style: {
+      ...sectionStyles.wide,
+      sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-cols-12",
+    },
+    heading: {
+      ...heading,
+      title: equipmentData.heading.title,
+      container: true,
+      containerClass: "w-full flex justify-evenly items-center responsive-container",
+      captionText: equipmentData.heading.caption,
+      caption: true,
+    },
+    colClass: "",
+    cardCols: ["col-span-5 col-start-3", "col-span-5"],
+    components: equipmentData.equipmentCards.map((equipmentCard, index) => ({
+      ...card,
+      cardClass: [
+        card.cardClass,
+        "col-span-4 h-full", // каждая карточка — 5 колонок из 12
+        index === 0 ? "col-start-4" : "col-start-8", // только для двух карточек
+      ].join(" "),
+      picture: { ...picture, src: equipmentCard.img.src },
+      heading: {
+        ...heading,
+        title: equipmentCard.title,
+        description: equipmentCard.description,
+      },
+      cardComponents: [
+        {
+          ...list,
+          type: "list",
+          sub: false,
+          itemType: "li",
+          listItems: equipmentCard.cardList.map((eqListItem) => eqListItem),
+        },
+      ],
+      button: {
+        ...button,
+        class: button.class + " btn-ghost text-accent",
+        text: equipmentCard.buttonText,
+        icon: false,
+      },
+    })),
+  },
+  price: {
+    ...baseSection,
+    template: "price",
+    style: {
+      ...sectionStyles.wide,
+      sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-cols-12",
+    },
+    heading: false,
+    colClass: ["row-span-2 col-span-6", "col-span-5 col-start-7 mb-8", "grid grid-cols-3 gap-6 col-span-5"],
+    components: [
+      [{ ...picture, src: priceData.img.src, alt: priceData.img.alt, w: "880", h: "590" }],
+      [
+        {
+          ...heading,
+          title: priceData.heading.title,
+          captionText: priceData.heading.caption,
+          caption: true,
+          container: false,
+        },
+      ],
+      priceData.priceCards.map((priceCard) => ({
+        ...card,
+        heading: {
+          ...headingSlideCard,
+          title: priceCard.title,
+          description: priceCard.description,
+          titleClass: heading.titleClass + " text-h4-clamp",
+          descriptionClass: headingSlideCard.descriptionClass + " font-normal",
+        },
+        cardPicture: false,
+        cardActions: false,
+        cardBodyClass: card.cardBodyClass + " p-6",
+      })),
+    ],
+  },
+  promo: {
+    ...baseSection,
+    template: "test",
+    sectionFullWidth: true,
+    style: {
+      ...sectionStyles.wide,
+      sectionContentClass: sectionStyles.wide.sectionContentClass,
+    },
+    heading: {
+      ...heading,
+      title: promoData.heading.title,
+      description: promoData.heading.description,
+      descriptionClass: heading.descriptionClass + " text-primary",
+      container: true,
+    },
+    colClass: ["col-span-12", "col-span-6 flex gap-6", "col-span-5", "row-start-3 col-span-12"],
+    components: [
+      [
+        {
+          ...heading,
+          title: promoData.promoCards.title,
+        },
+      ],
+      promoData.promoCards.items.map((promoCard) => ({
+        ...card,
+        heading: { title: promoCard.title },
+        picture: { ...picture, src: promoCard.img.src, alt: promoCard.img.alt, w: "280", h: "150" },
+        cardActions: false,
+      })),
+      [
+        {
+          ...list,
+          type: "list",
+          sub: false,
+          listClass: list.listClass + "menu-vertical",
+          listItems: promoData.promoList.items.map((promoListItem) => promoListItem),
+        },
+      ],
+      [
+        {
+          ...heading,
+          container: true,
+          containerClass: heading.containerClass + "flex self-start w-full justify-between bg-accent rounded-xl p-8",
+          title: promoData.promoBanner.title,
+          titleClass: heading.titleClass + " text-primary",
+          description: promoData.promoBanner.items,
+          descriptionClass: heading.descriptionClass + " flex flex-col p-4",
+        },
+      ],
+    ],
+  },
 
-  // faq: {
-  //   ...baseSection,
-  //   template: "form",
-  //   style: { ...sectionStyles.wide },
-  //   heading: {
-  //     ...heading,
-  //     title: assets.sectionName.title + " формы",
-  //     container: false,
-  //   },
-  //   components: [accordion, dynamicForm],
-  // },
+  faq: {
+    ...baseSection,
+    template: "form",
+    style: { ...sectionStyles.wide },
+    heading: {
+      ...heading,
+      title: faqData.title,
+      container: false,
+    },
+    colClass: ["col-span-6", "col-span-6"],
+    components: [[{...heading, title: faqData.accordion.title},{...accordion, listItems: faqData.accordion.items}], [{...heading, title: faqData.form.title}, {...dynamicForm, formClass: dynamicForm.formClass + " bg-base-100 border border-[20px] border-secondary rounded-xl", formText: faqData.form.description, fields: faqData.form.fields}]],
+  },
 };

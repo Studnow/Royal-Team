@@ -11,6 +11,11 @@
     {{#if heading.description}}
     <p class="{{heading.descriptionClass}}">{{heading.description}}</p>
     {{/if}}
+    {{#if cardComponents}}
+    {{#each cardComponents}}
+    {{> (lookup . "type") this}}
+    {{/each}}
+    {{/if}}
     {{#if cardActions}}
     <div class="card-actions {{cardBtn.cardActionsClass}}">
       {{>button button}}
