@@ -26,11 +26,11 @@ export default {
   template: "header",
   navbar: {
     headerClass: " fixed bg-gradient-to-b from-primary to-transparent z-10 w-full bg-opacity-50",
-    containerClass: " mx-auto",
+    containerClass: " px-6",
     navbarClass: " bg-transparent justify-between min-h-32",
     navbarStart: " w-1/6 lg:w-1/4",
     navbarCenter: " flex w-0 lg:w-auto justify-center",
-    navbarEnd: " w-1/4 md:w-auto lg:w-1/2 xl:w-1/3",
+    navbarEnd: " w-1/4 md:w-auto lg:w-1/2 xl:w-1/3 relative",
   },
   start: {
     components: [
@@ -39,7 +39,7 @@ export default {
         containerClass: logo.containerClass + " h-fit",
         text: false,
         img: { path: imagesPath, name: "logo", ext: "png", alt: logo.img.alt },
-        imgClass: "w-28 h-12 lg:w-56 lg:h-24 self-top",
+        imgClass: "w-28 h-12 md:w-44 md:h-20 lg:w-56 lg:h-24 self-top",
         w: "200",
         h: "90",
       },
@@ -48,13 +48,11 @@ export default {
   },
   center: {
     componentsToggle: { showMenu: false, showContacts: false },
-
-    // list: {...list, listClass: "hidden md:flex menu menu-horizontal" },
     components: [],
   },
   right: {
     drawer: true,
-    colClass: ["inline-flex", "hidden lg:block absolute bg-primary text-base-100 z-10 top-24"],
+    colClass: ["inline-flex", "hidden lg:block absolute min-h-full text-base-100 z-10 top-24"], // calculator off for hero responsive work
     colId: ["", "calculator-widget"],
     components: [
       [
@@ -81,7 +79,11 @@ export default {
         },
       ],
       [
-        { ...listDefinition, items: heroData.heroDefList },
+        {
+          ...listDefinition,
+          class: listDefinition.class + " bg-primary/50 relative min-h-full inset-0",
+          items: heroData.heroDefList,
+        },
         {
           type: "calculator",
           class: "bg-base-100 p-6 grid grid-cols-1",
@@ -104,7 +106,7 @@ export default {
     components: [
       {
         ...ListSubmenu,
-        listClass: ListSubmenu.listClass + "justify-between bg-primary w-full",
+        listClass: ListSubmenu.listClass + " bg-primary",
         type: "list-menu",
         sub: false,
         listItems: heroData.heroMenu.map((item) => ({
@@ -114,6 +116,11 @@ export default {
           textClass: link.textClass + "text-base-100 font-medium",
           icon: false,
         })),
+      },
+      {
+        type: "drawerBtn",
+        class: "btn btn-ghost w-20 justify-self-end drawer-button px-0 lg:hidden",
+        icon: { ...icon, id: "burgerMenu", class: "h-20 w-20 relative right-0 top-6", w: "40", h: "40" },
       },
     ],
   },

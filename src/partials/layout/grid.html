@@ -1,10 +1,11 @@
 {{#each components}}
 {{#isArray this}}
-  {{#isArray ../colClass}}
-<div class="{{lookup ../colClass @index}}" {{#if ../colId}}id="{{lookup ../colId @index}}"{{/if}}>
+{{#isArray ../colClass}}
+<div class="{{lookup ../colClass @index}}" {{#if ../colId}}id="{{lookup ../colId @index}}" {{/if}}>
   {{else}}
   <div class="{{../colClass}}">
     {{/isArray}}
+    <!-- <div class="grid-overlay absolute inset-0"></div> -->
     {{#each this}}
     {{> (lookup . 'type') this }}
     {{/each}}

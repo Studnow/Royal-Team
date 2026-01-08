@@ -8,8 +8,8 @@
 
 {{#if wrapLabel}}
   <label for="{{name}}" class="label {{#if class}}{{class}}{{/if}}">
-    {{#if label}}<span class="label-text">{{label}}</span>{{/if}}
-    <input id="{{name}}" name="{{name}}" type="{{type}}" class="input input-bordered {{inputClass}}" placeholder="{{placeholder}}" {{#if required}}required{{/if}} value="{{value}}" />
+    {{#if label}}<span class="text-h4-clamp md:text-h1-clamp font-bold">{{label}}</span>{{/if}}
+    <input id="{{name}}" name="{{name}}" type="{{type}}" class="input{{inputClass}}" placeholder="{{placeholder}}" {{#if required}}required{{/if}} value="{{value}}" />
   </label>
 {{else}}
   <input id="{{name}}" name="{{name}}" type="{{type}}" class="input input-bordered w-full {{inputClass}}" placeholder="{{placeholder}}" {{#if required}}required{{/if}} value="{{value}}" />

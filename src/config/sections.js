@@ -19,6 +19,7 @@ import {
   card,
   button,
   list,
+  listDefinition,
   slider,
   picture,
   link,
@@ -27,6 +28,7 @@ import {
   rating,
   ComponentsMap,
 } from "../data/components/index";
+import field from "../data/components/formParts/field.js";
 
 import { headingHero } from "../data/components/heading.js";
 import { headingSlideCard } from "../data/components/heading.js";
@@ -72,19 +74,10 @@ export const sectionsMap = {
     style: {
       ...sectionStyles.wide,
     },
-    colClass: "col-span-12 w-full",
+    colClass: ["col-span-1 md:col-span-12 w-full"],
+    colContainer: true,
     components: [
       [
-        {
-          ...headingHero,
-          title: heroData.heading.title,
-          caption: false,
-          titleLevel: "1",
-          titleClass: "text-h1-clamp font-extrabold text-base-100",
-          container: true,
-          containerClass: "absolute bottom-0 z-10 max-w-5xl",
-        },
-        // button,
         {
           ...slider,
           slides: {
@@ -94,11 +87,19 @@ export const sectionsMap = {
               cardClass: cardSlide.cardClass + " min-h-[364px]",
               cardBodyClass:
                 cardSlide.cardBodyClass +
-                " bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent",
-              heading: false,
+                " p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end",
+              heading: {
+                ...headingHero,
+                title: heroData.heading.title,
+                caption: false,
+                titleLevel: "1",
+                titleClass: "text-h1-clamp font-medium font-unbounded text-base-100 md:w-3/4 lg:w-2/4 md:px-6",
+                container: true,
+                containerClass: "absolute bottom-0 z-10 max-w-5xl",
+              },
               picture: {
                 ...cardSlide.picture,
-                imgClass: picture.imgClass + "object-cover object-no-repeat object-left",
+                imgClass: picture.imgClass + "object-contain object-no-repeat object-left",
                 src: { path: item.src?.path, item: item.src?.item },
                 w: "1920",
                 h: "910",
@@ -107,11 +108,6 @@ export const sectionsMap = {
             })),
           },
         },
-        // {
-        //   ...button,
-        //   text: heroData.buttonText,
-        //   modal: "onclick='my_modal_1.showModal()'",
-        // },
       ],
 
       // heroData.images.map((item) => ({
@@ -119,6 +115,68 @@ export const sectionsMap = {
       //   img: true,
       //   src: { path: "assets/placeholders/banners/", item: { name: item.name, ext: item.ext } },
       // })),
+    ],
+  },
+  calculator: {
+    ...baseSection,
+    template: "calculator",
+    style: {
+      ...sectionStyles.wide,
+      sectionClass: sectionStyles.wide.sectionClass + " lg:hidden p-6 md:p-10",
+      sectionContentClass: sectionStyles.wide.sectionContentClass + " bg-secondary rounded-3xl p-6 md:p-4",
+    },
+    heading: false,
+    colClass: ["w-full md:col-span-12", "w-full md:col-span-12"],
+    components: [
+      [
+        {
+          ...listDefinition,
+          class:
+            listDefinition.class + " w-full px-6 md:px-4 py-4 grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 text-base-100",
+          items: heroData.heroDefList.map((item) => ({
+            ...item,
+            dlContainerClass: item.term.includes("253-264-9577")
+              ? listDefinition.dlContainerClass + " row-start-3 col-start-2 gap-1"
+              : listDefinition.dlContainerClass + " w-full col-start-1 gap-1",
+            dtClass: item.term.includes("253-264-9577")
+              ? "text-accent text-h4-clamp md:text-h3-clamp"
+              : "text-h4-clamp md:text-h3-clamp",
+            ddClass: "text-body",
+          })),
+        },
+      ],
+      [
+        {
+          type: "calculator",
+          class: "grid grid-cols-1 md:grid-cols-2 md:grid-cols-[6fr_2fr] md:gap-6 md:p-4 bg-base-100 rounded-2xl",
+          components: [
+            {
+              ...heading,
+              container: false,
+              title: heroData.heroForm.title,
+              titleLevel: 3,
+              titleClass: "text-h3-clamp font-medium px-6 pt-6 md:pt-0 md:px-0 md:col-span-2",
+            },
+            {
+              ...field,
+              wrapLabel: true,
+              label: heroData.heroForm.calcResult,
+              class:
+                field.labelClass +
+                "flex flex-col flex-col-reverse md:flex-row items-start md:items-center md:justify-end md:flex-row-reverse md:col-start-1 px-6 md:px-0 pb-4 md:pb-0 gap-6",
+              inputClass: field.inputClass + " bg-base-200",
+              placeholder: heroData.heroForm.field,
+            },
+            {
+              ...button,
+              class: button.class + " bg-gradient-to-t from-accent to-base-100 md:col-start-2 md:h-28 text-lead",
+              text: heroData.heroForm.buttonText,
+              icon: false,
+              modal: "onclick='my_modal_1.showModal()'",
+            },
+          ],
+        },
+      ],
     ],
   },
   about: {
@@ -187,7 +245,7 @@ export const sectionsMap = {
     },
     heading: false,
     colClass: [
-      "lg:col-span-6 row-span-2 h-full",
+      "w-full lg:col-span-6 lg:row-span-2 h-full",
       "lg:col-span-6 flex flex-col md:flex-row",
       "lg:col-span-6 flex flex-col md:flex-row gap-6",
     ],
@@ -262,18 +320,19 @@ export const sectionsMap = {
       ...heading,
       title: equipmentData.heading.title,
       container: true,
-      containerClass: "w-full flex justify-evenly items-center responsive-container",
+      containerClass: "w-full flex flex-col lg:flex-row justify-evenly items-center responsive-container",
       captionText: equipmentData.heading.caption,
+      captionClass: heading.captionClass + " self-start",
       caption: true,
     },
     colClass: "",
-    cardCols: ["col-span-5 col-start-3", "col-span-5"],
+    cardCols: ["lg:col-span-5 lg:col-start-3", "lg:col-span-5"],
     components: equipmentData.equipmentCards.map((equipmentCard, index) => ({
       ...card,
       cardClass: [
         card.cardClass,
-        "col-span-4 h-full", // каждая карточка — 5 колонок из 12
-        index === 0 ? "col-start-4" : "col-start-8", // только для двух карточек
+        "lg:col-span-4 h-full", // каждая карточка — 5 колонок из 12
+        index === 0 ? "lg:col-start-4" : "lg:col-start-8", // только для двух карточек
       ].join(" "),
       picture: { ...picture, src: equipmentCard.img.src },
       heading: {
@@ -307,7 +366,11 @@ export const sectionsMap = {
       sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-cols-12",
     },
     heading: false,
-    colClass: ["row-span-2 col-span-6", "col-span-5 col-start-7 mb-8", "grid grid-cols-3 gap-6 col-span-5"],
+    colClass: [
+      "lg:row-span-2 lg:col-span-6",
+      "lg:col-span-5 lg:col-start-7 mb-8",
+      "grid grid-cols-1 lg:grid-cols-3 gap-6 lg:col-span-5",
+    ],
     components: [
       [{ ...picture, src: priceData.img.src, alt: priceData.img.alt, w: "880", h: "590" }],
       [
@@ -349,7 +412,12 @@ export const sectionsMap = {
       descriptionClass: heading.descriptionClass + " text-primary",
       container: true,
     },
-    colClass: ["col-span-12", "col-span-5 col-start-2 flex gap-6", "col-span-5", "row-start-3 col-span-12"],
+    colClass: [
+      "lg:col-span-12",
+      "flex flex-wrap lg:col-span-5 lg:col-start-2 flex gap-6",
+      "lg:col-span-5",
+      "lg:row-start-3 lg:col-span-12",
+    ],
     components: [
       [
         {

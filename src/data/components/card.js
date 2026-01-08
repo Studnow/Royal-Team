@@ -19,7 +19,7 @@ export const card = {
 export const cardSlide = {
   type: "card",
   cardClass: "image-full bg-base-100 rounded-none h-full",
-  cardBodyClass: "card-body space-y-5 lg:justify-center",
+  cardBodyClass: "card-body",
   cardFigureClass: "order-3 w-full lg:order-2 lg:w-1/2",
   cardPicture: true,
   cardActions: true,

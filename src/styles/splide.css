@@ -32,11 +32,11 @@
 }
 
 #main-slider .splide__pagination {
-  @apply bottom-[67.5%] lg:bottom-0 justify-between gap-6 hidden md:flex container mx-auto;
+  @apply bottom-[37.5%] md:bottom-40 lg:bottom-72 gap-1 left-0 flex h-3 w-1/4 lg:w-full lg:justify-start lg:px-12 flex-nowrap;
 }
 
-#main-slider .splide__pagination {
-  @apply bottom-[67.5%] lg:bottom-0 hidden md:flex container mx-auto gap-6 justify-between;
+/* #main-slider .splide__pagination {
+  @apply bottom-[37.5%] lg:bottom-0 md:flex container mx-auto gap-6 justify-between;
 
   &.many-slides {
     overflow-x: auto;
@@ -48,32 +48,32 @@
       min-width: max-content;
     }
   }
-}
+} */
 
 #main-slider .splide__pagination__page {
-  @apply relative !bg-transparent !w-auto !h-auto hover:!text-primary py-4;
-  flex: 1 1 auto;
-  min-width: 0;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  @apply relative !bg-base-100 !w-[.3333rem] md:!w-[.666666667rem] !h-[.3333rem] md:!h-[.666666667rem];
+  /* flex: 1 1 auto; */
+  /* min-width: 0; */
+  /* white-space: nowrap; */
+  /* text-overflow: ellipsis; */
 }
 
 /* Вариант 1: через vertical-align */
-#main-slider .splide__pagination__page::before {
+/* #main-slider .splide__pagination__page::before {
   content: attr(data-number);
   vertical-align: super;
   font-size: 10px;
   margin-right: 4px;
-}
+} */
 
-#main-slider .splide__pagination__page::after {
+/* #main-slider .splide__pagination__page::after {
   content: attr(data-text);
   color: inherit;
-}
+} */
 
 #main-slider .splide__pagination__page.is-active {
   /* background-color: transparent !important; */
-  @apply text-primary bg-transparent;
+  @apply !bg-accent;
 }
 
 .card .btn svg {

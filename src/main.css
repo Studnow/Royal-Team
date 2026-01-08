@@ -94,4 +94,12 @@ body {
   .section-title {
     @apply text-2xl font-bold mb-4;
   }
+  .dl-overlay {
+    position: absolute;
+    backdrop-filter: blur(8px);
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    z-index: -1;
+  }
 }
