@@ -84,7 +84,7 @@ body {
 
 @layer components {
   .section {
-    @apply relative w-full bg-neutral-300;
+    @apply relative w-full;
   }
 
   .responsive-container {

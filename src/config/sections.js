@@ -24,6 +24,7 @@ import {
   link,
   icon,
   dynamicForm,
+  rating,
   ComponentsMap,
 } from "../data/components/index";
 
@@ -71,7 +72,7 @@ export const sectionsMap = {
     style: {
       ...sectionStyles.wide,
     },
-    colClass: "col-span-12",
+    colClass: "col-span-12 w-full",
     components: [
       [
         {
@@ -79,7 +80,7 @@ export const sectionsMap = {
           title: heroData.heading.title,
           caption: false,
           titleLevel: "1",
-          titleClass: "text-h1-clamp font-extrabold text-primary",
+          titleClass: "text-h1-clamp font-extrabold text-base-100",
           container: true,
           containerClass: "absolute bottom-0 z-10 max-w-5xl",
         },
@@ -90,9 +91,14 @@ export const sectionsMap = {
             ...slider.slides,
             slideData: heroData.slides.map((item) => ({
               ...cardSlide,
+              cardClass: cardSlide.cardClass + " min-h-[364px]",
+              cardBodyClass:
+                cardSlide.cardBodyClass +
+                " bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent",
               heading: false,
               picture: {
                 ...cardSlide.picture,
+                imgClass: picture.imgClass + "object-cover object-no-repeat object-left",
                 src: { path: item.src?.path, item: item.src?.item },
                 w: "1920",
                 h: "910",
@@ -173,14 +179,18 @@ export const sectionsMap = {
   reviews: {
     ...baseSection,
     template: "slider",
-    fullWidth: true,
+    fullWidth: false,
     style: {
       ...sectionStyles.wide,
       sectionClass: sectionStyles.wide.sectionClass + "slider",
-      sectionContentClass: sectionStyles.wide.sectionContentClass + " slider-content container grid-rows-2",
+      sectionContentClass: sectionStyles.wide.sectionContentClass + " slider-content grid-rows-2 px-8",
     },
     heading: false,
-    colClass: ["col-span-6 row-span-2", "col-span-6 flex", "col-span-6 flex"],
+    colClass: [
+      "lg:col-span-6 row-span-2 h-full",
+      "lg:col-span-6 flex flex-col md:flex-row",
+      "lg:col-span-6 flex flex-col md:flex-row gap-6",
+    ],
     components: [
       [
         {
@@ -190,10 +200,14 @@ export const sectionsMap = {
             ...slider.slides,
             slideData: reviewsData.reviewsSlides.map((item) => ({
               ...cardSlide,
-              cardClass: cardSlide.cardClass + "",
+              cardClass: " ",
+              cardPicture: false,
+              cardActions: false,
               heading: {
                 ...headingSlideCard,
+                rating,
                 title: item.title,
+                titleClass: headingSlideCard.titleClass + " text-h4-clamp",
                 description: item.description,
               },
               // picture: {
@@ -224,7 +238,13 @@ export const sectionsMap = {
       ],
       reviewsData.reviewsCards.map((revievsCard) => ({
         ...card,
-        heading: { ...heading, title: revievsCard.title, description: revievsCard.description },
+        heading: {
+          ...heading,
+          title: revievsCard.title,
+          titleClass: headingSlideCard.titleClass + " text-h4-clamp",
+          description: revievsCard.description,
+          descriptionClass: "text-body",
+        },
         cardActions: false,
         cardPicture: false,
       })),
@@ -265,6 +285,7 @@ export const sectionsMap = {
         {
           ...list,
           type: "list",
+          listClass: list.listClass + " list-disc",
           sub: false,
           itemType: "li",
           listItems: equipmentCard.cardList.map((eqListItem) => eqListItem),
@@ -328,7 +349,7 @@ export const sectionsMap = {
       descriptionClass: heading.descriptionClass + " text-primary",
       container: true,
     },
-    colClass: ["col-span-12", "col-span-6 flex gap-6", "col-span-5", "row-start-3 col-span-12"],
+    colClass: ["col-span-12", "col-span-5 col-start-2 flex gap-6", "col-span-5", "row-start-3 col-span-12"],
     components: [
       [
         {
@@ -375,6 +396,20 @@ export const sectionsMap = {
       container: false,
     },
     colClass: ["col-span-6", "col-span-6"],
-    components: [[{...heading, title: faqData.accordion.title},{...accordion, listItems: faqData.accordion.items}], [{...heading, title: faqData.form.title}, {...dynamicForm, formClass: dynamicForm.formClass + " bg-base-100 border border-[20px] border-secondary rounded-xl", formText: faqData.form.description, fields: faqData.form.fields}]],
+    components: [
+      [
+        { ...heading, title: faqData.accordion.title },
+        { ...accordion, listItems: faqData.accordion.items },
+      ],
+      [
+        { ...heading, title: faqData.form.title },
+        {
+          ...dynamicForm,
+          formClass: dynamicForm.formClass + " bg-base-100 border border-[20px] border-secondary rounded-xl",
+          formText: faqData.form.description,
+          fields: faqData.form.fields,
+        },
+      ],
+    ],
   },
 };

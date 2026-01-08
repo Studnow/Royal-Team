@@ -10,6 +10,7 @@ export default {
   },
   placeholderType: "cards" || "banners" || "icons" || "backgrounds" || "avatars",
   class: "w-full h-auto",
+  imgClass: "",
   w: "786",
   h: "452",
 };

@@ -13,7 +13,7 @@ import {
 
 import field from "../components/formParts/field.js";
 
-const menu = list;
+import { ListSubmenu, ListDropdown } from "../components/list.js";
 
 const imagesPath = "assets/images/";
 const iconsPath = "assets/icons/";
@@ -25,7 +25,7 @@ const heroData = assets.hero;
 export default {
   template: "header",
   navbar: {
-    headerClass: " fixed  bg-primary bg-gradient-to-b from-primary z-10 w-full bg-opacity-50",
+    headerClass: " fixed bg-gradient-to-b from-primary to-transparent z-10 w-full bg-opacity-50",
     containerClass: " mx-auto",
     navbarClass: " bg-transparent justify-between min-h-32",
     navbarStart: " w-1/6 lg:w-1/4",
@@ -39,7 +39,7 @@ export default {
         containerClass: logo.containerClass + " h-fit",
         text: false,
         img: { path: imagesPath, name: "logo", ext: "png", alt: logo.img.alt },
-        imgClass: "w-56 h-24 self-top",
+        imgClass: "w-28 h-12 lg:w-56 lg:h-24 self-top",
         w: "200",
         h: "90",
       },
@@ -54,14 +54,15 @@ export default {
   },
   right: {
     drawer: true,
-    colClass: ["inline-flex", "absolute bg-primary text-base-100 z-10 top-24"],
+    colClass: ["inline-flex", "hidden lg:block absolute bg-primary text-base-100 z-10 top-24"],
     colId: ["", "calculator-widget"],
     components: [
       [
         {
-          ...menu,
+          ...ListSubmenu,
           listClass:
-            menu.listClass + "justify-between bg-primary rounded-full flex-nowrap hidden lg:flex menu-horizontal",
+            ListSubmenu.listClass +
+            "justify-between bg-primary rounded-full flex-nowrap hidden lg:flex menu-horizontal",
           type: "list-menu",
           sub: false,
           listItems: heroData.heroMenu.map((item) => ({
@@ -75,8 +76,8 @@ export default {
         // { ...button, icon: false },
         {
           type: "drawerBtn",
-          class: "btn btn-primary drawer-button lg:hidden",
-          icon: { ...icon, id: "burgerMenu", class: "h-8 w-8 rotate-180" },
+          class: "btn btn-ghost drawer-button px-0 lg:hidden",
+          icon: { ...icon, id: "burgerMenu", class: "h-20 w-20 relative -top-4", w: "40", h: "40" },
         },
       ],
       [
@@ -102,8 +103,8 @@ export default {
   drawer: {
     components: [
       {
-        ...menu,
-        listClass: menu.listClass + "justify-between bg-primary w-full",
+        ...ListSubmenu,
+        listClass: ListSubmenu.listClass + "justify-between bg-primary w-full",
         type: "list-menu",
         sub: false,
         listItems: heroData.heroMenu.map((item) => ({
@@ -132,7 +133,7 @@ export const headerLogoCentered = {
   start: {
     componentsToggle: { showMenu: true, showContacts: false },
     menu: {
-      ...menu,
+      ...ListDropdown,
       variant: "dropdown",
       sub: true,
       actions: false,
@@ -158,7 +159,7 @@ export const headerLogoCentered = {
   },
   center: {
     componentsToggle: { showMenu: false, showContacts: false },
-    menu: { ...menu },
+    menu: { ...ListSubmenu },
     logo: {
       ...logo,
       containerClass: logo.containerClass.concat(" w-32 lg:justify-center"),
@@ -182,10 +183,10 @@ export const headerLogoCentered = {
     class:
       "btn btn-outline max-w-24 bg-base-100 text-xs md:text-base text-accent border-2 hover:bg-accent hover:border-accent",
     text: "Заказать звонок",
-    drawer: false,
+    drawer: true,
     drawerBtn: {
       class: "btn btn-primary drawer-button lg:hidden",
-      icon: { ...icon, id: "burgerMenu", class: "h-8 w-8 rotate-180" },
+      icon: { ...icon, id: "burgerMenu", class: "h-12 w-12 rotate-180", w: "40", h: "40" },
     },
   },
 };

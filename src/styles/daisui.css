@@ -12,7 +12,7 @@
   @apply active:hover:!scale-95;
 } */
 
-.menu>li:hover {
+.navbar .menu>li:hover {
   @apply bg-slate-700 rounded-full;
 }
 .menu {

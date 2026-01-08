@@ -2,6 +2,28 @@
 import link from "./link.js";
 import button from "./button.js";
 
+export const list = {
+  type: "list",
+  title: false,
+  listType: "ul",
+  class: "w-full",
+  listClass:
+    "list " /* for no menu lists list-image-[url('/assets/icons/vite.svg')]; */,
+  dropdownClass: "dropdown-bottom",
+  dropdownContent: "",
+  variant: "menu", // list, menu, dropdown, nav
+  actions: false,
+  sub: true,
+  listItems: [
+    { ...link, class: "link no-underline text-primary hover:underline", text: "Не смотреть", icon: false },
+    { ...link, class: "link no-underline text-primary hover:underline", text: "Посмотреть", icon: false },
+    { ...link, class: "link no-underline text-primary hover:underline", text: "Не смотреть", icon: false },
+    { ...link, text: "Пыщь пыщь пыщь", icon: false },
+    { ...link, text: "тыщь тыщь тыщь", icon: false },
+    { ...link, text: "Пыщь пыщь пыщь", icon: false },
+  ],
+};
+
 export const ListSubmenu = {
   type: "list-menu",
   title: false,
@@ -96,4 +118,4 @@ export const ListDropdown = {
   ],
 };
 
-export default ListSubmenu;
+export default list;

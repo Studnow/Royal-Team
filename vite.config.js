@@ -161,7 +161,7 @@ export default defineConfig({
     //     },
     //   }),
     jsToBottomNoModule(),
-    VitePluginSvgSpritemap("./assets/placeholders/icons/**/*.svg", {
+    VitePluginSvgSpritemap("./assets/icons/**/*.svg", {
       output: {
         // указываем единственное имя без [hash]
         // filename: "images/spritemap.svg",

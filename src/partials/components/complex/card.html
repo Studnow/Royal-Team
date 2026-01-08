@@ -5,11 +5,17 @@
   </figure>
   {{/if}}
   <div class="{{cardBodyClass}}">
-    {{#if heading.title}}
+    {{#if heading.rating}}
+    <div class="reviews-title flex gap-6">
+      {{>rating heading.rating}}
+      <h3 class="{{heading.titleClass}}">{{heading.title}}</h3>
+    </div>
+    {{/if}}
+    {{#if (and heading.title (not heading.rating))}}
     <h3 class="{{heading.titleClass}}">{{heading.title}}</h3>
     {{/if}}
     {{#if heading.description}}
-    <p class="{{heading.descriptionClass}}">{{heading.description}}</p>
+    <p class="{{heading.descriptionClass}}">"{{heading.description}}"</p>
     {{/if}}
     {{#if cardComponents}}
     {{#each cardComponents}}

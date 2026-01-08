@@ -1,5 +1,6 @@
 .splide {
-  max-width: calc(100vw - 32px);
+  /* max-width: calc(100vw - 32px); */
+  @apply min-h-[364px];
 }
 
 .splide__arrow {
@@ -77,4 +78,12 @@
 
 .card .btn svg {
   @apply text-base-100 hover:!text-secondary transition-all ease-in-out duration-75;
+}
+
+.reviews-slider {
+  @apply h-auto;
+}
+
+#main-slider .card.image-full:before {
+  background-color: transparent;
 }
