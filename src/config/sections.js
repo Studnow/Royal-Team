@@ -84,7 +84,7 @@ export const sectionsMap = {
             ...slider.slides,
             slideData: heroData.slides.map((item) => ({
               ...cardSlide,
-              cardClass: cardSlide.cardClass + " min-h-[364px]",
+              cardClass: cardSlide.cardClass + " min-h-[364px] max-h-screen",
               cardBodyClass:
                 cardSlide.cardBodyClass +
                 " p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end",
@@ -122,8 +122,8 @@ export const sectionsMap = {
     template: "calculator",
     style: {
       ...sectionStyles.wide,
-      sectionClass: sectionStyles.wide.sectionClass + " lg:hidden p-6 md:p-10",
-      sectionContentClass: sectionStyles.wide.sectionContentClass + " bg-secondary rounded-3xl p-6 md:p-4",
+      sectionClass: sectionStyles.wide.sectionClass + " lg:hidden p-6 md:p-10 bg-base-100",
+      sectionContentClass: sectionStyles.wide.sectionContentClass + " bg-gradient-to-br from-primary/70 to-primary/30 rounded-3xl p-6 md:p-4",
     },
     heading: false,
     colClass: ["w-full md:col-span-12", "w-full md:col-span-12"],

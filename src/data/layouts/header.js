@@ -26,11 +26,11 @@ export default {
   template: "header",
   navbar: {
     headerClass: " fixed bg-gradient-to-b from-primary to-transparent z-10 w-full bg-opacity-50",
-    containerClass: " px-6",
+    containerClass: " lg:px-6",
     navbarClass: " bg-transparent justify-between min-h-32",
     navbarStart: " w-1/6 lg:w-1/4",
     navbarCenter: " flex w-0 lg:w-auto justify-center",
-    navbarEnd: " w-1/4 md:w-auto lg:w-1/2 xl:w-1/3 relative",
+    navbarEnd: " w-1/4 md:w-auto lg:w-1/2 xl:w-2/5 max-w-[700px] relative",
   },
   start: {
     components: [
@@ -52,7 +52,10 @@ export default {
   },
   right: {
     drawer: true,
-    colClass: ["inline-flex", "hidden lg:block absolute min-h-full text-base-100 z-10 top-24"], // calculator off for hero responsive work
+    colClass: [
+      "inline-flex lg:w-full",
+      "hidden lg:block absolute min-h-full py-4 top-14 max-w-[700px] bg-primary/50 rounded-2xl px-6 rounded",
+    ], // calculator off for hero responsive work
     colId: ["", "calculator-widget"],
     components: [
       [
@@ -60,7 +63,7 @@ export default {
           ...ListSubmenu,
           listClass:
             ListSubmenu.listClass +
-            "justify-between bg-primary rounded-full flex-nowrap hidden lg:flex menu-horizontal",
+            "justify-between bg-primary rounded-full flex-nowrap hidden lg:flex menu-horizontal h-full min-h-[70px] items-center gap-2 text-lead w-full",
           type: "list-menu",
           sub: false,
           listItems: heroData.heroMenu.map((item) => ({
@@ -71,7 +74,6 @@ export default {
             icon: false,
           })),
         },
-        // { ...button, icon: false },
         {
           type: "drawerBtn",
           class: "btn btn-ghost drawer-button px-0 lg:hidden",
@@ -81,25 +83,95 @@ export default {
       [
         {
           ...listDefinition,
-          class: listDefinition.class + " bg-primary/50 relative min-h-full inset-0",
-          items: heroData.heroDefList,
+          class: listDefinition.class + " w-full my-20 grid grid-cols-1 text-base-100 gap-8",
+          items: heroData.heroDefList.map((item) => ({
+            ...item,
+            // dlContainerClass: item.term.includes("253-264-9577")
+            //   ? listDefinition.dlContainerClass + " row-start-3 col-start-2 gap-2"
+            //   : listDefinition.dlContainerClass + " w-full col-start-1 gap-1",
+            dtClass: item.term.includes("253-264-9577")
+              ? "text-accent text-h4-clamp md:text-h3-clamp"
+              : "text-h4-clamp md:text-h3-clamp",
+            ddClass: "text-body lg:text-lead",
+          })),
         },
         {
           type: "calculator",
-          class: "bg-base-100 p-6 grid grid-cols-1",
+          class: "grid grid-cols-1 md:grid-cols-2 md:grid-cols-[6fr_2fr] md:gap-6 md:p-6 bg-base-100 rounded-2xl",
           components: [
-            { ...heading, title: heroData.heroForm.title, titleLevel: 3, titleClass: "text-h3-clamp" },
+            {
+              ...heading,
+              container: false,
+              title: heroData.heroForm.title,
+              titleClass:
+                heading.titleClass + " text-primary text-h4-clamp font-medium px-6 pt-6 md:pt-0 md:px-0 md:col-span-2",
+              titleLevel: 3,
+            },
             {
               ...field,
               wrapLabel: true,
               label: heroData.heroForm.calcResult,
-              class: field.labelClass + "flex flex-row-reverse",
+              class:
+                field.labelClass +
+                "flex flex-col flex-col-reverse md:flex-row items-start md:items-center md:justify-end md:flex-row-reverse md:col-start-1 px-6 md:px-0 pb-4 md:pb-0 gap-6",
+              inputClass: field.inputClass + " bg-base-200 min-h-[70px] text-lead max-w-[260px]",
               placeholder: heroData.heroForm.field,
             },
-            { ...button, text: heroData.heroForm.buttonText, icon: false, modal: "onclick='my_modal_1.showModal()'" },
+            {
+              ...button,
+              class: button.class + " bg-gradient-to-t from-accent to-base-100 md:col-start-2 md:h-28 text-lead",
+              text: heroData.heroForm.buttonText,
+              icon: false,
+              modal: "onclick='my_modal_1.showModal()'",
+            },
           ],
         },
       ],
+      // [
+      //   {
+      //     ...ListSubmenu,
+      //     listClass:
+      //       ListSubmenu.listClass +
+      //       "justify-between bg-primary rounded-full flex-nowrap hidden lg:flex menu-horizontal h-full min-h-[70px] items-center gap-2 text-lead w-full",
+      //     type: "list-menu",
+      //     sub: false,
+      //     listItems: heroData.heroMenu.map((item) => ({
+      //       ...link,
+      //       class: link.class + "no-underline",
+      //       text: item,
+      //       textClass: link.textClass + "text-base-100 font-medium",
+      //       icon: false,
+      //     })),
+      //   },
+      //   // { ...button, icon: false },
+      //   {
+      //     type: "drawerBtn",
+      //     class: "btn btn-ghost drawer-button px-0 lg:hidden",
+      //     icon: { ...icon, id: "burgerMenu", class: "h-20 w-20 relative -top-4", w: "40", h: "40" },
+      //   },
+      // ],
+      // [
+      //   {
+      //     ...listDefinition,
+      //     class: listDefinition.class + " bg-primary/50 relative min-h-full inset-0 p-6",
+      //     items: heroData.heroDefList,
+      //   },
+      //   {
+      //     type: "calculator",
+      //     class: "bg-base-100 p-6 grid grid-cols-1",
+      //     components: [
+      //       { ...heading, title: heroData.heroForm.title, titleLevel: 3, titleClass: "text-h3-clamp" },
+      //       {
+      //         ...field,
+      //         wrapLabel: true,
+      //         label: heroData.heroForm.calcResult,
+      //         class: field.labelClass + "flex flex-row-reverse",
+      //         placeholder: heroData.heroForm.field,
+      //       },
+      //       { ...button, text: heroData.heroForm.buttonText, icon: false, modal: "onclick='my_modal_1.showModal()'" },
+      //     ],
+      //   },
+      // ],
     ],
   },
   drawer: {

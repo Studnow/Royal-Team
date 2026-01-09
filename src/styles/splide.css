@@ -32,7 +32,7 @@
 }
 
 #main-slider .splide__pagination {
-  @apply bottom-[37.5%] md:bottom-40 lg:bottom-72 gap-1 left-0 flex h-3 w-1/4 lg:w-full lg:justify-start lg:px-12 flex-nowrap;
+  @apply bottom-[37.5%] md:bottom-40 lg:bottom-72 gap-1 px-6 md:px-12 flex h-3 w-full justify-start lg:px-12 flex-nowrap;
 }
 
 /* #main-slider .splide__pagination {

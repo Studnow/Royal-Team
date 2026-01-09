@@ -22,7 +22,7 @@ export default {
     // "testimonials",
     "hero",
     "calculator",
-    // "about",
+    "about",
     // "howitwork",
     // "brandImages",
     // "reviews",

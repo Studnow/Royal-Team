@@ -30,7 +30,7 @@ export default defineConfig({
         // Первое - размер шрифта, второе - высота строки
         "h1-clamp": ["clamp(1.8rem, 1.071rem + 2.804vw, 4.66rem)", "100%"],
         "h2-clamp": ["clamp(1.8rem, 1.581rem + 0.843vw, 2.66rem)", "clamp(2rem, 1.66rem + 1.307vw, 3.333rem)"],
-        "h3-clamp": ["clamp(1.333rem, 0.993rem + 1.307vw, 2.667rem)", "clamp(1.33rem, 1.159rem + 0.657vw, 2rem)"],
+        "h3-clamp": ["clamp(1.333rem, 0.993rem + 1.307vw, 2rem)", "clamp(1.33rem, 1.159rem + 0.657vw, 2rem)"], // pc 30px
         "h4-clamp": ["clamp(1.333rem, 1.265rem + 0.261vw, 1.6rem)", "2rem"],
         "h5-clamp": ["clamp(1rem, 0.915rem + 0.327vw, 1.333rem)", "clamp(1.33rem, 1.159rem + 0.657vw, 2rem)"],
         lead: ["20px", "150%"],
