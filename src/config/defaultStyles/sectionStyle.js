@@ -10,6 +10,7 @@ export const sectionStyles = {
   default: {
     sectionClass: "flex flex-col items-center responsive-container overflow-hidden",
     sectionFullWidthClass: "responsive-container",
+    ContentWrapper: true,
     sectionContentClass: "grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center flex-grow",
     sectionFooterClass: "",
   },
@@ -29,6 +30,7 @@ export const sectionStyles = {
     sectionClass: "flex flex-col items-center justify-center max-w-full",
     sectionFullWidthClass: "w-full mx-auto",
     sectionContentClass: "w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center",
+    sectionContentCardsClass: "w-full grid grid-cols-2 xl:grid-cols-12 gap-6 place-items-start", // project dependent
     sectionFooterClass: "",
   },
   centered: {

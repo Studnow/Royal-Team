@@ -66,7 +66,7 @@ export default {
       {
         icon: { id: "payment_invoice", ext: "svg", alt: "Payment After Assignment icon" },
         img: {
-          src: { path: "assets/images/", items: [{ name: "about_payment", ext: "png" }] },
+          src: { path: "assets/images/", item: { name: "about_payment", ext: "png" } },
           alt: "Payment After Assignment",
         },
         title: "Payment After Assignment",
@@ -75,7 +75,7 @@ export default {
       {
         icon: { id: "insurance_lock", ext: "svg", alt: "Insurance Coverage icon" },
         img: {
-          src: { path: "assets/images/", items: [{ name: "about_insurance", ext: "png" }] },
+          src: { path: "assets/images/", item: { name: "about_insurance", ext: "png" } },
           alt: "Insurance Coverage",
         },
         title: "$1M Insurance Coverage",

@@ -73,6 +73,7 @@ export const sectionsMap = {
     overlay: false,
     style: {
       ...sectionStyles.wide,
+      sectionClass: sectionStyles.wide.sectionClass + " lg:py-8",
     },
     colClass: ["col-span-1 md:col-span-12 w-full"],
     colContainer: true,
@@ -122,8 +123,10 @@ export const sectionsMap = {
     template: "calculator",
     style: {
       ...sectionStyles.wide,
-      sectionClass: sectionStyles.wide.sectionClass + " lg:hidden p-6 md:p-10 bg-base-100",
-      sectionContentClass: sectionStyles.wide.sectionContentClass + " bg-gradient-to-br from-primary/70 to-primary/30 rounded-3xl p-6 md:p-4",
+      sectionClass: sectionStyles.wide.sectionClass + " lg:hidden p-6 mb-14 md:p-10 bg-base-100",
+      sectionContentClass:
+        sectionStyles.wide.sectionContentClass +
+        " bg-gradient-to-br from-primary/70 to-primary/30 rounded-3xl p-6 md:p-4",
     },
     heading: false,
     colClass: ["w-full md:col-span-12", "w-full md:col-span-12"],
@@ -132,7 +135,8 @@ export const sectionsMap = {
         {
           ...listDefinition,
           class:
-            listDefinition.class + " w-full px-6 md:px-4 py-4 grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 text-base-100",
+            listDefinition.class +
+            " w-full px-6 md:px-4 py-4 grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 text-base-100",
           items: heroData.heroDefList.map((item) => ({
             ...item,
             dlContainerClass: item.term.includes("253-264-9577")
@@ -182,24 +186,50 @@ export const sectionsMap = {
   about: {
     ...baseSection,
     template: "section",
-    style: { ...sectionStyles.wide },
+    style: {
+      ...sectionStyles.wide,
+      sectionClass: sectionStyles.wide.sectionContentCardsClass + " grid-cols-2 md:grid-cols-2 p-[25px] mb-14",
+      sectionContentClass: false,
+      // sectionStyles.wide.sectionContentCardsClass + " gap-[20px] md:px-20 xl:subgrid xl:col-span-12 xl:row-start-1 xl:col-start-9",
+    },
     heading: {
       ...heading,
+      containerClass: "col-span-2 md:col-span-2 xl:col-span-8 xl:w-3/5",
       title: aboutData.heading.title,
+      titleClass: heading.titleClass + " mb-3 xl:mb-6 font-medium",
       description: aboutData.heading.description,
+      descriptionClass: heading.descriptionClass + " xl:text-h5-clamp",
       caption: true,
       captionText: aboutData.heading.captionTop,
     },
-    colClass: "col-span-12 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
+    // colClass: "col-span-12 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
     components: aboutData.aboutCards.map((aboutCard) => ({
       ...card,
-      cardClass: card.cardClass + " col-span-3",
+      cardPicture: aboutCard.img ? true : false,
+      cardClass: aboutCard.img
+        ? card.cardClass + " border h-full xl:col-span-2"
+        : card.cardClass + " border h-full xl:col-span-2",
+      cardBodyClass: card.cardBodyClass + " p-3 md:p-6",
+      cardActions: false,
       heading: {
         ...heading,
         title: aboutCard.title,
+        titleClass: ["text-h5-clamp self-start"].join(" "),
         description: aboutCard.description,
+        descriptionClass: heading.descriptionClass + " xl:text-body",
       },
-      cardActions: false,
+      picture: { ...picture, src: aboutCard.img?.src },
+      icon: aboutCard.icon
+        ? {
+            ...icon,
+            class: icon.class + " w-[20px] md:w-14 h-[20px] md:h-14 md:mb-8",
+            id: aboutCard.icon?.id,
+            ext: aboutCard.icon?.ext,
+            alt: aboutCard.icon?.alt,
+            w: "20",
+            h: "20",
+          }
+        : false,
     })), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
   },
 

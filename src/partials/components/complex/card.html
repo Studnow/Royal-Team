@@ -12,10 +12,13 @@
     </div>
     {{/if}}
     {{#if (and heading.title (not heading.rating))}}
+    {{#if icon}}
+    {{>icon icon}}
+    {{/if}}
     <h3 class="{{heading.titleClass}}">{{heading.title}}</h3>
     {{/if}}
     {{#if heading.description}}
-    <p class="{{heading.descriptionClass}}">"{{heading.description}}"</p>
+    <p class="{{heading.descriptionClass}}">{{heading.description}}</p>
     {{/if}}
     {{#if cardComponents}}
     {{#each cardComponents}}

@@ -9,6 +9,7 @@
     {{>section-title heading }}
     {{/if}}
 
+    {{#if style.sectionContentClass}}
     <div class="section__content {{style.sectionContentClass}}">
       {{#if (eq template "example")}}
       {{>example this}}
@@ -16,6 +17,9 @@
       {{>grid}}
       {{/if}}
     </div>
+    {{else}}
+    {{>grid}}
+    {{/if}}
 
     {{#if footer}}
     <div class="section__footer {{style.sectionFooterClass}}">

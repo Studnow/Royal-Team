@@ -5,11 +5,11 @@ export const heading = {
   title: "Секция карточек",
   caption: false,
   captionText: "Это секция с карточками",
-  captionClass: "text-caption text-secondary mb-4",
+  captionClass: "text-caption text-secondary mb-4 xl:mb-6 uppercase font-medium",
   description: false,
   containerClass: "",
   titleClass: "text-h2-clamp",
-  descriptionClass: "font-sans lg:text-h5-clamp font-normal max-w-lg xl:max-w-3xl",
+  descriptionClass: "font-sans text-body font-normal max-w-lg xl:max-w-3xl",
 };
 
 export const headingHero = {
