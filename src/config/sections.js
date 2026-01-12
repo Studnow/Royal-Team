@@ -214,7 +214,7 @@ export const sectionsMap = {
       heading: {
         ...heading,
         title: aboutCard.title,
-        titleClass: ["text-h5-clamp self-start"].join(" "),
+        titleClass: ["text-h4-clamp self-start font-medium"].join(" "),
         description: aboutCard.description,
         descriptionClass: heading.descriptionClass + " xl:text-body",
       },
@@ -235,24 +235,46 @@ export const sectionsMap = {
 
   howitwork: {
     ...baseSection,
-    fullWidth: true,
-    style: { ...sectionStyles.wide },
+    fullWidth: false,
+    style: {
+      ...sectionStyles.wide,
+      sectionClass: sectionStyles.wide.sectionClass + " px-6",
+      sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-auto-rows xl:auto-rows-min",
+    },
     heading: {
       ...heading,
+      containerClass: heading.containerClass + " md:w-3/4 md:self-start xl:hidden",
       title: howitworkData.heading.title,
+      titleClass: heading.titleClass + " mb-3 xl:mb-6 font-medium",
+      caption: true,
+      captionText: howitworkData.heading.captionTop,
     },
-    colClass: ["col-span-6 flex flex-wrap gap-4", "col-span-6 flex flex-wrap gap-4"],
+    colClass: [
+      "order-2 xl:order-1 md:col-span-12 xl:col-span-6 md:row-start-2 xl:row-span-2 xl:row-start-1 flex flex-wrap gap-4",
+      "hidden xl:block xl:col-span-4",
+      "md:col-span-9 xl:col-span-6 md:col-start-4 flex flex-col",
+    ],
     components: [
-      [{ ...picture, src: howitworkData.img.src, alt: howitworkData.img }],
+      [{ ...picture, src: howitworkData.img.src, alt: howitworkData.img.alt, w: "880", h: "560" }],
+      [
+        {
+          ...heading,
+          // containerClass: heading.containerClass + " hidden xl:block",
+          title: howitworkData.heading.title,
+          caption: true,
+          captionText: howitworkData.heading.captionTop,
+        },
+      ],
       howitworkData.howitworkCards.map((howitworkCard) => ({
         ...card,
         heading: {
           ...heading,
           title: howitworkCard.title,
+          titleClass: heading.titleClass + " text-h4-clamp self-start font-medium",
           description: howitworkCard.description,
         },
         cardPicture: false,
-        cardBodyClass: card.cardBodyClass + " max-h-auto",
+        cardBodyClass: card.cardBodyClass + " xl:p-5",
         cardActions: false,
       })),
     ], // вместо вручную card,card,...
