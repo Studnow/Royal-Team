@@ -17,7 +17,7 @@ export const sectionStyles = {
   flexContent: {
     sectionClass: "flex flex-col items-center overflow-hidden",
     sectionFullWidthClass: "responsive-container",
-    sectionContentClass: "flex flex-col md:flex-row gap-6 place-items-center",
+    sectionContentClass: "flex place-items-center xl:justify-between",
     sectionFooterClass: "",
   },
   narrow: {

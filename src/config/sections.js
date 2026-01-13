@@ -281,10 +281,19 @@ export const sectionsMap = {
   },
   brandImages: {
     ...baseSection,
-    style: { ...sectionStyles.flexContent, sectionClass: sectionStyles.flexContent.sectionClass + " py-8 mb-8" },
+    style: {
+      ...sectionStyles.flexContent,
+      sectionClass: sectionStyles.flexContent.sectionClass + " px-6 py-8 mb-8",
+      sectionContentClass: sectionStyles.flexContent.sectionContentClass + " flex-wrap gap-6 w-full",
+    },
     heading: false,
     colClass: "col-span-12 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
-    components: brandImagesData.map((brandImage) => ({ ...picture, src: brandImage.src })), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
+    components: brandImagesData.map((brandImage) => ({
+      ...picture,
+      src: brandImage.src,
+      alt: brandImage.alt,
+      imgClass: "w-[160px] md:w-[340px] h-[85px] md:h-[180px]",
+    })), // Если массив с массивом внутри, применяется контейнер с colClass, иначе все компоненты в одном контейнере секции, colClass не применяется
   },
   reviews: {
     ...baseSection,
