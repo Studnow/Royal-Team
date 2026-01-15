@@ -6,16 +6,20 @@
   {{/if}}
   <div class="{{cardBodyClass}}">
     {{#if heading.rating}}
-    <div class="reviews-title flex gap-6">
+    <div class="reviews-title flex flex-col md:flex-row gap-6">
       {{>rating heading.rating}}
-      <h3 class="{{heading.titleClass}}">{{heading.title}}</h3>
+      <h3 class="{{heading.titleClass}}">{{#isArray heading.title}} {{#each heading.title}}<span>{{this}}</span>
+        {{/each}}{{else}}
+        {{heading.title}}{{/isArray}}</h3>
     </div>
     {{/if}}
     {{#if (and heading.title (not heading.rating))}}
     {{#if icon}}
     {{>icon icon}}
     {{/if}}
-    <h3 class="{{heading.titleClass}}">{{heading.title}}</h3>
+    <h3 class="{{heading.titleClass}}">{{#isArray heading.title}} {{#each heading.title}}<span>{{this}}</span>
+      {{/each}}{{else}}
+      {{heading.title}}{{/isArray}}</h3>
     {{/if}}
     {{#if heading.description}}
     <p class="{{heading.descriptionClass}}">{{heading.description}}</p>
@@ -27,8 +31,15 @@
     {{/if}}
     {{#if cardActions}}
     <div class="card-actions {{cardBtn.cardActionsClass}}">
-      {{>button button}}
+      {{#each actions}}
+      {{> (lookup . "type") this}}
+      {{/each}}
     </div>
     {{/if}}
   </div>
+  {{#if cardPictureBottom}}
+  <figure>
+    {{>picture picture}}
+  </figure>
+  {{/if}}
 </div>

@@ -1,7 +1,7 @@
-.splide {
-  /* max-width: calc(100vw - 32px); */
+/* #main-slider.splide {
+  max-width: calc(100vw - 32px);
   @apply min-h-[364px];
-}
+} */
 
 .splide__arrow {
   @apply md:!w-14 md:!h-14;
@@ -50,7 +50,7 @@
   }
 } */
 
-#main-slider .splide__pagination__page {
+#main-slider .splide__pagination__page, #reviews-slider .splide__pagination__page {
   @apply relative !bg-base-100 !w-[.3333rem] md:!w-[.666666667rem] !h-[.3333rem] md:!h-[.666666667rem];
   /* flex: 1 1 auto; */
   /* min-width: 0; */
@@ -71,7 +71,7 @@
   color: inherit;
 } */
 
-#main-slider .splide__pagination__page.is-active {
+#main-slider .splide__pagination__page.is-active, #reviews-slider .splide__pagination__page.is-active {
   /* background-color: transparent !important; */
   @apply !bg-accent;
 }
@@ -80,10 +80,19 @@
   @apply text-base-100 hover:!text-secondary transition-all ease-in-out duration-75;
 }
 
-.reviews-slider {
-  @apply h-auto;
-}
 
 #main-slider .card.image-full:before {
   background-color: transparent;
+}
+
+#reviews-slider.reviews-slider {
+  /* max-width: calc(100vw - 32px); */
+  @apply h-auto pb-16;
+}
+.reviews-slider {
+  @apply h-auto bg-gradient-to-br from-primary/70 to-primary/30 rounded-t-[30px] rounded-b-xl p-5 mb-6;
+}
+
+#reviews-slider .splide__pagination {
+  @apply bottom-[5%] md:bottom-6 gap-1 px-6 md:px-12 flex h-3 w-full justify-center lg:px-12 flex-nowrap;
 }

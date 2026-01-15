@@ -192,15 +192,15 @@ export default {
     ],
     reviewsCards: [
       {
-        title: "1,070,000+ Vehicles Transported",
+        title: ["1,070,000+", "Vehicles Transported"],
         description: "Successfully delivered over one million vehicles of various makes and models to all US states",
       },
       {
-        title: "1,000,000+ Satisfied Customers",
+        title: ["1,000,000+", "Satisfied Customers"],
         description: "Hundreds of thousands of customers trust us again and recommending our service.",
       },
       {
-        title: "16 Years in Auto Transport",
+        title: ["16 Years", "in Auto Transport"],
         description: "Since 2009 continuously improving service quality and setting new industry standards.",
       },
     ],
@@ -276,15 +276,15 @@ export default {
         title: "Vehicle Condition",
         description: "Inoperable vehicles require additional equipment and effort during loading.",
       },
-      {
-        title: "Transport Type",
-        description: "Open trailers are more affordable, while enclosed trailers offer premium protection.",
-      },
+      { title: "Seasonality", description: "Summer months and holidays see increased demand affecting pricing." },
       {
         title: "Transport Distance",
         description: "Longer distances have higher total costs but lower per-mile rates.",
       },
-      { title: "Seasonality", description: "Summer months and holidays see increased demand affecting pricing." },
+      {
+        title: "Transport Type",
+        description: "Open trailers are more affordable, while enclosed trailers offer premium protection.",
+      },
       {
         caption: "Contact us for personalized pricing based on your specific requirements",
         buttonText: "Get Accurate Quote",
@@ -399,7 +399,15 @@ export default {
         { inputClass: "bg-base-200", placeholder: "Origin Address" },
         { inputClass: "bg-base-200", placeholder: "Destination Address" },
         { placeholder: "Open Transport", options: ["a", "b"] },
-        { partial: "formParts/checkbox", class: "flex-row items-center flex-row-reverse gap-2", label: "Vehicle over 4000 lbs", inputClass: "checkbox", type: "checkbox", name: "vehicle", placeholder: "Vehicle over 4000 lbs" },
+        {
+          partial: "formParts/checkbox",
+          class: "flex-row items-center flex-row-reverse gap-2",
+          label: "Vehicle over 4000 lbs",
+          inputClass: "checkbox",
+          type: "checkbox",
+          name: "vehicle",
+          placeholder: "Vehicle over 4000 lbs",
+        },
         { partial: "button", class: "btn-accent", text: "Submit Transport Request" },
       ],
     },

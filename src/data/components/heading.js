@@ -28,7 +28,7 @@ export const headingSlideCard = {
   containerClass: "self-center",
   titleLevel: "2",
   titleClass: "text-h2-clamp mb-2",
-  descriptionClass: "text-subtitle font-bold flex-grow-0",
+  descriptionClass: "text-body font-medium flex-grow-0",
 };
 
 export default heading;

@@ -21,21 +21,21 @@ const heroSlider = new Splide("#main-slider", {
   },
   gap: "2rem",
 });
-// const reviewsSlider = new Splide("#reviews-slider", {
-//   arrows: false,
-//   // perPage: 2,
-//   pagination: false,
-//   // classes: {
-//   //   pagination: "splide__pagination main-pagination",
-//   //   page: "splide__pagination__page main-page",
-//   // },
-//   breakpoints: {
-//     1024: {
-//       perPage: 1,
-//     },
-//   },
-//   gap: "2rem",
-// });
+const reviewsSlider = new Splide("#reviews-slider", {
+  arrows: false,
+  // perPage: 2,
+  pagination: true,
+  // classes: {
+  //   pagination: "splide__pagination main-pagination",
+  //   page: "splide__pagination__page main-page",
+  // },
+  breakpoints: {
+    1024: {
+      perPage: 1,
+    },
+  },
+  gap: "2rem",
+});
 
 // heroSlider.on("mounted move", function () {
 //   const currentIndex = heroSlider.index;
@@ -76,7 +76,7 @@ const heroSlider = new Splide("#main-slider", {
 //   }, 100);
 // });
 heroSlider.mount();
-// reviewsSlider.mount();
+reviewsSlider.mount();
 
 // document.querySelectorAll("nav a").forEach((link) => {
 //   if (link.href === window.location.href) {

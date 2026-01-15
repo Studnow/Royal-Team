@@ -301,14 +301,14 @@ export const sectionsMap = {
     fullWidth: false,
     style: {
       ...sectionStyles.wide,
-      sectionClass: sectionStyles.wide.sectionClass + "slider",
-      sectionContentClass: sectionStyles.wide.sectionContentClass + " slider-content grid-rows-2 px-8",
+      sectionClass: sectionStyles.wide.sectionClass,
+      sectionContentClass: sectionStyles.wide.sectionContentClass + " grid-rows-auto px-8 xl:place-items-start",
     },
     heading: false,
     colClass: [
-      "w-full lg:col-span-6 lg:row-span-2 h-full",
-      "lg:col-span-6 flex flex-col md:flex-row",
-      "lg:col-span-6 flex flex-col md:flex-row gap-6",
+      "w-full md:col-span-12 lg:row-span-2 order-3 xl:order-1 xl:col-span-5 xl:row-start-1 xl:row-span-2",
+      "md:col-span-12 xl:col-span-5 xl:col-start-7 flex flex-col md:flex-row",
+      "md:col-span-12 xl:col-span-6 xl:col-start-7 grid place-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6",
     ],
     components: [
       [
@@ -318,16 +318,20 @@ export const sectionsMap = {
           slides: {
             ...slider.slides,
             slideData: reviewsData.reviewsSlides.map((item) => ({
-              ...cardSlide,
-              cardClass: " ",
+              ...card,
+              cardClass: [card.cardClass, "bg-base-100 rounded-xl"].join(" "),
               cardPicture: false,
               cardActions: false,
               heading: {
                 ...headingSlideCard,
                 rating,
                 title: item.title,
-                titleClass: headingSlideCard.titleClass + " text-h4-clamp",
-                description: item.description,
+                titleClass: headingSlideCard.titleClass + " text-h4-clamp font-medium md:text-h3-clamp",
+                description: `"${item.description}"`,
+                descriptionClass: [
+                  headingSlideCard.descriptionClass,
+                  "italic text-secondary md:text-h4-clamp xl:text-h5-clamp",
+                ].join(" "),
               },
               // picture: {
               //   ...picture,
@@ -340,7 +344,8 @@ export const sectionsMap = {
         },
         {
           ...button,
-          class: "btn-accent",
+          class:
+            "btn-accent w-full bg-gradient-to-t from-accent to-base-100/80 md:col-start-2 text-lead font-medium h-20 shadow-md shadow-primary/40",
           icon: false,
           text: reviewsData.buttonText,
         },
@@ -349,20 +354,26 @@ export const sectionsMap = {
         {
           ...heading,
           title: reviewsData.heading.title,
+          titleClass: [heading.titleClass, "font-medium"].join(" "),
           container: true,
+          containerClass: "",
           caption: true,
           captionText: reviewsData.heading.captionTop,
-          captionClass: "text-caption text-primary mb-4",
+          captionClass: "text-caption text-secondary uppercase mb-4",
         },
       ],
-      reviewsData.reviewsCards.map((revievsCard) => ({
+      reviewsData.reviewsCards.map((reviewsCard) => ({
         ...card,
+        cardClass: [card.cardClass, "h-full border rounded-xl md:w-72 xl:w-full"].join(" "),
+        cardBodyClass: [card.cardBodyClass, "p-6"].join(" "),
         heading: {
           ...heading,
-          title: revievsCard.title,
-          titleClass: headingSlideCard.titleClass + " text-h4-clamp",
-          description: revievsCard.description,
-          descriptionClass: "text-body",
+          title: reviewsCard.title,
+          titleLevel: "4",
+          titleClass:
+            headingSlideCard.titleClass + " text-h5-clamp font-medium md:text-h4-clamp xl:text-h5-clamp flex flex-col",
+          description: reviewsCard.description,
+          descriptionClass: "text-body text-secondary md:text-[20px]",
         },
         cardActions: false,
         cardPicture: false,
@@ -375,48 +386,56 @@ export const sectionsMap = {
     template: "test",
     style: {
       ...sectionStyles.wide,
-      sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-cols-12",
+      sectionClass: [sectionStyles.wide.sectionClass, "px-6"].join(" "),
+      sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-cols-12 md:gap-10",
     },
     heading: {
       ...heading,
       title: equipmentData.heading.title,
+      titleClass: [heading.titleClass, "font-medium uppercase w-full"].join(" "),
       container: true,
-      containerClass: "w-full flex flex-col lg:flex-row justify-evenly items-center responsive-container",
+      containerClass: "w-full flex flex-col xl:flex-row mb-14 gap-x-36",
       captionText: equipmentData.heading.caption,
-      captionClass: heading.captionClass + " self-start",
+      captionClass: heading.captionClass + " self-start xl:mb-0 align-middle",
       caption: true,
     },
     colClass: "",
-    cardCols: ["lg:col-span-5 lg:col-start-3", "lg:col-span-5"],
+    // cardCols: ["lg:col-span-5 lg:col-start-3", "lg:col-span-5"],
     components: equipmentData.equipmentCards.map((equipmentCard, index) => ({
       ...card,
+      cardActions: true,
       cardClass: [
         card.cardClass,
-        "lg:col-span-4 h-full", // каждая карточка — 5 колонок из 12
-        index === 0 ? "lg:col-start-4" : "lg:col-start-8", // только для двух карточек
+        "md:col-span-12 lg:col-span-5 h-full border border-secondary/30", // каждая карточка — 5 колонок из 12
+        index === 0 ? "lg:col-start-3" : "lg:col-start-8", // только для двух карточек
       ].join(" "),
-      picture: { ...picture, src: equipmentCard.img.src },
+      cardBodyClass: [card.cardBodyClass, "px-3 py-6"].join(" "),
+      picture: { ...picture, imgClass: "rounded-xl", src: equipmentCard.img.src },
       heading: {
         ...heading,
         title: equipmentCard.title,
+        titleClass: [heading.titleClass, "font-medium text-h4-clamp mb-3"].join(" "),
         description: equipmentCard.description,
+        descriptionClass: [heading.descriptionClass, "text-body text-secondary mb-6"].join(" "),
       },
       cardComponents: [
         {
           ...list,
           type: "list",
-          listClass: list.listClass + " list-disc",
+          listClass: list.listClass + " list-disc px-6 text-h-5-clamp font-medium",
           sub: false,
           itemType: "li",
           listItems: equipmentCard.cardList.map((eqListItem) => eqListItem),
         },
       ],
-      button: {
-        ...button,
-        class: button.class + " btn-ghost text-accent",
-        text: equipmentCard.buttonText,
-        icon: false,
-      },
+      actions: [
+        {
+          ...link,
+          class: link.class + " text-accent px-0 text-h4-clamp font-medium underline underline-offset-2",
+          text: equipmentCard.buttonText,
+          icon: false,
+        },
+      ],
     })),
   },
   price: {
@@ -424,13 +443,14 @@ export const sectionsMap = {
     template: "price",
     style: {
       ...sectionStyles.wide,
+      sectionClass: [sectionStyles.wide.sectionClass, " px-6"].join(" "),
       sectionContentClass: sectionStyles.wide.sectionContentClass + " md:grid-cols-12",
     },
     heading: false,
     colClass: [
-      "lg:row-span-2 lg:col-span-6",
-      "lg:col-span-5 lg:col-start-7 mb-8",
-      "grid grid-cols-1 lg:grid-cols-3 gap-6 lg:col-span-5",
+      "md:col-span-12 xl:row-span-2 xl:col-span-6 row-start-3 xl:row-start-1",
+      "md:col-span-12 xl:col-span-5 xl:col-start-7",
+      "md:col-span-10 md:col-start-2 xl:col-start-7 grid grid-cols-2 xl:grid-cols-3 gap-5 xl:col-span-6",
     ],
     components: [
       [{ ...picture, src: priceData.img.src, alt: priceData.img.alt, w: "880", h: "590" }],
@@ -438,23 +458,52 @@ export const sectionsMap = {
         {
           ...heading,
           title: priceData.heading.title,
+          titleClass: [heading.titleClass, "md:text-h1-clamp"].join(" "),
           captionText: priceData.heading.caption,
+          captionClass: [heading.captionClass, " xl:mb-0"],
           caption: true,
           container: false,
         },
       ],
-      priceData.priceCards.map((priceCard) => ({
+      priceData.priceCards.map((priceCard, index) => ({
         ...card,
+        cardClass:
+          index !== priceData.priceCards.length - 1
+            ? [card.cardClass, " border border-secondary/30 xl:w-80 xl:max-h-[280px] h-full"].join(" ")
+            : [card.cardClass, ""].join(" "),
+        cardBodyClass:
+          index !== priceData.priceCards.length - 1
+            ? [(card.cardBodyClass, " p-3 justify-between")].join(" ")
+            : [card.cardBodyClass, "p-0"].join(" "),
         heading: {
           ...headingSlideCard,
           title: priceCard.title,
           description: priceCard.description,
-          titleClass: heading.titleClass + " text-h4-clamp",
-          descriptionClass: headingSlideCard.descriptionClass + " font-normal",
+          titleClass: heading.titleClass + " text-h4-clamp font-medium mb-2",
+          descriptionClass: headingSlideCard.descriptionClass + " font-normal text-secondary text-h5-clamp",
         },
+        cardComponents:
+          index !== priceData.priceCards.length - 1
+            ? false
+            : [
+                {
+                  type: "paragraph",
+                  class: " text-accent text-center",
+                  text: priceCard.caption,
+                },
+                {
+                  ...button,
+                  class: [
+                    button.class,
+                    "bg-gradient-to-t from-accent to-base-100/80 min-h-[118px] md:min-h-[78px] font-medium shadow-md shadow-primary/40",
+                  ].join(" "),
+                  text: priceCard.buttonText,
+                  textClass: "text-h5-clamp md:text-lead",
+                  icon: false,
+                },
+              ],
         cardPicture: false,
         cardActions: false,
-        cardBodyClass: card.cardBodyClass + " p-6",
       })),
     ],
   },
