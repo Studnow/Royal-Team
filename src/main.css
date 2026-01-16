@@ -107,4 +107,7 @@ body {
   .label-text{
     @apply text-h4-clamp xl:text-h5-clamp;
   }
+  .footer-title {
+    @apply text-base-100 opacity-100;
+  }
 }

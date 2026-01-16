@@ -428,11 +428,11 @@ export default {
           "© 2025 RoyalTeam Auto Transport. All rights reserved.",
         ],
       },
+      { title: "Company", items: ["About Us", "How It Works", "Equipment", "Price", "FAQ"] },
       {
         title: "Services",
         items: ["Open Transport", "Enclosed Transport", "Motorcycle Transport", "Luxury Car Transport"],
       },
-      { title: "Company", items: ["About Us", "How It Works", "Equipment", "Price", "FAQ"] },
       {
         title: "Contact Info",
         items: [

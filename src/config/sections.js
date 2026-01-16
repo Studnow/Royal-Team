@@ -73,7 +73,7 @@ export const sectionsMap = {
     overlay: false,
     style: {
       ...sectionStyles.wide,
-      sectionClass: sectionStyles.wide.sectionClass + " lg:py-8",
+      sectionClass: sectionStyles.wide.sectionClass + " xl:px-0 lg:py-8",
     },
     colClass: ["col-span-1 md:col-span-12 w-full"],
     colContainer: true,
@@ -283,8 +283,8 @@ export const sectionsMap = {
     ...baseSection,
     style: {
       ...sectionStyles.flexContent,
-      sectionClass: sectionStyles.flexContent.sectionClass + " px-6 py-8 mb-8",
-      sectionContentClass: sectionStyles.flexContent.sectionContentClass + " flex-wrap gap-6 w-full",
+      sectionClass: sectionStyles.flexContent.sectionClass + " py-8",
+      sectionContentClass: sectionStyles.flexContent.sectionContentClass + " flex-wrap gap-2 w-full",
     },
     heading: false,
     colClass: "col-span-12 grid grid-cols-3 place-items-center gap-4", // строка = одинаковые классы для каждого контейнера компонентов
@@ -469,18 +469,18 @@ export const sectionsMap = {
         ...card,
         cardClass:
           index !== priceData.priceCards.length - 1
-            ? [card.cardClass, " border border-secondary/30 xl:w-80 xl:max-h-[280px] h-full"].join(" ")
+            ? [card.cardClass, " border border-secondary/30 xl:w-[280px] xl:max-h-[170px] h-full"].join(" ")
             : [card.cardClass, ""].join(" "),
         cardBodyClass:
           index !== priceData.priceCards.length - 1
-            ? [(card.cardBodyClass, " p-3 justify-between")].join(" ")
+            ? [(card.cardBodyClass, " p-5 justify-between")].join(" ")
             : [card.cardBodyClass, "p-0"].join(" "),
         heading: {
           ...headingSlideCard,
           title: priceCard.title,
           description: priceCard.description,
-          titleClass: heading.titleClass + " text-h4-clamp font-medium mb-2",
-          descriptionClass: headingSlideCard.descriptionClass + " font-normal text-secondary text-h5-clamp",
+          titleClass: heading.titleClass + " text-[20px] font-medium mb-2",
+          descriptionClass: headingSlideCard.descriptionClass + " font-normal text-secondary md:text-h5-clamp xl:text-body",
         },
         cardComponents:
           index !== priceData.priceCards.length - 1

@@ -26,7 +26,7 @@ export default {
   template: "header",
   navbar: {
     headerClass: " fixed bg-gradient-to-b from-primary to-transparent z-10 w-full bg-opacity-50",
-    containerClass: " lg:px-6",
+    containerClass: " md:px-9 xl:px-18",
     navbarClass: " bg-transparent justify-between min-h-32",
     navbarStart: " w-1/6 lg:w-1/4",
     navbarCenter: " flex w-0 lg:w-auto justify-center",
