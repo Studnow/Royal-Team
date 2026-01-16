@@ -1,6 +1,7 @@
 export default {
   type: "accordion",
   class: "mb-4 px-6 mx-auto",
+  collapseClass: "mb-[10px] md:mb-[20px]",
   heading: {
     container: true,
     titleLevel: 3,

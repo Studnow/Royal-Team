@@ -104,4 +104,7 @@ body {
     z-index: -1; */
     @apply absolute inset-0 -z-10 backdrop-blur-md isolate rounded-3xl bg-black/40;
   }
+  .label-text{
+    @apply text-h4-clamp xl:text-h5-clamp;
+  }
 }

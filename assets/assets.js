@@ -368,7 +368,7 @@ export default {
         {
           title: "Is my vehicle insured during transport?",
           description: [
-            "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
+            "Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance. Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance. Yes, you can leave personal items up to 100 pounds in your vehicle's trunk. However, we recommend minimizing personal items as they are not covered by the carrier's insurance.",
           ],
         },
         {
@@ -395,20 +395,27 @@ export default {
       title: "Book Auto Transport Service Right Now",
       description:
         "Trust vehicle transportation to RoyalTeam professionals. We guarantee safe, on-time delivery and complete information support at every stage.",
+      formTextClass: "",
       fields: [
         { inputClass: "bg-base-200", placeholder: "Origin Address" },
         { inputClass: "bg-base-200", placeholder: "Destination Address" },
         { placeholder: "Open Transport", options: ["a", "b"] },
         {
           partial: "formParts/checkbox",
-          class: "flex-row items-center flex-row-reverse gap-2",
+          controlClass: "flex-row items-center flex-row-reverse gap-1 justify-between text-h-5-clamp",
           label: "Vehicle over 4000 lbs",
-          inputClass: "checkbox",
+          inputClass: "checkbox rounded-sm",
           type: "checkbox",
           name: "vehicle",
           placeholder: "Vehicle over 4000 lbs",
         },
-        { partial: "button", class: "btn-accent", text: "Submit Transport Request" },
+        {
+          partial: "button",
+          controlClass: "",
+          class:
+            "btn-accent w-full bg-gradient-to-t from-accent to-base-100/80 md:col-start-2 text-lead font-medium h-20 shadow-md shadow-primary/40",
+          text: "Submit Transport Request",
+        },
       ],
     },
   },

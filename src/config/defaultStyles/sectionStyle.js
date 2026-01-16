@@ -27,7 +27,7 @@ export const sectionStyles = {
     sectionFooterClass: "",
   },
   wide: {
-    sectionClass: "flex flex-col items-center justify-center max-w-full mb-28",
+    sectionClass: "flex flex-col items-center justify-center max-w-full mb-28 px-6 md:px-9 xl:px-20",
     sectionFullWidthClass: "w-full mx-auto",
     sectionContentClass: "w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center",
     sectionContentCardsClass: "w-full grid grid-cols-2 xl:grid-cols-12 gap-6 place-items-start", // project dependent

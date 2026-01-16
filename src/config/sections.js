@@ -509,44 +509,66 @@ export const sectionsMap = {
   },
   promo: {
     ...baseSection,
-    template: "test",
-    sectionFullWidth: true,
+    template: "promo",
+    sectionFullWidth: false,
     style: {
       ...sectionStyles.wide,
-      sectionContentClass: sectionStyles.wide.sectionContentClass,
+      sectionClass: [sectionStyles.wide.sectionClass, " px-6"].join(" "),
+      sectionContentClass: [sectionStyles.wide.sectionContentClass, ""].join(" "),
     },
     heading: {
       ...heading,
       title: promoData.heading.title,
+      titleClass: [heading.titleClass, "font-medium mb-3 md:text-h1-clamp uppercase"].join(" "),
       description: promoData.heading.description,
-      descriptionClass: heading.descriptionClass + " text-primary",
+      descriptionClass:
+        heading.descriptionClass + " text-primary text-h5-clamp md:text-h4-clamp md:max-w-2xl xl:max-w-none",
       container: true,
+      containerClass: [heading.containerClass, "mb-14"].join(" "),
     },
     colClass: [
-      "lg:col-span-12",
-      "flex flex-wrap lg:col-span-5 lg:col-start-2 flex gap-6",
-      "lg:col-span-5",
-      "lg:row-start-3 lg:col-span-12",
+      "md:col-span-8 md:col-start-2 xl:col-start-1 xl:col-span-12 w-full",
+      "md:col-span-10 md:col-start-2 grid grid-cols-2 xl:grid-flow-col xl:col-span-8 xl:col-start-1 flex gap-6 mb-12",
+      "md:col-span-10 md:col-start-2 xl:col-start-10 w-full xl:col-span-4 mb-12",
+      "md:col-span-12 md:w-screen xl:w-full xl:row-start-3 xl:col-span-12",
     ],
     components: [
       [
         {
           ...heading,
           title: promoData.promoCards.title,
+          titleClass: [heading.titleClass, "font-medium mb-3 md:text-h1-clamp uppercase"].join(" "),
         },
       ],
       promoData.promoCards.items.map((promoCard) => ({
         ...card,
-        heading: { title: promoCard.title },
-        picture: { ...picture, src: promoCard.img.src, alt: promoCard.img.alt, w: "280", h: "150" },
+        cardClass: [card.cardClass, ""].join(" "),
+        cardBodyClass: [card.cardBodyClass, "px-0 py-3"].join(" "),
+        heading: {
+          title: promoCard.title,
+          titleClass: [heading.titleClass, "text-h5-clamp font-medium md:text-h4-clamp"].join(" "),
+        },
+        picture: {
+          ...picture,
+          imgClass: [picture.imgClass, "rounded-2xl"].join(" "),
+          src: promoCard.img.src,
+          alt: promoCard.img.alt,
+          w: "280",
+          h: "150",
+        },
         cardActions: false,
       })),
       [
         {
+          ...heading,
+          title: promoData.promoList.title,
+          titleClass: [heading.titleClass, "font-medium mb-3 uppercase md:mb-8"].join(" "),
+        },
+        {
           ...list,
           type: "list",
           sub: false,
-          listClass: list.listClass + "menu-vertical",
+          listClass: list.listClass + "menu-vertical font-medium md:text-h4-clamp space-y-2",
           listItems: promoData.promoList.items.map((promoListItem) => promoListItem),
         },
       ],
@@ -554,11 +576,13 @@ export const sectionsMap = {
         {
           ...heading,
           container: true,
-          containerClass: heading.containerClass + "flex self-start w-full justify-between bg-accent rounded-xl p-8",
+          containerClass:
+            heading.containerClass +
+            "flex flex-col xl:flex-row w-full bg-accent rounded-xl px-5 md:px-9 py-12 xl:p-8 justify-evenly",
           title: promoData.promoBanner.title,
-          titleClass: heading.titleClass + " text-primary",
+          titleClass: heading.titleClass + " text-primary font-medium mb-6 uppercase",
           description: promoData.promoBanner.items,
-          descriptionClass: heading.descriptionClass + " flex flex-col p-4",
+          descriptionClass: heading.descriptionClass + " flex flex-col text-h5-clamp xl:p-4 md:max-w-none md:w-5/6",
         },
       ],
     ],
@@ -567,25 +591,55 @@ export const sectionsMap = {
   faq: {
     ...baseSection,
     template: "form",
-    style: { ...sectionStyles.wide },
+    style: {
+      ...sectionStyles.wide,
+      sectionContentClass: [sectionStyles.wide.sectionContentClass, "xl:place-items-start"].join(" "),
+    },
     heading: {
       ...heading,
       title: faqData.title,
       container: false,
     },
-    colClass: ["col-span-6", "col-span-6"],
+    colClass: ["md:col-span-12 xl:col-span-6 mb-28 xl:mb-12", "md:col-span-12 xl:col-span-6 mb-28 xl:mb-12"],
     components: [
       [
-        { ...heading, title: faqData.accordion.title },
+        { ...heading, title: faqData.accordion.title, titleClass: [heading.titleClass, "font-medium mb-16"].join(" ") },
         { ...accordion, listItems: faqData.accordion.items },
       ],
       [
-        { ...heading, title: faqData.form.title },
+        {
+          ...heading,
+          title: faqData.form.title,
+          titleClass: [heading.titleClass, "font-medium mb-16 xl:w-2/3 xl:mb-8"].join(" "),
+        },
         {
           ...dynamicForm,
-          formClass: dynamicForm.formClass + " bg-base-100 border border-[20px] border-secondary rounded-xl",
+          formClass:
+            dynamicForm.formClass +
+            " bg-base-100 bg-gradient-to-br from-primary/60 to-secondary/40 rounded-xl p-[20px]",
+          container: true,
+          containerClass: [dynamicForm.containerClass, "justify-center"].join(" "),
+          // controlClass: "p-6",
           formText: faqData.form.description,
-          fields: faqData.form.fields,
+          formTextClass: " p-6",
+          fields: faqData.form.fields.map((formField, index) => ({
+            ...field,
+            inputClass:
+              index !== faqData.form.fields.length - 1
+                ? [formField.inputClass, " xl:w-xl"].join(" ")
+                : formField.inputClass,
+            placeholder: formField.placeholder,
+            controlClass:
+              index !== faqData.form.fields.length - 1
+                ? [formField.controlClass, "p-[20px]"].join(" ")
+                : [formField.controlClass, "w-full"].join(" "),
+            label: formField.label,
+            type: formField.type,
+            name: formField.name,
+            partial: formField?.partial,
+            text: formField?.text,
+            class: formField?.class,
+          })),
         },
       ],
     ],
