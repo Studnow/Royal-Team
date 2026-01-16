@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="mytheme">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" /> -->
+    <style>@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");</style>
+
+  <link rel="icon" type="image/svg+xml" href="./fire1.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Описание страницы" />
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="Описание страницы" />
+  <meta property="og:image" content="/assets/img/og-image.jpg" />
+  <meta property="og:url" content="/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <title>Название страницы</title>
+  
+  <link rel="stylesheet" crossorigin href="./assets/index.css">
+</head>
+
+<body class="">
+  <div class="drawer">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+      <!-- Page content here -->
+      <!-- <label for="my-drawer" class="btn btn-primary drawer-button">Open drawer</label> -->
+      <div id="app" class="app">
+        <dialog id="my_modal_1" class="modal">
+          <div class="modal-box">
+            
+            
+            <p>modal component</p>
+            <div class="modal-body">
+            </div>
+            <div class="modal-action">
+              <button onclick="my_modal_1.close()" class="btn btn-primary">Close no form</button>
+            </div>
+          </div>
+        </dialog>      <header class="header fixed bg-gradient-to-b from-primary to-transparent z-10 w-full bg-opacity-50">
+          <div class=" md:px-9 xl:px-18">
+            <div class="navbar bg-transparent justify-between min-h-32">
+              <div class="navbar-start w-1/6 lg:w-1/4">
+                <a class="btn btn-link no-underline text-base flex h-fit" href="/"><img class="w-28 h-12 md:w-44 md:h-20 lg:w-56 lg:h-24 self-top" src="./assets/images/logo.png" alt="Brand logo"
+                    w="200" h="90">
+                </a>      </div>
+              <div class="navbar-center flex w-0 lg:w-auto justify-center">
+              </div>
+              <div class="navbar-end w-1/4 md:w-auto lg:w-1/2 xl:w-2/5 max-w-[700px] relative">
+                <!-- <a class=""></a> -->
+                <div class="inline-flex lg:w-full" id="" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <ul  class="menu space-x-2 p-2 bg-base-100 rounded-box z-[1] mt-3 w-full justify-between bg-primary rounded-full flex-nowrap hidden lg:flex menu-horizontal h-full min-h-[70px] items-center gap-2 text-lead w-full" >
+                      <li><a href="/!#" class="link link-secondaryno-underline">
+                        <span class="text-base-100 font-medium">About</span>
+                      </a></li>
+                      <li><a href="/!#" class="link link-secondaryno-underline">
+                        <span class="text-base-100 font-medium">How it work</span>
+                      </a></li>
+                      <li><a href="/!#" class="link link-secondaryno-underline">
+                        <span class="text-base-100 font-medium">Equipment</span>
+                      </a></li>
+                      <li><a href="/!#" class="link link-secondaryno-underline">
+                        <span class="text-base-100 font-medium">Price</span>
+                      </a></li>
+                      <li><a href="/!#" class="link link-secondaryno-underline">
+                        <span class="text-base-100 font-medium">FAQ</span>
+                      </a></li>
+                    </ul>    <label for="my-drawer" class="btn btn-ghost drawer-button px-0 lg:hidden"><svg class="h-20 w-20 relative -top-4" width="40" height="40" viewBox="0 0 40 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <use xlink:href="./assets/spritemap.135988aa.svg#sprite-burgerMenu"></use>
+                    </svg></label>  </div>
+                <div class="hidden lg:block absolute min-h-full py-4 top-14 max-w-[700px] bg-primary/50 rounded-2xl px-6 rounded" id="calculator-widget" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <dl class="flex flex-col gap-6 w-full my-20 grid grid-cols-1 text-base-100 gap-8">
+                      <div class="dl-overlay"></div>
+                      <div class="">
+                        <dt class="font-bold text-h4-clamp md:text-h3-clamp">    <span class="text-muted">1.000.000 +</span>
+                        </dt>
+                        <dd class="text-body lg:text-lead">
+                          <span class="text-muted">Satisfied Customers</span>
+                        </dd>
+                      </div>
+                      <div class="">
+                        <dt class="font-bold text-h4-clamp md:text-h3-clamp">    <span class="text-muted">1.070.000 +</span>
+                        </dt>
+                        <dd class="text-body lg:text-lead">
+                          <span class="text-muted">Vehicles Delivered</span>
+                        </dd>
+                      </div>
+                      <div class="">
+                        <dt class="font-bold text-h4-clamp md:text-h3-clamp">    <span class="text-muted">16 +</span>
+                        </dt>
+                        <dd class="text-body lg:text-lead">
+                          <span class="text-muted">Years Experience</span>
+                        </dd>
+                      </div>
+                      <div class="">
+                        <dt class="font-bold text-accent text-h4-clamp md:text-h3-clamp">
+                        <a href="tel:253-264-9577" class="link no-underline">253-264-9577</a>
+                    </dt>
+                        <dd class="text-body lg:text-lead">
+                          <a href="tel:253-264-9577" class="link no-underline">call us</a>
+                        </dd>
+                      </div>
+                    </dl>    <div class="calculator grid grid-cols-1 md:grid-cols-2 md:grid-cols-[6fr_2fr] md:gap-6 md:p-6 bg-base-100 rounded-2xl">
+                    <h3 class="text-h2-clamp text-primary text-h4-clamp font-medium px-6 pt-6 md:pt-0 md:px-0 md:col-span-2">Calculate transport costs wright now online:</h3>
+                    
+                    
+                      <label for="example_field" class="label flex flex-col flex-col-reverse md:flex-row items-start md:items-center md:justify-end md:flex-row-reverse md:col-start-1 px-6 md:px-0 pb-4 md:pb-0 gap-6">
+                        <span class="text-h4-clamp md:text-h1-clamp lg:text-h3-clamp font-bold">&#x3D; 1.000 $</span>
+                        <input id="example_field" name="example_field" type="formParts/field" class="input bg-base-200 min-h-[70px] text-lead max-w-[260px]" placeholder="Enter the distance"  value="" />
+                      </label>
+                    
+                    <button type="button"  onclick='my_modal_1.showModal()'  class="btn btn-accent bg-gradient-to-t from-accent to-base-100 md:col-start-2 md:h-28 text-lead">
+                      <span class="">Get Instant Quote</span>
+                    </button></div>  </div>
+              </div>
+            </div>
+          </div>
+        </header>      <main class="main mb-4 w-full">
+          <section class="section section-hero flex flex-col items-center justify-center max-w-full mb-28 px-0">
+          
+              <div class="section__content w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center">
+                <div class="col-span-1 md:col-span-12 w-full" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <div class="relative w-full">
+                      <div id="main-slider" class="splide main-slider">
+                        <div class="splide__track">
+                          <ul class="splide__list">
+                            <li class="splide__slide">
+                              <div class="card image-full bg-base-100 rounded-none h-full min-h-[364px] max-h-screen">
+                                <figure>
+                                   <img class="object-contain object-no-repeat object-left" src="./assets/images/hero.png"
+                                    width="1920"  height="910"  alt="picture"  />
+                                </figure>
+                                <div class="card-body p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end">
+                                  <h3 class="text-h1-clamp font-medium font-unbounded text-base-100 md:w-3/4 lg:w-2/4 md:px-6">
+                                    Safe and reliable auto transport services nationwide</h3>
+                                </div>
+                              </div>        </li>        <li class="splide__slide">
+                              <div class="card image-full bg-base-100 rounded-none h-full min-h-[364px] max-h-screen">
+                                <figure>
+                                   <img class="object-contain object-no-repeat object-left" src="./assets/images/equipment_open.png"
+                                    width="1920"  height="910"  alt="picture"  />
+                                </figure>
+                                <div class="card-body p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end">
+                                  <h3 class="text-h1-clamp font-medium font-unbounded text-base-100 md:w-3/4 lg:w-2/4 md:px-6">
+                                    Safe and reliable auto transport services nationwide</h3>
+                                </div>
+                              </div>        </li>        <li class="splide__slide">
+                              <div class="card image-full bg-base-100 rounded-none h-full min-h-[364px] max-h-screen">
+                                <figure>
+                                   <img class="object-contain object-no-repeat object-left" src="./assets/images/equipment_enclosed.png"
+                                    width="1920"  height="910"  alt="picture"  />
+                                </figure>
+                                <div class="card-body p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end">
+                                  <h3 class="text-h1-clamp font-medium font-unbounded text-base-100 md:w-3/4 lg:w-2/4 md:px-6">
+                                    Safe and reliable auto transport services nationwide</h3>
+                                </div>
+                              </div>        </li>        <li class="splide__slide">
+                              <div class="card image-full bg-base-100 rounded-none h-full min-h-[364px] max-h-screen">
+                                <figure>
+                                   <img class="object-contain object-no-repeat object-left" src="./assets/images/hero.png"
+                                    width="1920"  height="910"  alt="picture"  />
+                                </figure>
+                                <div class="card-body p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end">
+                                  <h3 class="text-h1-clamp font-medium font-unbounded text-base-100 md:w-3/4 lg:w-2/4 md:px-6">
+                                    Safe and reliable auto transport services nationwide</h3>
+                                </div>
+                              </div>        </li>        <li class="splide__slide">
+                              <div class="card image-full bg-base-100 rounded-none h-full min-h-[364px] max-h-screen">
+                                <figure>
+                                   <img class="object-contain object-no-repeat object-left" src="./assets/images/hero.png"
+                                    width="1920"  height="910"  alt="picture"  />
+                                </figure>
+                                <div class="card-body p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end">
+                                  <h3 class="text-h1-clamp font-medium font-unbounded text-base-100 md:w-3/4 lg:w-2/4 md:px-6">
+                                    Safe and reliable auto transport services nationwide</h3>
+                                </div>
+                              </div>        </li>        <li class="splide__slide">
+                              <div class="card image-full bg-base-100 rounded-none h-full min-h-[364px] max-h-screen">
+                                <figure>
+                                   <img class="object-contain object-no-repeat object-left" src="./assets/images/equipment_open.png"
+                                    width="1920"  height="910"  alt="picture"  />
+                                </figure>
+                                <div class="card-body p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end">
+                                  <h3 class="text-h1-clamp font-medium font-unbounded text-base-100 md:w-3/4 lg:w-2/4 md:px-6">
+                                    Safe and reliable auto transport services nationwide</h3>
+                                </div>
+                              </div>        </li>        <li class="splide__slide">
+                              <div class="card image-full bg-base-100 rounded-none h-full min-h-[364px] max-h-screen">
+                                <figure>
+                                   <img class="object-contain object-no-repeat object-left" src="./assets/images/equipment_enclosed.png"
+                                    width="1920"  height="910"  alt="picture"  />
+                                </figure>
+                                <div class="card-body p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end">
+                                  <h3 class="text-h1-clamp font-medium font-unbounded text-base-100 md:w-3/4 lg:w-2/4 md:px-6">
+                                    Safe and reliable auto transport services nationwide</h3>
+                                </div>
+                              </div>        </li>        <li class="splide__slide">
+                              <div class="card image-full bg-base-100 rounded-none h-full min-h-[364px] max-h-screen">
+                                <figure>
+                                   <img class="object-contain object-no-repeat object-left" src="./assets/images/hero.png"
+                                    width="1920"  height="910"  alt="picture"  />
+                                </figure>
+                                <div class="card-body p-6 bg-gradient-to-t from-primary to-transparent bg-gradient-to-b from-primary to-transparent justify-end">
+                                  <h3 class="text-h1-clamp font-medium font-unbounded text-base-100 md:w-3/4 lg:w-2/4 md:px-6">
+                                    Safe and reliable auto transport services nationwide</h3>
+                                </div>
+                              </div>        </li>      </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          
+          
+          </section>  <section class="section section-calculator flex flex-col items-center justify-center max-w-full mb-28 px-6 md:px-9 xl:px-20 lg:hidden p-6 mb-14 md:p-10 bg-base-100">
+          
+              <div class="section__content w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center bg-gradient-to-br from-primary/70 to-primary/30 rounded-3xl p-6 md:p-4">
+                <div class="w-full md:col-span-12" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <dl class="flex flex-col gap-6 w-full px-6 md:px-4 py-4 grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 text-base-100">
+                      <div class="dl-overlay"></div>
+                      <div class="flex flex-col w-full col-start-1 gap-1">
+                        <dt class="font-bold text-h4-clamp md:text-h3-clamp">    <span class="text-muted">1.000.000 +</span>
+                        </dt>
+                        <dd class="text-body">
+                          <span class="text-muted">Satisfied Customers</span>
+                        </dd>
+                      </div>
+                      <div class="flex flex-col w-full col-start-1 gap-1">
+                        <dt class="font-bold text-h4-clamp md:text-h3-clamp">    <span class="text-muted">1.070.000 +</span>
+                        </dt>
+                        <dd class="text-body">
+                          <span class="text-muted">Vehicles Delivered</span>
+                        </dd>
+                      </div>
+                      <div class="flex flex-col w-full col-start-1 gap-1">
+                        <dt class="font-bold text-h4-clamp md:text-h3-clamp">    <span class="text-muted">16 +</span>
+                        </dt>
+                        <dd class="text-body">
+                          <span class="text-muted">Years Experience</span>
+                        </dd>
+                      </div>
+                      <div class="flex flex-col row-start-3 col-start-2 gap-1">
+                        <dt class="font-bold text-accent text-h4-clamp md:text-h3-clamp">
+                        <a href="tel:253-264-9577" class="link no-underline">253-264-9577</a>
+                    </dt>
+                        <dd class="text-body">
+                          <a href="tel:253-264-9577" class="link no-underline">call us</a>
+                        </dd>
+                      </div>
+                    </dl>  </div>
+                <div class="w-full md:col-span-12" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <div class="calculator grid grid-cols-1 md:grid-cols-2 md:grid-cols-[6fr_2fr] md:gap-6 md:p-4 bg-base-100 rounded-2xl">
+                    <h3 class="text-h3-clamp font-medium px-6 pt-6 md:pt-0 md:px-0 md:col-span-2">Calculate transport costs wright now online:</h3>
+                    
+                    
+                      <label for="example_field" class="label flex flex-col flex-col-reverse md:flex-row items-start md:items-center md:justify-end md:flex-row-reverse md:col-start-1 px-6 md:px-0 pb-4 md:pb-0 gap-6">
+                        <span class="text-h4-clamp md:text-h1-clamp lg:text-h3-clamp font-bold">&#x3D; 1.000 $</span>
+                        <input id="example_field" name="example_field" type="formParts/field" class="input bg-base-200" placeholder="Enter the distance"  value="" />
+                      </label>
+                    
+                    <button type="button"  onclick='my_modal_1.showModal()'  class="btn btn-accent bg-gradient-to-t from-accent to-base-100 md:col-start-2 md:h-28 text-lead">
+                      <span class="">Get Instant Quote</span>
+                    </button></div>  </div>
+              </div>
+          
+          
+          </section>  <section class="section section-section w-full grid grid-cols-2 xl:grid-cols-12 gap-6 place-items-start px-6 md:px-9 xl:px-20 grid-cols-2 md:grid-cols-2 p-[25px] mb-14">
+              
+              <div class="col-span-2 md:col-span-2 xl:col-span-8 xl:w-3/5">
+                <p class="text-caption text-secondary mb-4 xl:mb-6 uppercase font-medium">About us</p>
+              
+                <h2 class="text-h2-clamp mb-3 xl:mb-6 font-medium">Why Thousands of Customers Choose RoyalTeam for Their Auto Transport Needs</h2>
+                <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl xl:text-h5-clamp">Our experts oversee each stage — from pickup to delivery, ensuring maximum safety throughout the journey.</p>
+              </div>
+              
+          
+                <div class="card bg-base-100 border h-full xl:col-span-2">
+                  <figure>
+                     <img class="" src="./assets/images/about_payment.png"
+                      width="786"  height="452"  alt="picture"  />
+                  </figure>
+                  <div class="card-body p-3 md:p-6">
+                    <svg class=" w-[20px] md:w-14 h-[20px] md:h-14 md:mb-8" width="20" height="20" viewBox="0 0 40 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <use xlink:href="./assets/spritemap.135988aa.svg#sprite-payment_invoice"></use>
+                    </svg>    <h3 class="text-h4-clamp self-start font-medium">
+                      Payment After Assignment</h3>
+                    <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl xl:text-body">No upfront payments required! Pay only after a carrier is assigned to your order.</p>
+                  </div>
+                </div>  <div class="card bg-base-100 border h-full xl:col-span-2">
+                  <figure>
+                     <img class="" src="./assets/images/about_insurance.png"
+                      width="786"  height="452"  alt="picture"  />
+                  </figure>
+                  <div class="card-body p-3 md:p-6">
+                    <svg class=" w-[20px] md:w-14 h-[20px] md:h-14 md:mb-8" width="20" height="20" viewBox="0 0 40 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <use xlink:href="./assets/spritemap.135988aa.svg#sprite-insurance_lock"></use>
+                    </svg>    <h3 class="text-h4-clamp self-start font-medium">
+                      $1M Insurance Coverage</h3>
+                    <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl xl:text-body">Complete protection with our comprehensive $1 million Insurance coverage.</p>
+                  </div>
+                </div>  <div class="card bg-base-100 border h-full xl:col-span-2">
+                  <div class="card-body p-3 md:p-6">
+                    <svg class=" w-[20px] md:w-14 h-[20px] md:h-14 md:mb-8" width="20" height="20" viewBox="0 0 40 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <use xlink:href="./assets/spritemap.135988aa.svg#sprite-trust_idcard"></use>
+                    </svg>    <h3 class="text-h4-clamp self-start font-medium">
+                      Trust the Professionals</h3>
+                    <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl xl:text-body">We specialize exclusively in auto transport and understand every nuance of the process.</p>
+                  </div>
+                </div>  <div class="card bg-base-100 border h-full xl:col-span-2">
+                  <div class="card-body p-3 md:p-6">
+                    <svg class=" w-[20px] md:w-14 h-[20px] md:h-14 md:mb-8" width="20" height="20" viewBox="0 0 40 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <use xlink:href="./assets/spritemap.135988aa.svg#sprite-about_approach"></use>
+                    </svg>    <h3 class="text-h4-clamp self-start font-medium">
+                      Personalized Approach</h3>
+                    <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl xl:text-body">Individual solutions for each customer, considering vehicle specifications and preferences.</p>
+                  </div>
+                </div>  <div class="card bg-base-100 border h-full xl:col-span-2">
+                  <div class="card-body p-3 md:p-6">
+                    <svg class=" w-[20px] md:w-14 h-[20px] md:h-14 md:mb-8" width="20" height="20" viewBox="0 0 40 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <use xlink:href="./assets/spritemap.135988aa.svg#sprite-advisors_user"></use>
+                    </svg>    <h3 class="text-h4-clamp self-start font-medium">
+                      Dedicated Advisors</h3>
+                    <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl xl:text-body">Personal advisor assigned to guide you through the entire transport process.</p>
+                  </div>
+                </div>  <div class="card bg-base-100 border h-full xl:col-span-2">
+                  <div class="card-body p-3 md:p-6">
+                    <svg class=" w-[20px] md:w-14 h-[20px] md:h-14 md:mb-8" width="20" height="20" viewBox="0 0 40 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <use xlink:href="./assets/spritemap.135988aa.svg#sprite-top_rate_certificate"></use>
+                    </svg>    <h3 class="text-h4-clamp self-start font-medium">
+                      Top-Rated Company</h3>
+                    <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl xl:text-body">Thousands of positive reviews confirm the high quality and reliability of our services.</p>
+                  </div>
+                </div>  <div class="card bg-base-100 border h-full xl:col-span-2">
+                  <div class="card-body p-3 md:p-6">
+                    <svg class=" w-[20px] md:w-14 h-[20px] md:h-14 md:mb-8" width="20" height="20" viewBox="0 0 40 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <use xlink:href="./assets/spritemap.135988aa.svg#sprite-transportation_big_truck"></use>
+                    </svg>    <h3 class="text-h4-clamp self-start font-medium">
+                      15,000+ Auto Carriers</h3>
+                    <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl xl:text-body">Extensive network of vetted carriers for quick and optimal transport solutions.</p>
+                  </div>
+                </div>  <div class="card bg-base-100 border h-full xl:col-span-2">
+                  <div class="card-body p-3 md:p-6">
+                    <svg class=" w-[20px] md:w-14 h-[20px] md:h-14 md:mb-8" width="20" height="20" viewBox="0 0 40 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <use xlink:href="./assets/spritemap.135988aa.svg#sprite-support_chat"></use>
+                    </svg>    <h3 class="text-h4-clamp self-start font-medium">
+                      Support Hours</h3>
+                    <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl xl:text-body">Available 7 days a week to answer any questions whenever it&#x27;s convenient for you.</p>
+                  </div>
+                </div>
+          
+          </section>  <section class="section section-section flex flex-col items-center justify-center max-w-full mb-28 px-6 md:px-9 xl:px-20 px-6">
+              
+              <div class=" md:w-3/4 md:self-start xl:hidden">
+                <p class="text-caption text-secondary mb-4 xl:mb-6 uppercase font-medium">How it work</p>
+              
+                <h2 class="text-h2-clamp mb-3 xl:mb-6 font-medium">Three Simple Steps to Safe Auto Transport</h2>
+              </div>
+              
+          
+              <div class="section__content w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center md:grid-auto-rows xl:auto-rows-min">
+                <div class="order-2 xl:order-1 md:col-span-12 xl:col-span-6 md:row-start-2 xl:row-span-2 xl:row-start-1 flex flex-wrap gap-4" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                     <img class="" src="./assets/images/howitwork.png"
+                      width="880"  height="560"  alt="Auto Transport"  />
+                  </div>
+                <div class="hidden xl:block xl:col-span-4" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    
+                    <div class="">
+                      <p class="text-caption text-secondary mb-4 xl:mb-6 uppercase font-medium">How it work</p>
+                    
+                      <h2 class="text-h2-clamp">Three Simple Steps to Safe Auto Transport</h2>
+                    </div>
+                    
+                  </div>
+                <div class="md:col-span-9 xl:col-span-6 md:col-start-4 flex flex-col" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <div class="card bg-base-100">
+                      <div class="card-body xl:p-5">
+                        <h3 class="text-h2-clamp text-h4-clamp self-start font-medium">
+                          Step 1: Get a Quote and Book Your Order</h3>
+                        <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl">Fill out the form on our website or call us to get an accurate transport quote. Our advisors will help you choose the optimal transport option and answer all your questions. After confirming your order, we begin searching for a suitable carrier.</p>
+                      </div>
+                    </div>    <div class="card bg-base-100">
+                      <div class="card-body xl:p-5">
+                        <h3 class="text-h2-clamp text-h4-clamp self-start font-medium">
+                          Step 2: We Pick Up Your Vehicle</h3>
+                        <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl">At the agreed time, the carrier will contact you to confirm details and arrive to collect your vehicle. Before loading, you and the driver will conduct an inspection and document the vehicle&#x27;s current condition in a pickup report.</p>
+                      </div>
+                    </div>    <div class="card bg-base-100">
+                      <div class="card-body xl:p-5">
+                        <h3 class="text-h2-clamp text-h4-clamp self-start font-medium">
+                          Step 3: Receive Your Vehicle at Destination</h3>
+                        <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl">You&#x27;ll be notified in advance of the delivery time. Upon receiving your vehicle, you and the driver will check its condition and sign the delivery report. Your vehicle is delivered safely and on time!</p>
+                      </div>
+                    </div>  </div>
+              </div>
+          
+          
+          </section>  <section class="section section-section flex flex-col items-center overflow-hidden mb-28 px-6 md:px-9 xl:px-20 py-8">
+          
+              <div class="section__content flex place-items-center xl:justify-between flex-wrap gap-2 w-full">
+                   <img class="w-[160px] md:w-[340px] h-[85px] md:h-[180px]" src="./assets/images/brand1.png"
+                    width="786"  height="452"  alt="Payment After Assignment"  />
+                   <img class="w-[160px] md:w-[340px] h-[85px] md:h-[180px]" src="./assets/images/brand2.png"
+                    width="786"  height="452"  alt="Payment After Assignment"  />
+                   <img class="w-[160px] md:w-[340px] h-[85px] md:h-[180px]" src="./assets/images/brand3.png"
+                    width="786"  height="452"  alt="Payment After Assignment"  />
+                   <img class="w-[160px] md:w-[340px] h-[85px] md:h-[180px]" src="./assets/images/brand2.png"
+                    width="786"  height="452"  alt="Payment After Assignment"  />
+                   <img class="w-[160px] md:w-[340px] h-[85px] md:h-[180px]" src="./assets/images/brand1.png"
+                    width="786"  height="452"  alt="Payment After Assignment"  />
+              </div>
+          
+          
+          </section>  <section class="section section-slider flex flex-col items-center justify-center max-w-full mb-28 px-6 md:px-9 xl:px-20">
+          
+              <div class="section__content w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center grid-rows-auto px-8 xl:place-items-start">
+                <div class="w-full md:col-span-12 lg:row-span-2 order-3 xl:order-1 xl:col-span-5 xl:row-start-1 xl:row-span-2" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <div class="relative w-full">
+                      <div id="reviews-slider" class="splide reviews-slider">
+                        <div class="splide__track">
+                          <ul class="splide__list">
+                            <li class="splide__slide">
+                              <div class="card bg-base-100 bg-base-100 rounded-xl">
+                                <div class="card-body">
+                                  <div class="reviews-title flex flex-col md:flex-row gap-6">
+                                    <div class="rating">
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                    </div>      <h3 class="text-h2-clamp mb-2 text-h4-clamp font-medium md:text-h3-clamp">
+                                      Michael S., New York</h3>
+                                  </div>
+                                  <p class="text-body font-medium flex-grow-0 italic text-secondary md:text-h4-clamp xl:text-h5-clamp">&quot;RoyalTeam made transporting my car absolutely hassle-free. Personal approach, constant communication, and precise timing — everything was top-notch.&quot;</p>
+                                </div>
+                              </div>        </li>        <li class="splide__slide">
+                              <div class="card bg-base-100 bg-base-100 rounded-xl">
+                                <div class="card-body">
+                                  <div class="reviews-title flex flex-col md:flex-row gap-6">
+                                    <div class="rating">
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                    </div>      <h3 class="text-h2-clamp mb-2 text-h4-clamp font-medium md:text-h3-clamp">
+                                      Michael S., New York</h3>
+                                  </div>
+                                  <p class="text-body font-medium flex-grow-0 italic text-secondary md:text-h4-clamp xl:text-h5-clamp">&quot;RoyalTeam made transporting my car absolutely hassle-free. Personal approach, constant communication, and precise timing — everything was top-notch.&quot;</p>
+                                </div>
+                              </div>        </li>        <li class="splide__slide">
+                              <div class="card bg-base-100 bg-base-100 rounded-xl">
+                                <div class="card-body">
+                                  <div class="reviews-title flex flex-col md:flex-row gap-6">
+                                    <div class="rating">
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400"  />
+                                    </div>      <h3 class="text-h2-clamp mb-2 text-h4-clamp font-medium md:text-h3-clamp">
+                                      Michael S., New York</h3>
+                                  </div>
+                                  <p class="text-body font-medium flex-grow-0 italic text-secondary md:text-h4-clamp xl:text-h5-clamp">&quot;RoyalTeam made transporting my car absolutely hassle-free. Personal approach, constant communication, and precise timing — everything was top-notch.&quot;</p>
+                                </div>
+                              </div>        </li>      </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button"  class="btn btn-accent w-full bg-gradient-to-t from-accent to-base-100/80 md:col-start-2 text-lead font-medium h-20 shadow-md shadow-primary/40">
+                      <span class="">Want to Work with You</span>
+                    </button>  </div>
+                <div class="md:col-span-12 xl:col-span-5 xl:col-start-7 flex flex-col md:flex-row" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    
+                    <div class="">
+                      <p class="text-caption text-secondary uppercase mb-4">Reviews</p>
+                    
+                      <h2 class="text-h2-clamp font-medium">Over 1,000,000 Satisfied Customers and 16 Years of Experience</h2>
+                    </div>
+                    
+                  </div>
+                <div class="md:col-span-12 xl:col-span-6 xl:col-start-7 grid place-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <div class="card bg-base-100 h-full border rounded-xl md:w-72 xl:w-full">
+                      <div class="card-body p-6">
+                        <h3 class="text-h2-clamp mb-2 text-h5-clamp font-medium md:text-h4-clamp xl:text-h5-clamp flex flex-col"> <span>1,070,000+</span>
+                          <span>Vehicles Transported</span>
+                          </h3>
+                        <p class="text-body text-secondary md:text-[20px]">Successfully delivered over one million vehicles of various makes and models to all US states</p>
+                      </div>
+                    </div>    <div class="card bg-base-100 h-full border rounded-xl md:w-72 xl:w-full">
+                      <div class="card-body p-6">
+                        <h3 class="text-h2-clamp mb-2 text-h5-clamp font-medium md:text-h4-clamp xl:text-h5-clamp flex flex-col"> <span>1,000,000+</span>
+                          <span>Satisfied Customers</span>
+                          </h3>
+                        <p class="text-body text-secondary md:text-[20px]">Hundreds of thousands of customers trust us again and recommending our service.</p>
+                      </div>
+                    </div>    <div class="card bg-base-100 h-full border rounded-xl md:w-72 xl:w-full">
+                      <div class="card-body p-6">
+                        <h3 class="text-h2-clamp mb-2 text-h5-clamp font-medium md:text-h4-clamp xl:text-h5-clamp flex flex-col"> <span>16 Years</span>
+                          <span>in Auto Transport</span>
+                          </h3>
+                        <p class="text-body text-secondary md:text-[20px]">Since 2009 continuously improving service quality and setting new industry standards.</p>
+                      </div>
+                    </div>  </div>
+              </div>
+          
+          
+          </section>  <section class="section section-test flex flex-col items-center justify-center max-w-full mb-28 px-6 md:px-9 xl:px-20 px-6">
+              
+              <div class="w-full flex flex-col xl:flex-row mb-14 gap-x-36">
+                <p class="text-caption text-secondary mb-4 xl:mb-6 uppercase font-medium self-start xl:mb-0 align-middle">Equipment</p>
+              
+                <h2 class="text-h2-clamp font-medium uppercase w-full">Choose the Optimal Transport Option for Your Vehicle</h2>
+              </div>
+              
+          
+              <div class="section__content w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center md:grid-cols-12 md:gap-10">
+                  <div class="card bg-base-100 md:col-span-12 lg:col-span-5 h-full border border-secondary/30 lg:col-start-3">
+                    <figure>
+                       <img class="rounded-xl" src="./assets/images/equipment_open.png"
+                        width="786"  height="452"  alt="picture"  />
+                    </figure>
+                    <div class="card-body px-3 py-6">
+                      <h3 class="text-h2-clamp font-medium text-h4-clamp mb-3">
+                        Open Transport</h3>
+                      <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl text-body text-secondary mb-6">Economical and reliable way to transport standard vehicles. Your vehicle is transported on an open trailer with other vehicles, making this option the most affordable.</p>
+                      <div class="flex flex-col w-full">
+                        <ul class="list  list-disc px-6 text-h-5-clamp font-medium">
+                          <li>Affordable pricing</li>
+                          <li>Wide network of carriers</li>
+                          <li>Fast carrier assignment</li>
+                          <li>Perfect for most standard vehicles</li>
+                          </ul>
+                      </div>    <div class="card-actions ">
+                        <a href="/!#" class="link link-secondary text-accent px-0 text-h4-clamp font-medium underline underline-offset-2">
+                          <span class="">Choose Open Transport</span>
+                        </a>    </div>
+                    </div>
+                  </div>  <div class="card bg-base-100 md:col-span-12 lg:col-span-5 h-full border border-secondary/30 lg:col-start-8">
+                    <figure>
+                       <img class="rounded-xl" src="./assets/images/equipment_enclosed.png"
+                        width="786"  height="452"  alt="picture"  />
+                    </figure>
+                    <div class="card-body px-3 py-6">
+                      <h3 class="text-h2-clamp font-medium text-h4-clamp mb-3">
+                        Enclosed Transport</h3>
+                      <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl text-body text-secondary mb-6">Premium option providing maximum protection from weather conditions and road factors. Recommended for exclusive, expensive, and collectible vehicles.</p>
+                      <div class="flex flex-col w-full">
+                        <ul class="list  list-disc px-6 text-h-5-clamp font-medium">
+                          <li>Complete protection from weather conditions and road debris</li>
+                          <li>Additional security and privacy</li>
+                          <li>Individual securing for each vehicle</li>
+                          <li>Perfect for premium and rare vehicles</li>
+                          </ul>
+                      </div>    <div class="card-actions ">
+                        <a href="/!#" class="link link-secondary text-accent px-0 text-h4-clamp font-medium underline underline-offset-2">
+                          <span class="">Choose Enclosed Transport</span>
+                        </a>    </div>
+                    </div>
+                  </div>    </div>
+          
+          
+          </section>  <section class="section section-price flex flex-col items-center justify-center max-w-full mb-28 px-6 md:px-9 xl:px-20  px-6">
+          
+              <div class="section__content w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center md:grid-cols-12">
+                <div class="md:col-span-12 xl:row-span-2 xl:col-span-6 row-start-3 xl:row-start-1" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                     <img class="" src="./assets/images/price.png"
+                      width="880"  height="590"  alt="Auto Transport"  />
+                  </div>
+                <div class="md:col-span-12 xl:col-span-5 xl:col-start-7" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    
+                    <p class="text-caption text-secondary mb-4 xl:mb-6 uppercase font-medium, xl:mb-0">Price</p>
+                    <h2 class="text-h2-clamp md:text-h1-clamp">How Auto Transport Pricing is Determined</h2>
+                    
+                  </div>
+                <div class="md:col-span-10 md:col-start-2 xl:col-start-7 grid grid-cols-2 xl:grid-cols-3 gap-5 xl:col-span-6" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <div class="card bg-base-100  border border-secondary/30 xl:w-[280px] xl:max-h-[170px] h-full">
+                      <div class=" p-5 justify-between">
+                        <h3 class="text-h2-clamp text-[20px] font-medium mb-2">
+                          Vehicle Size and Weight</h3>
+                        <p class="text-body font-medium flex-grow-0 font-normal text-secondary md:text-h5-clamp xl:text-body">Larger and heavier vehicles require more space and fuel, affecting transport costs.</p>
+                      </div>
+                    </div>    <div class="card bg-base-100  border border-secondary/30 xl:w-[280px] xl:max-h-[170px] h-full">
+                      <div class=" p-5 justify-between">
+                        <h3 class="text-h2-clamp text-[20px] font-medium mb-2">
+                          Vehicle Condition</h3>
+                        <p class="text-body font-medium flex-grow-0 font-normal text-secondary md:text-h5-clamp xl:text-body">Inoperable vehicles require additional equipment and effort during loading.</p>
+                      </div>
+                    </div>    <div class="card bg-base-100  border border-secondary/30 xl:w-[280px] xl:max-h-[170px] h-full">
+                      <div class=" p-5 justify-between">
+                        <h3 class="text-h2-clamp text-[20px] font-medium mb-2">
+                          Seasonality</h3>
+                        <p class="text-body font-medium flex-grow-0 font-normal text-secondary md:text-h5-clamp xl:text-body">Summer months and holidays see increased demand affecting pricing.</p>
+                      </div>
+                    </div>    <div class="card bg-base-100  border border-secondary/30 xl:w-[280px] xl:max-h-[170px] h-full">
+                      <div class=" p-5 justify-between">
+                        <h3 class="text-h2-clamp text-[20px] font-medium mb-2">
+                          Transport Distance</h3>
+                        <p class="text-body font-medium flex-grow-0 font-normal text-secondary md:text-h5-clamp xl:text-body">Longer distances have higher total costs but lower per-mile rates.</p>
+                      </div>
+                    </div>    <div class="card bg-base-100  border border-secondary/30 xl:w-[280px] xl:max-h-[170px] h-full">
+                      <div class=" p-5 justify-between">
+                        <h3 class="text-h2-clamp text-[20px] font-medium mb-2">
+                          Transport Type</h3>
+                        <p class="text-body font-medium flex-grow-0 font-normal text-secondary md:text-h5-clamp xl:text-body">Open trailers are more affordable, while enclosed trailers offer premium protection.</p>
+                      </div>
+                    </div>    <div class="card bg-base-100 ">
+                      <div class="card-body p-0">
+                        <p class="text-h5-clamp text-accent text-center">Contact us for personalized pricing based on your specific requirements</p>    <button type="button"  class="btn btn-accent bg-gradient-to-t from-accent to-base-100/80 min-h-[118px] md:min-h-[78px] font-medium shadow-md shadow-primary/40">
+                          <span class="text-h5-clamp md:text-lead">Get Accurate Quote</span>
+                        </button>  </div>
+                    </div>  </div>
+              </div>
+          
+          
+          </section>  <section class="section section-promo flex flex-col items-center justify-center max-w-full mb-28 px-6 md:px-9 xl:px-20  px-6">
+              
+              <div class=" mb-14">
+              
+                <h2 class="text-h2-clamp font-medium mb-3 md:text-h1-clamp uppercase">Auto Transport to Any Location in the United States</h2>
+                <p class="font-sans text-body font-normal max-w-lg xl:max-w-3xl text-primary text-h5-clamp md:text-h4-clamp md:max-w-2xl xl:max-w-none">Our extensive carrier network covers all 50 states, including remote regions</p>
+              </div>
+              
+          
+              <div class="section__content w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center ">
+                <div class="md:col-span-8 md:col-start-2 xl:col-start-1 xl:col-span-12 w-full" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    
+                    <div class="">
+                    
+                      <h2 class="text-h2-clamp font-medium mb-3 md:text-h1-clamp uppercase">We Transport All Vehicle Types:</h2>
+                    </div>
+                    
+                  </div>
+                <div class="md:col-span-10 md:col-start-2 grid grid-cols-2 xl:grid-flow-col xl:col-span-8 xl:col-start-1 flex gap-6 mb-12" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    <div class="card bg-base-100 ">
+                      <figure>
+                         <img class=" rounded-2xl" src="./assets/images/promo_passenger_cars.png"
+                          width="280"  height="150"  alt="Passenger Cars Transport"  />
+                      </figure>
+                      <div class="card-body px-0 py-3">
+                        <h3 class="text-h2-clamp text-h5-clamp font-medium md:text-h4-clamp">
+                          Passenger Cars</h3>
+                      </div>
+                    </div>    <div class="card bg-base-100 ">
+                      <figure>
+                         <img class=" rounded-2xl" src="./assets/images/promo_suv_pickups.png"
+                          width="280"  height="150"  alt="Suvs &amp; Pickups Transport"  />
+                      </figure>
+                      <div class="card-body px-0 py-3">
+                        <h3 class="text-h2-clamp text-h5-clamp font-medium md:text-h4-clamp">
+                          SUVs &amp; Pickups</h3>
+                      </div>
+                    </div>    <div class="card bg-base-100 ">
+                      <figure>
+                         <img class=" rounded-2xl" src="./assets/images/promo_sportcars.png"
+                          width="280"  height="150"  alt="Sports Cars Transport"  />
+                      </figure>
+                      <div class="card-body px-0 py-3">
+                        <h3 class="text-h2-clamp text-h5-clamp font-medium md:text-h4-clamp">
+                          Sports Cars</h3>
+                      </div>
+                    </div>    <div class="card bg-base-100 ">
+                      <figure>
+                         <img class=" rounded-2xl" src="./assets/images/promo_motorcycle.png"
+                          width="280"  height="150"  alt="Mororcycle Transport"  />
+                      </figure>
+                      <div class="card-body px-0 py-3">
+                        <h3 class="text-h2-clamp text-h5-clamp font-medium md:text-h4-clamp">
+                          Motorcycles</h3>
+                      </div>
+                    </div>  </div>
+                <div class="md:col-span-10 md:col-start-2 xl:col-start-10 w-full xl:col-span-4 mb-12" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    
+                    <div class="">
+                    
+                      <h2 class="text-h2-clamp font-medium mb-3 uppercase md:mb-8">Popular Routes:</h2>
+                    </div>
+                    
+                    <div class="flex flex-col w-full">
+                      <ul class="list menu-vertical font-medium md:text-h4-clamp space-y-2">
+                        <li>New York — Los Angeles</li>
+                        <li>Boston — San Francisco</li>
+                        <li>Miami — Chicago</li>
+                        <li>Las Vegas — Washington</li>
+                        <li>Dallas — Seattle</li>
+                        </ul>
+                    </div>  </div>
+                <div class="md:col-span-12 md:w-screen xl:w-full xl:row-start-3 xl:col-span-12" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    
+                    <div class="flex flex-col xl:flex-row w-full bg-accent rounded-xl px-5 md:px-9 py-12 xl:p-8 justify-evenly">
+                    
+                      <h2 class="text-h2-clamp text-primary font-medium mb-6 uppercase">Special Seasonal Offers:</h2>
+                      <div class="description font-sans text-body font-normal max-w-lg xl:max-w-3xl flex flex-col text-h5-clamp xl:p-4 md:max-w-none md:w-5/6">
+                        <p class="text-primary font-medium text-h5-clamp md:text-h4-clamp xl:text-h3-clamp">Planning to winter in Florida or summer vacation in California?</p>
+                        <p class="text-primary font-medium text-h5-clamp md:text-h4-clamp xl:text-h3-clamp">Ask our advisors about special seasonal discounts for popular destinations.</p>
+                      </div>
+                    </div>
+                    
+                  </div>
+              </div>
+          
+          
+          </section>  <section class="section section-form flex flex-col items-center justify-center max-w-full mb-28 px-6 md:px-9 xl:px-20">
+              
+              
+          
+              <div class="section__content w-full grid grid-cols-1 md:grid-cols-12 gap-6 place-items-center xl:place-items-start">
+                <div class="md:col-span-12 xl:col-span-6 mb-28 xl:mb-12" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    
+                    <div class="">
+                    
+                      <h2 class="text-h2-clamp font-medium mb-16">Frequently Asked Questions</h2>
+                    </div>
+                    
+                    
+                    <div class="collapse bg-base-100 border border-base-300 text-primary collapse-arrow mb-[10px] md:mb-[20px]">
+                      <input type="radio" name="my-accordion-1" checked="checked" />
+                      <div class="collapse-title font-semibold">Can I leave personal items in my car during transport?</div>
+                      <div class="collapse-content text-sm flex flex-col justify-items-start gap-y-4">
+                        <p class="collapse-text">Yes, you can leave personal items up to 100 pounds in your vehicle&#x27;s trunk. However, we recommend minimizing personal items as they are not covered by the carrier&#x27;s insurance.</p>
+                        </div>
+                    </div>
+                    <div class="collapse bg-base-100 border border-base-300 text-primary collapse-arrow mb-[10px] md:mb-[20px]">
+                      <input type="radio" name="my-accordion-1" checked="checked" />
+                      <div class="collapse-title font-semibold">Is my vehicle insured during transport?</div>
+                      <div class="collapse-content text-sm flex flex-col justify-items-start gap-y-4">
+                        <p class="collapse-text">Yes, you can leave personal items up to 100 pounds in your vehicle&#x27;s trunk. However, we recommend minimizing personal items as they are not covered by the carrier&#x27;s insurance. Yes, you can leave personal items up to 100 pounds in your vehicle&#x27;s trunk. However, we recommend minimizing personal items as they are not covered by the carrier&#x27;s insurance. Yes, you can leave personal items up to 100 pounds in your vehicle&#x27;s trunk. However, we recommend minimizing personal items as they are not covered by the carrier&#x27;s insurance.</p>
+                        </div>
+                    </div>
+                    <div class="collapse bg-base-100 border border-base-300 text-primary collapse-arrow mb-[10px] md:mb-[20px]">
+                      <input type="radio" name="my-accordion-1" checked="checked" />
+                      <div class="collapse-title font-semibold">When will my vehicle be picked up?</div>
+                      <div class="collapse-content text-sm flex flex-col justify-items-start gap-y-4">
+                        <p class="collapse-text">Yes, you can leave personal items up to 100 pounds in your vehicle&#x27;s trunk. However, we recommend minimizing personal items as they are not covered by the carrier&#x27;s insurance.</p>
+                        </div>
+                    </div>
+                    <div class="collapse bg-base-100 border border-base-300 text-primary collapse-arrow mb-[10px] md:mb-[20px]">
+                      <input type="radio" name="my-accordion-1" checked="checked" />
+                      <div class="collapse-title font-semibold">Can I track my vehicle&#x27;s location?</div>
+                      <div class="collapse-content text-sm flex flex-col justify-items-start gap-y-4">
+                        <p class="collapse-text">Yes, you can leave personal items up to 100 pounds in your vehicle&#x27;s trunk. However, we recommend minimizing personal items as they are not covered by the carrier&#x27;s insurance.</p>
+                        </div>
+                    </div>
+                    <div class="collapse bg-base-100 border border-base-300 text-primary collapse-arrow mb-[10px] md:mb-[20px]">
+                      <input type="radio" name="my-accordion-1" checked="checked" />
+                      <div class="collapse-title font-semibold">What is door-to-door delivery?</div>
+                      <div class="collapse-content text-sm flex flex-col justify-items-start gap-y-4">
+                        <p class="collapse-text">Yes, you can leave personal items up to 100 pounds in your vehicle&#x27;s trunk. However, we recommend minimizing personal items as they are not covered by the carrier&#x27;s insurance.</p>
+                        </div>
+                    </div>
+                  </div>
+                <div class="md:col-span-12 xl:col-span-6 mb-28 xl:mb-12" >
+                    <!-- <div class="grid-overlay absolute inset-0"></div> -->
+                    
+                    <div class="">
+                    
+                      <h2 class="text-h2-clamp font-medium mb-16 xl:w-2/3 xl:mb-8">Book Auto Transport Service Right Now</h2>
+                    </div>
+                    
+                    
+                      <form id="contactForm"  action="/send-contact"  method="post" 
+                        class="flex flex-col md:flex-row bg-base-100 bg-gradient-to-br from-primary/60 to-secondary/40 rounded-xl p-[20px]">
+                        <div class="container bg-base-100 flex flex-col md:flex-row flex-wrap gap-2 justify-center">
+                          <div class="formText font-medium  p-6">
+                            <p>Trust vehicle transportation to RoyalTeam professionals. We guarantee safe, on-time delivery and complete information support at every stage.</p>
+                          </div>
+                          <div class="form-control  p-[20px]" data-field-name="" >
+                    
+                    
+                            
+                              <input id="" name="" type="" class="input input-bordered w-full bg-base-200  xl:w-xl" placeholder="Origin Address"  value="" />
+                            
+                            
+                          </div>
+                          <div class="form-control  p-[20px]" data-field-name="" >
+                    
+                    
+                            
+                              <input id="" name="" type="" class="input input-bordered w-full bg-base-200  xl:w-xl" placeholder="Destination Address"  value="" />
+                            
+                            
+                          </div>
+                          <div class="form-control  p-[20px]" data-field-name="" >
+                    
+                    
+                            
+                              <input id="" name="" type="" class="input input-bordered w-full   xl:w-xl" placeholder="Open Transport"  value="" />
+                            
+                            
+                          </div>
+                          <div class="form-control flex-row items-center flex-row-reverse gap-1 justify-between text-h-5-clamp p-[20px]" data-field-name="vehicle" >
+                    
+                            <label for="vehicle" class="label">
+                              <span class="label-text">Vehicle over 4000 lbs</span>
+                            </label>
+                    
+                            <input id="vehicle" name="vehicle" type="checkbox" class="checkbox checkbox rounded-sm  xl:w-xl"
+                              placeholder="Vehicle over 4000 lbs"  value="" />
+                    
+                    
+                          </div>
+                          <div class="form-control  w-full" data-field-name="" >
+                    
+                    
+                            <button type=""  class="btn btn-accent w-full bg-gradient-to-t from-accent to-base-100/80 md:col-start-2 text-lead font-medium h-20 shadow-md shadow-primary/40">
+                              <span class="">Submit Transport Request</span>
+                            </button>
+                    
+                          </div>
+                        </div>
+                      </form>  </div>
+              </div>
+          
+          
+          </section></main>      
+        <footer class="footer grid-cols-2 grid-rows-3 md:grid-rows-2 xl:grid-rows-1 xl:grid-cols-12 md:gap-x-40 bg-primary place-items-start text-base-100 p-10">
+          <!-- <aside class="flex gap-4">
+            <div class="flex flex-col ">
+              < class="">
+                </ul>
+            </div>  </aside>
+          <div class="flex flex-col ">
+            < class="">
+              </ul>
+          </div>  <div class="flex items-center">
+            <a class="footer grid-cols-2 grid-rows-3 md:grid-rows-2 xl:grid-rows-1 xl:grid-cols-12 md:gap-x-40 bg-primary place-items-start text-base-100 p-10" href="/"><img class="" src="/." alt=""
+                w="" h="">
+            </a>    <div class="flex flex-col ">
+              < class="">
+                </ul>
+            </div>  </div> -->
+            <nav  class="w-full col-span-2 md:col-span-1 xl:col-span-4" >
+              <h3 class="footer-title text-h3-clamp">RoyalTeam Auto Transport</h3>
+              <a href="/!#" class="link link-secondary no-underline">
+                <span class="">Direct carrier with 16 years of experience and $1M insurance coverage. Your trusted partner for safe auto transport nationwide.</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">© 2025 RoyalTeam Auto Transport. All rights reserved.</span>
+              </a></nav>  <nav  class="w-full col-span-1 xl:col-span-2" >
+              <h3 class="footer-title text-h3-clamp">Company</h3>
+              <a href="/!#" class="link link-secondary no-underline">
+                <span class="">About Us</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">How It Works</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">Equipment</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">Price</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">FAQ</span>
+              </a></nav>  <nav  class="w-full col-span-1 xl:col-span-2" >
+              <h3 class="footer-title text-h3-clamp">Services</h3>
+              <a href="/!#" class="link link-secondary no-underline">
+                <span class="">Open Transport</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">Enclosed Transport</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">Motorcycle Transport</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">Luxury Car Transport</span>
+              </a></nav>  <nav  class="col-span-2 md:col-span-1 xl:col-span-4" >
+              <h3 class="footer-title text-h3-clamp">Contact Info</h3>
+              <a href="/!#" class="link link-secondary no-underline">
+                <span class="">(888) 555-0123</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">info@royalteam.org</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">425 Main St, Suite 300 Schaumburg, IL 60173</span>
+              </a>  <a href="/!#" class="link link-secondary no-underline">
+                <span class="">Business Hours: Mon-Fri 8AM-8PM, Sat-Sun 9AM-6PM</span>
+              </a></nav></footer>    </div>
+    </div>
+     <div class="drawer-side z-10"> <!-- lg:!w-[35%] lg:h-1/2 lg:!absolute lg:left-[50%] xl:left-[63.3%] lg:top-[70px] -->
+      <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+      <ul class="bg-primary h-full w-full grid grid-flow-col"> <!-- lg:h-auto lg:w-[130%] xl:w-[79.8%] p-4 z-10 right-0-->
+        <!-- Sidebar content here -->
+      <ul  class="menu space-x-2 p-2 bg-base-100 rounded-box z-[1] mt-3 w-full  bg-primary" >
+        <li><a href="/!#" class="link link-secondaryno-underline">
+          <span class="text-base-100 font-medium">About</span>
+        </a></li>
+        <li><a href="/!#" class="link link-secondaryno-underline">
+          <span class="text-base-100 font-medium">How it work</span>
+        </a></li>
+        <li><a href="/!#" class="link link-secondaryno-underline">
+          <span class="text-base-100 font-medium">Equipment</span>
+        </a></li>
+        <li><a href="/!#" class="link link-secondaryno-underline">
+          <span class="text-base-100 font-medium">Price</span>
+        </a></li>
+        <li><a href="/!#" class="link link-secondaryno-underline">
+          <span class="text-base-100 font-medium">FAQ</span>
+        </a></li>
+      </ul>    <label for="my-drawer" class="btn btn-ghost w-20 justify-self-end drawer-button px-0 lg:hidden"><svg class="h-20 w-20 relative right-0 top-6" width="40" height="40" viewBox="0 0 40 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <use xlink:href="./assets/spritemap.135988aa.svg#sprite-burgerMenu"></use>
+      </svg></label>    </ul>
+    </div>
+  </div>  </div>
+  <script  src="./assets/index-BXJEm4Tx.js"></script>
+
+</body>
+
+</html>

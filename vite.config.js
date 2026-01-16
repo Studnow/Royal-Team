@@ -58,6 +58,7 @@ function generateJsonPlugin() {
 
 export default defineConfig({
   base: isProduction ? "./" : "/", // for deploy to gh-pages base = "./"
+  preview: "RoyalTeam",
   css: {
     devSourcemap: true,
   },
@@ -73,7 +74,7 @@ export default defineConfig({
     // emit manifest so PHP can find the hashed files
     manifest: true,
     // outDir: "Vite3UI",
-    outDir: "dist",
+    outDir: "RoyalTeam",
     emptyOutDir: true,
     // ssr: false,
     // don't base64 images

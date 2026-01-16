@@ -73,7 +73,7 @@ export const sectionsMap = {
     overlay: false,
     style: {
       ...sectionStyles.wide,
-      sectionClass: sectionStyles.wide.sectionClass + " xl:px-0 lg:py-8",
+      sectionClass: sectionStyles.wide.sectionHeroClass,
     },
     colClass: ["col-span-1 md:col-span-12 w-full"],
     colContainer: true,
@@ -480,7 +480,8 @@ export const sectionsMap = {
           title: priceCard.title,
           description: priceCard.description,
           titleClass: heading.titleClass + " text-[20px] font-medium mb-2",
-          descriptionClass: headingSlideCard.descriptionClass + " font-normal text-secondary md:text-h5-clamp xl:text-body",
+          descriptionClass:
+            headingSlideCard.descriptionClass + " font-normal text-secondary md:text-h5-clamp xl:text-body",
         },
         cardComponents:
           index !== priceData.priceCards.length - 1
