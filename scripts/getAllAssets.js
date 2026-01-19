@@ -55,7 +55,79 @@ function sleep(ms) {
   return new Promise((res) => setTimeout(res, ms));
 }
 
-async function fetchWithRetry(url, options = {}, retries = DEFAULT_RETRIES, timeout = DEFAULT_TIMEOUT) {
+// недостающие функции
+
+function findPage(document, pageName) {
+  if (!document?.children || !Array.isArray(document.children)) {
+    console.warn("Документ не содержит страниц");
+    return null;
+  }
+
+  if (!pageName) {
+    return document.children[0] || null; // первая страница по умолчанию
+  }
+
+  // Ищем точное совпадение имени (с учётом эмодзи и регистра)
+  return (
+    document.children.find(
+      (page) => String(page.name).trim() === String(pageName).trim(),
+    ) || null
+  );
+}
+
+// Вспомогательная: нормализация имени секции в slug (lowercase, без спецсимволов)
+function normalizeSectionKey(raw) {
+  if (!raw) return null;
+  return String(raw)
+    .trim()
+    .replace(/[^A-Za-z0-9\u0400-\u04FF_]+/g, "") // оставляем буквы, цифры, кириллицу, _
+    .replace(/_+/g, "_")
+    .replace(/^_|_$/g, "")
+    .toLowerCase();
+}
+
+// Вспомогательная: проверка, является ли имя техническим/ненужным
+function isTechnicalName(name) {
+  if (!name) return true;
+  const trimmed = String(name).trim();
+  if (trimmed.length === 0 || trimmed.length <= 2) return true;
+
+  const techPatterns = [
+    /^(rect|rectangle|frame|group|instance|component|vector|slice|boolean|line|oval|button|image|layer|tile|grid|path|shape|variant|property)\b/i,
+    /^(layer|image|rectangle|rect|oval|group|frame)\s*\d+$/i,
+    /^\d+$/,
+  ];
+
+  return techPatterns.some((pattern) => pattern.test(trimmed));
+}
+
+function sanitizeFileName(name) {
+  if (!name) return "unnamed";
+
+  return String(name)
+    .trim()
+    .replace(/[\/\\?%*:|"<> ]+/g, "_") // запрещённые символы и пробелы → _
+    .replace(/_+/g, "_") // несколько _ подряд → один _
+    .replace(/^_|_$/g, "") // убираем _ в начале и конце
+    .replace(/[^\x00-\x7F]+/g, "_"); // не-ASCII (эмодзи, кириллица и т.д.) → _
+}
+// Дедупликация по id
+function dedupeById(arr) {
+  const seen = new Set();
+  return arr.filter((item) => {
+    if (seen.has(item.id)) return false;
+    seen.add(item.id);
+    return true;
+  });
+}
+// конец недостающих функций
+
+async function fetchWithRetry(
+  url,
+  options = {},
+  retries = DEFAULT_RETRIES,
+  timeout = DEFAULT_TIMEOUT,
+) {
   let attempt = 0;
   const backoffBase = 500;
 
@@ -63,14 +135,18 @@ async function fetchWithRetry(url, options = {}, retries = DEFAULT_RETRIES, time
     attempt++;
     try {
       const fetchPromise = fetch(url, options);
-      const timeoutPromise = new Promise((_, rej) => setTimeout(() => rej(new Error(`timeout ${timeout}ms`)), timeout));
+      const timeoutPromise = new Promise((_, rej) =>
+        setTimeout(() => rej(new Error(`timeout ${timeout}ms`)), timeout),
+      );
       const res = await Promise.race([fetchPromise, timeoutPromise]);
 
       if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
 
       return res;
     } catch (err) {
-      console.warn(`⚠️ Fetch failed (attempt ${attempt}) ${url} — ${err.message}`);
+      console.warn(
+        `⚠️ Fetch failed (attempt ${attempt}) ${url} — ${err.message}`,
+      );
       if (attempt > retries) throw err;
       const wait = backoffBase * attempt;
       console.warn(`   retrying in ${wait}ms...`);
@@ -114,7 +190,9 @@ function extractTextFromPage(container, excludeNames = []) {
     if (["FRAME", "SECTION", "COMPONENT_SET"].includes(node.type)) {
       const name = node.name?.trim();
       const key =
-        name && !isTechnicalName(name) && !excludeNames.includes(normalizeSectionKey(name))
+        name &&
+        !isTechnicalName(name) &&
+        !excludeNames.includes(normalizeSectionKey(name))
           ? normalizeSectionKey(name) || "unnamed"
           : null;
 
@@ -155,13 +233,77 @@ function extractTextFromPage(container, excludeNames = []) {
 }
 
 // Сбор всех изображений и иконок (с id узлов)
+
+//old
+
+// function collectAssets(container, excludeNames = []) {
+//   const images = [];
+//   const vectors = [];
+
+//   function traverse(node, currentSection = null) {
+//     let section = currentSection;
+
+//     if (["FRAME", "SECTION", "COMPONENT_SET"].includes(node.type)) {
+//       const name = node.name?.trim();
+//       if (
+//         name &&
+//         !isTechnicalName(name) &&
+//         !excludeNames.includes(normalizeSectionKey(name))
+//       ) {
+//         section = normalizeSectionKey(name) || "unnamed";
+//       }
+//     }
+
+//     // Растровые изображения
+//     if (node.fills?.length) {
+//       node.fills.forEach((fill) => {
+//         if (fill.type === "IMAGE" && fill.imageHash) {
+//           images.push({
+//             id: node.id,
+//             hash: fill.imageHash,
+//             section: section || "misc",
+//             name: sanitizeFileName(
+//               `${section || "misc"}_${node.name || "unnamed"}`,
+//             ),
+//           });
+//         }
+//       });
+//     }
+
+//     // Векторы (иконки)
+//     if (node.type === "VECTOR") {
+//       vectors.push({
+//         id: node.id,
+//         section: section || "misc",
+//         name: sanitizeFileName(
+//           `${section || "misc"}_${node.name || "unnamed"}`,
+//         ),
+//       });
+//     }
+
+//     if (node.children) {
+//       node.children.forEach((child) => traverse(child, section));
+//     }
+//   }
+
+//   traverse(container);
+//   console.log(`Найдено IMAGE-fills: ${images.length}`);
+//   console.log(`Найдено VECTOR-узлов: ${vectors.length}`);
+//   return { images: dedupeById(images), vectors: dedupeById(vectors) };
+// }
+
+// new
+
 function collectAssets(container, excludeNames = []) {
   const images = [];
   const vectors = [];
+  const seenImageHashes = new Set();
+  const seenVectorIds = new Set();
 
   function traverse(node, currentSection = null) {
     let section = currentSection;
 
+    // Определяем секцию
     if (["FRAME", "SECTION", "COMPONENT_SET"].includes(node.type)) {
       const name = node.name?.trim();
       if (name && !isTechnicalName(name) && !excludeNames.includes(normalizeSectionKey(name))) {
@@ -169,36 +311,55 @@ function collectAssets(container, excludeNames = []) {
       }
     }
 
-    // Растровые изображения
-    if (node.fills?.length) {
-      node.fills.forEach((fill) => {
-        if (fill.type === "IMAGE" && fill.imageHash) {
+    // 1. Растровые изображения — любой fill IMAGE
+    if (node.fills?.some(f => f.type === "IMAGE" && f.imageHash)) {
+      node.fills.forEach(fill => {
+        if (fill.type === "IMAGE" && fill.imageHash && !seenImageHashes.has(fill.imageHash)) {
+          seenImageHashes.add(fill.imageHash);
           images.push({
             id: node.id,
             hash: fill.imageHash,
             section: section || "misc",
-            name: sanitizeFileName(`${section || "misc"}_${node.name || "unnamed"}`),
+            name: sanitizeFileName(`${section || "misc"}_${node.name || "unnamed_image"}`)
           });
         }
       });
     }
 
-    // Векторы (иконки)
-    if (node.type === "VECTOR") {
+    // 2. Дополнительно: если узел сам экспортируется как изображение (RECTANGLE, ELLIPSE и т.д.)
+    if (["RECTANGLE", "ELLIPSE", "INSTANCE", "FRAME"].includes(node.type) && node.visible !== false) {
+      if (!seenImageHashes.has(node.id)) {  // используем id как уникальный ключ
+        seenImageHashes.add(node.id);
+        images.push({
+          id: node.id,
+          hash: node.id,
+          section: section || "misc",
+          name: sanitizeFileName(`${section || "misc"}_${node.name || "unnamed"}`)
+        });
+      }
+    }
+
+    // 3. Векторы — любой VECTOR
+    if (node.type === "VECTOR" && !seenVectorIds.has(node.id)) {
+      seenVectorIds.add(node.id);
       vectors.push({
         id: node.id,
         section: section || "misc",
-        name: sanitizeFileName(`${section || "misc"}_${node.name || "unnamed"}`),
+        name: sanitizeFileName(`${section || "misc"}_${node.name || "icon"}`)
       });
     }
 
     if (node.children) {
-      node.children.forEach((child) => traverse(child, section));
+      node.children.forEach(child => traverse(child, section));
     }
   }
 
   traverse(container);
-  return { images: dedupeById(images), vectors: dedupeById(vectors) };
+
+  console.log(`Найдено потенциальных изображений: ${images.length}`);
+  console.log(`Найдено векторных узлов: ${vectors.length}`);
+
+  return { images, vectors };
 }
 
 // Батчинг id для одного запроса
@@ -210,30 +371,114 @@ function chunkArray(array, size = 50) {
   return chunks;
 }
 
+// old
+// async function downloadBatchedImages(assets, dir, format = "png") {
+//   const batches = chunkArray(assets, 50);
+//   console.log(
+//     `Скачивание ${assets.length} изображений (${batches.length} батчей по ${format})`,
+//   );
+
+//   for (const batch of batches) {
+//     const ids = batch.map((a) => a.id).join(",");
+//     const url = `https://api.figma.com/v1/images/${keys.FILE}?ids=${ids}&format=${format}`;
+
+//     try {
+//       const res = await fetchWithRetry(url, {
+//         headers: { "X-Figma-Token": keys.API },
+//       });
+//       const data = await res.json();
+
+//       for (const item of batch) {
+//         const imgUrl = data.images?.[item.id];
+//         if (imgUrl) {
+//           await downloadFile(imgUrl, path.join(dir, `${item.name}.${format}`));
+//         } else {
+//           console.log(`Батч ids: ${batch.map((a) => a.id).join(", ")}`);
+//           console.log(
+//             `Получено от Figma: ${Object.keys(data.images || {}).length} URL`,
+//           );
+//           console.warn(`Пропущен узел ${item.id} — Figma не вернул URL`);
+//         }
+//       }
+//     } catch (err) {
+//       console.error(`Ошибка батча: ${err.message}`);
+//     }
+//   }
+// }
+
 async function downloadBatchedImages(assets, dir, format = "png") {
+  if (!assets.length) return;
+
   const batches = chunkArray(assets, 50);
   console.log(`Скачивание ${assets.length} изображений (${batches.length} батчей по ${format})`);
 
-  for (const batch of batches) {
-    const ids = batch.map((a) => a.id).join(",");
+  for (let i = 0; i < batches.length; i++) {
+    const batch = batches[i];
+    const ids = batch.map(a => a.id).join(",");
     const url = `https://api.figma.com/v1/images/${keys.FILE}?ids=${ids}&format=${format}`;
 
-    try {
-      const res = await fetchWithRetry(url, {
-        headers: { "X-Figma-Token": keys.API },
-      });
-      const data = await res.json();
+    let data;
+    let retryCount = 0;
 
+    while (!data && retryCount < 5) {
+      retryCount++;
+
+      try {
+        const res = await fetchWithRetry(url, {
+          headers: { "X-Figma-Token": keys.API }
+        });
+
+        // Если 429 — читаем Retry-After и показываем время до сброса
+        if (res.status === 429) {
+          const retryAfterSec = parseInt(res.headers.get("Retry-After") || "60", 10);
+          const now = new Date();
+          const resetTime = new Date(now.getTime() + retryAfterSec * 1000);
+
+          console.warn(
+            `[${now.toLocaleString()}] 429 Rate limit (батч ${i+1}/${batches.length}). ` +
+            `Лимит сбросится через ${retryAfterSec} сек ≈ ${Math.round(retryAfterSec / 60)} мин ` +
+            `(примерно в ${resetTime.toLocaleTimeString()})`
+          );
+
+          await sleep(retryAfterSec * 1000);
+          continue;
+        }
+
+        data = await res.json();
+        const now = new Date();
+        console.log(
+          `[${now.toLocaleString()}] Батч ${i+1}/${batches.length}: ` +
+          `получено ${Object.keys(data.images || {}).length} URL`
+        );
+
+      } catch (err) {
+        const now = new Date();
+        console.error(`[${now.toLocaleString()}] Ошибка батча ${i+1} (попытка ${retryCount}): ${err.message}`);
+        await sleep(60000); // 1 минута паузы при любой другой ошибке
+      }
+    }
+
+    if (data) {
       for (const item of batch) {
         const imgUrl = data.images?.[item.id];
         if (imgUrl) {
           await downloadFile(imgUrl, path.join(dir, `${item.name}.${format}`));
         } else {
-          console.warn(`Не найдено изображение для id ${item.id}`);
+          console.warn(`Пропущен ${item.id} — нет URL`);
         }
       }
-    } catch (err) {
-      console.error(`Ошибка батча: ${err.message}`);
+    } else {
+      console.error(`Батч ${i+1} провален после 5 попыток`);
+    }
+
+    // Пауза между батчами даже при успехе
+    if (i < batches.length - 1) {
+      const pauseSec = 15;
+      const now = new Date();
+      console.log(
+        `[${now.toLocaleString()}] Пауза ${pauseSec} сек перед батчем ${i+2}...`
+      );
+      await sleep(pauseSec * 1000);
     }
   }
 }
@@ -302,7 +547,10 @@ const existingHashes = new Set();
     const pageExclude = [...TOP_EXCLUDE, normalizeSectionKey(pageName)];
 
     for (const container of containers) {
-      const excludeNames = [...pageExclude, normalizeSectionKey(container.name)];
+      const excludeNames = [
+        ...pageExclude,
+        normalizeSectionKey(container.name),
+      ];
 
       if (doText) {
         const sections = extractTextFromPage(container, excludeNames);
@@ -319,7 +567,11 @@ const existingHashes = new Set();
 
   if (doText) {
     const transformed = { text: allSectionsText };
-    fs.writeFileSync("assets/extractedText.js", `export default ${JSON.stringify(transformed, null, 2)};`, "utf8");
+    fs.writeFileSync(
+      "assets/extractedText.js",
+      `export default ${JSON.stringify(transformed, null, 2)};`,
+      "utf8",
+    );
     console.log("Текст сохранён → assets/extractedText.js");
   }
 
