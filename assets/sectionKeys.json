@@ -1,5 +1,14 @@
 {
   "макет": [
+    "cover",
+    "equipment",
+    "reviews",
+    "footer",
+    "faq",
+    "extra",
+    "price",
+    "howitwork",
+    "aboutus",
     "misc"
   ]
 }

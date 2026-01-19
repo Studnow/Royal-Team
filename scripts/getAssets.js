@@ -101,6 +101,20 @@ async function loadFigmaData() {
     console.log("📂 Чтение локального файла Figma:", INPUT_FILE);
     const content = fs.readFileSync(INPUT_FILE, "utf8");
     const data = JSON.parse(content);
+    // Восстанавливаем цепочку parent рекурсивно
+    function restoreParents(node, parent = null) {
+      if (!node) return;
+      node.parent = parent; // Устанавливаем ссылку на родителя
+      if (node.children && Array.isArray(node.children)) {
+        for (const child of node.children) {
+          restoreParents(child, node); // Рекурсия для детей
+        }
+      }
+    }
+
+    // Вызываем для корня документа
+    restoreParents(data.document, null);
+
     console.log("✓ Файл успешно загружен");
     return data;
   } catch (err) {
@@ -235,26 +249,90 @@ function extractIconFromNode(node, excludeNames = []) {
 }
 
 // recursive extract for text
-function extractTextFromPage(node, excludeNames = []) {
-  let sections = {};
-  const stack = [node];
+// function extractTextFromPage(node, excludeNames = []) {
+//   let sections = {};
+//   const stack = [node];
 
-  while (stack.length > 0) {
-    const current = stack.pop();
-    const texts = extractTextFromNode(current, excludeNames);
-    for (const { section, text } of texts) {
-      if (!sections[section]) sections[section] = [];
-      sections[section].push(text);
+//   while (stack.length > 0) {
+//     const current = stack.pop();
+//     const texts = extractTextFromNode(current, excludeNames);
+//     for (const { section, text } of texts) {
+//       if (!sections[section]) sections[section] = [];
+//       sections[section].push(text);
+//     }
+
+//     if (current.children) {
+//       for (const child of current.children) {
+//         stack.push(child);
+//       }
+//     }
+//   }
+
+//   return sections;
+// }
+
+// remove doubles
+
+function extractTextFromPage(container, excludeNames = []) {
+  const sections = {};
+
+  function traverse(node) {
+    // Если это подходящий контейнер — собираем текст только из его прямых потомков
+    if (["FRAME", "SECTION", "COMPONENT_SET"].includes(node.type)) {
+      const name = node.name?.trim();
+      const key =
+        name && !isTechnicalName(name) && !excludeNames.includes(normalizeSectionKey(name))
+          ? normalizeSectionKey(name) || "unnamed"
+          : null;
+
+      if (key) {
+        // Собираем только текст внутри этого контейнера
+        collectTextFromChildren(node, key);
+        return; // НЕ идём глубже — текст уже собран на этом уровне
+      }
     }
 
-    if (current.children) {
-      for (const child of current.children) {
-        stack.push(child);
+    // Если не контейнер — продолжаем обход
+    if (node.children) {
+      for (const child of node.children) {
+        traverse(child);
       }
     }
   }
 
-  return sections;
+  function collectTextFromChildren(node, sectionKey) {
+    const stack = [node];
+    while (stack.length) {
+      const current = stack.pop();
+
+      if (current.type === "TEXT" && current.characters) {
+        const text = current.characters.trim();
+        if (text && text.length > 1) {
+          if (!sections[sectionKey]) sections[sectionKey] = new Set();
+          sections[sectionKey].add(text);
+        }
+      }
+
+      if (current.children) {
+        stack.push(...current.children);
+      }
+    }
+  }
+
+  traverse(container);
+
+  // Преобразование Set → массив + сортировка
+  const result = {};
+  for (const [key, set] of Object.entries(sections)) {
+    result[key] = [...set].sort((a, b) => a.localeCompare(b));
+  }
+
+  // Если остались тексты вне всех контейнеров
+  if (!Object.keys(result).length) {
+    result.misc = [];
+  }
+
+  return result;
 }
 
 // recursive extract for images
@@ -320,7 +398,6 @@ function transformSectionsToJS(sections) {
   for (const [section, texts] of Object.entries(sections)) {
     transformed[section] = {
       text: texts,
-      images: [], // placeholder
     };
   }
   return transformed;
