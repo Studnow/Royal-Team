@@ -7,7 +7,7 @@ import path from "path";
 import fetch from "node-fetch";
 import { fileURLToPath } from "url";
 
-const RAW_FILE = path.resolve(__dirname, "../cache/figma-" + FILE_KEY + "-latest.json");
+const RAW_FILE = path.resolve(__dirname, "../cache/g-msk/figma-" + FILE_KEY + "-latest.json");
 
 // Коррекция пути для keys.js и __dirname
 const __filename = fileURLToPath(import.meta.url);

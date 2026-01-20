@@ -68,11 +68,7 @@ function findPage(document, pageName) {
   }
 
   // Ищем точное совпадение имени (с учётом эмодзи и регистра)
-  return (
-    document.children.find(
-      (page) => String(page.name).trim() === String(pageName).trim(),
-    ) || null
-  );
+  return document.children.find((page) => String(page.name).trim() === String(pageName).trim()) || null;
 }
 
 // Вспомогательная: нормализация имени секции в slug (lowercase, без спецсимволов)
@@ -121,13 +117,41 @@ function dedupeById(arr) {
   });
 }
 // конец недостающих функций
+// old
+// async function fetchWithRetry(
+//   url,
+//   options = {},
+//   retries = DEFAULT_RETRIES,
+//   timeout = DEFAULT_TIMEOUT,
+// ) {
+//   let attempt = 0;
+//   const backoffBase = 500;
 
-async function fetchWithRetry(
-  url,
-  options = {},
-  retries = DEFAULT_RETRIES,
-  timeout = DEFAULT_TIMEOUT,
-) {
+//   while (attempt <= retries) {
+//     attempt++;
+//     try {
+//       const fetchPromise = fetch(url, options);
+//       const timeoutPromise = new Promise((_, rej) =>
+//         setTimeout(() => rej(new Error(`timeout ${timeout}ms`)), timeout),
+//       );
+//       const res = await Promise.race([fetchPromise, timeoutPromise]);
+
+//       if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+
+//       return res;
+//     } catch (err) {
+//       console.warn(
+//         `⚠️ Fetch failed (attempt ${attempt}) ${url} — ${err.message}`,
+//       );
+//       if (attempt > retries) throw err;
+//       const wait = backoffBase * attempt;
+//       console.warn(`   retrying in ${wait}ms...`);
+//       await sleep(wait);
+//     }
+//   }
+// }
+
+async function fetchWithRetry(url, options = {}, retries = DEFAULT_RETRIES, timeout = DEFAULT_TIMEOUT) {
   let attempt = 0;
   const backoffBase = 500;
 
@@ -135,18 +159,37 @@ async function fetchWithRetry(
     attempt++;
     try {
       const fetchPromise = fetch(url, options);
-      const timeoutPromise = new Promise((_, rej) =>
-        setTimeout(() => rej(new Error(`timeout ${timeout}ms`)), timeout),
-      );
+      const timeoutPromise = new Promise((_, rej) => setTimeout(() => rej(new Error(`timeout ${timeout}ms`)), timeout));
       const res = await Promise.race([fetchPromise, timeoutPromise]);
 
-      if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+      if (res.status === 429) {
+        // ← Блок для отладки, показывает заголовки ответа API
+        // console.log(`429 Too Many Requests — заголовки ответа:`);
+        // for (const [key, value] of res.headers.entries()) {
+        //   console.log(`  ${key}: ${value}`);
+        // }
+
+        let retryAfterSec = parseInt(res.headers.get("Retry-After") || "300", 10);
+        const now = new Date();
+        const resetTime = new Date(now.getTime() + retryAfterSec * 1000);
+
+        console.warn(
+          `[${now.toLocaleString()}] 429 Rate limit. ` +
+            `Сброс через ${retryAfterSec} сек ≈ ${Math.round(retryAfterSec / 60)} мин ` +
+            `(примерно в ${resetTime.toLocaleString()})`,
+        );
+
+        await sleep(retryAfterSec * 1000);
+        continue; // повторяем запрос после ожидания
+      }
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status} ${res.statusText}`);
+      }
 
       return res;
     } catch (err) {
-      console.warn(
-        `⚠️ Fetch failed (attempt ${attempt}) ${url} — ${err.message}`,
-      );
+      console.warn(`⚠️ Fetch failed (attempt ${attempt}) ${url} — ${err.message}`);
       if (attempt > retries) throw err;
       const wait = backoffBase * attempt;
       console.warn(`   retrying in ${wait}ms...`);
@@ -190,9 +233,7 @@ function extractTextFromPage(container, excludeNames = []) {
     if (["FRAME", "SECTION", "COMPONENT_SET"].includes(node.type)) {
       const name = node.name?.trim();
       const key =
-        name &&
-        !isTechnicalName(name) &&
-        !excludeNames.includes(normalizeSectionKey(name))
+        name && !isTechnicalName(name) && !excludeNames.includes(normalizeSectionKey(name))
           ? normalizeSectionKey(name) || "unnamed"
           : null;
 
@@ -303,7 +344,6 @@ function collectAssets(container, excludeNames = []) {
   function traverse(node, currentSection = null) {
     let section = currentSection;
 
-    // Определяем секцию
     if (["FRAME", "SECTION", "COMPONENT_SET"].includes(node.type)) {
       const name = node.name?.trim();
       if (name && !isTechnicalName(name) && !excludeNames.includes(normalizeSectionKey(name))) {
@@ -311,66 +351,63 @@ function collectAssets(container, excludeNames = []) {
       }
     }
 
-    // 1. Растровые изображения — любой fill IMAGE
-    if (node.fills?.some(f => f.type === "IMAGE" && f.imageHash)) {
-      node.fills.forEach(fill => {
+    // Растровые: IMAGE fill или RECTANGLE/ELLIPSE/INSTANCE
+    if (node.fills?.some((f) => f.type === "IMAGE" && f.imageHash)) {
+      node.fills.forEach((fill) => {
         if (fill.type === "IMAGE" && fill.imageHash && !seenImageHashes.has(fill.imageHash)) {
           seenImageHashes.add(fill.imageHash);
           images.push({
             id: node.id,
             hash: fill.imageHash,
             section: section || "misc",
-            name: sanitizeFileName(`${section || "misc"}_${node.name || "unnamed_image"}`)
+            name: sanitizeFileName(`${section || "misc"}_${node.name || "image"}`),
           });
         }
       });
+    } else if (
+      ["RECTANGLE", "ELLIPSE", "INSTANCE"].includes(node.type) &&
+      !isTechnicalName(node.name) &&
+      !seenImageHashes.has(node.id)
+    ) {
+      seenImageHashes.add(node.id);
+      images.push({
+        id: node.id,
+        hash: node.id,
+        section: section || "misc",
+        name: sanitizeFileName(`${section || "misc"}_${node.name || "rect"}`),
+      });
     }
 
-    // 2. Дополнительно: если узел сам экспортируется как изображение (RECTANGLE, ELLIPSE и т.д.)
-    if (["RECTANGLE", "ELLIPSE", "INSTANCE", "FRAME"].includes(node.type) && node.visible !== false) {
-      if (!seenImageHashes.has(node.id)) {  // используем id как уникальный ключ
-        seenImageHashes.add(node.id);
-        images.push({
-          id: node.id,
-          hash: node.id,
-          section: section || "misc",
-          name: sanitizeFileName(`${section || "misc"}_${node.name || "unnamed"}`)
-        });
-      }
-    }
-
-    // 3. Векторы — любой VECTOR
-    if (node.type === "VECTOR" && !seenVectorIds.has(node.id)) {
+    // Векторы: VECTOR
+    if (node.type === "VECTOR" && !isTechnicalName(node.name) && !seenVectorIds.has(node.id)) {
       seenVectorIds.add(node.id);
       vectors.push({
         id: node.id,
         section: section || "misc",
-        name: sanitizeFileName(`${section || "misc"}_${node.name || "icon"}`)
+        name: sanitizeFileName(`${section || "misc"}_${node.name || "icon"}`),
       });
     }
 
     if (node.children) {
-      node.children.forEach(child => traverse(child, section));
+      node.children.forEach((child) => traverse(child, section));
     }
   }
 
   traverse(container);
 
-  console.log(`Найдено потенциальных изображений: ${images.length}`);
-  console.log(`Найдено векторных узлов: ${vectors.length}`);
+  console.log(`Найдено изображений после фильтра: ${images.length}`);
+  console.log(`Найдено векторов после фильтра: ${vectors.length}`);
 
   return { images, vectors };
 }
 
-// Батчинг id для одного запроса
-function chunkArray(array, size = 50) {
+function chunkArray(array, size = 5) {
   const chunks = [];
   for (let i = 0; i < array.length; i += size) {
     chunks.push(array.slice(i, i + size));
   }
   return chunks;
 }
-
 // old
 // async function downloadBatchedImages(assets, dir, format = "png") {
 //   const batches = chunkArray(assets, 50);
@@ -407,14 +444,24 @@ function chunkArray(array, size = 50) {
 // }
 
 async function downloadBatchedImages(assets, dir, format = "png") {
-  if (!assets.length) return;
+  const CACHE_FILE = path.resolve(__dirname, "../cache/downloaded-assets.json");
+  console.log("Кеш скачанных файлов: " + (fs.existsSync(CACHE_FILE) ? "найден" : "не найден, начнём с нуля"));
+  let downloadedCache = {};
+  if (fs.existsSync(CACHE_FILE)) {
+    downloadedCache = JSON.parse(fs.readFileSync(CACHE_FILE, "utf8"));
+  }
+  const downloadedIds = new Set(downloadedCache[format] || []);
+  const toDownload = assets.filter((a) => !downloadedIds.has(a.id));
+  if (!toDownload.length) return console.log(`Все ${format} уже скачаны`);
+  const batches = chunkArray(toDownload, 5);
+  // if (!assets.length) return;
 
-  const batches = chunkArray(assets, 50);
+  // const batches = chunkArray(assets, 5); // уменьшил до 20 для безопасности
   console.log(`Скачивание ${assets.length} изображений (${batches.length} батчей по ${format})`);
 
   for (let i = 0; i < batches.length; i++) {
     const batch = batches[i];
-    const ids = batch.map(a => a.id).join(",");
+    const ids = batch.map((a) => a.id).join(",");
     const url = `https://api.figma.com/v1/images/${keys.FILE}?ids=${ids}&format=${format}`;
 
     let data;
@@ -422,39 +469,33 @@ async function downloadBatchedImages(assets, dir, format = "png") {
 
     while (!data && retryCount < 5) {
       retryCount++;
-
       try {
         const res = await fetchWithRetry(url, {
-          headers: { "X-Figma-Token": keys.API }
+          headers: { "X-Figma-Token": keys.API },
         });
 
-        // Если 429 — читаем Retry-After и показываем время до сброса
         if (res.status === 429) {
+          console.log(`429 заголовки ответа:`);
+          for (const [key, value] of res.headers.entries()) {
+            console.log(`  ${key}: ${value}`);
+          }
           const retryAfterSec = parseInt(res.headers.get("Retry-After") || "60", 10);
           const now = new Date();
           const resetTime = new Date(now.getTime() + retryAfterSec * 1000);
-
           console.warn(
-            `[${now.toLocaleString()}] 429 Rate limit (батч ${i+1}/${batches.length}). ` +
-            `Лимит сбросится через ${retryAfterSec} сек ≈ ${Math.round(retryAfterSec / 60)} мин ` +
-            `(примерно в ${resetTime.toLocaleTimeString()})`
+            `[${now.toLocaleString()}] 429 (батч ${i + 1}). Сброс через ${retryAfterSec} сек (${Math.round(retryAfterSec / 60)} мин), примерно в ${resetTime.toLocaleString()}`,
           );
-
           await sleep(retryAfterSec * 1000);
           continue;
         }
 
         data = await res.json();
-        const now = new Date();
         console.log(
-          `[${now.toLocaleString()}] Батч ${i+1}/${batches.length}: ` +
-          `получено ${Object.keys(data.images || {}).length} URL`
+          `[${new Date().toLocaleString()}] Батч ${i + 1}/${batches.length}: ${Object.keys(data.images || {}).length} URL`,
         );
-
       } catch (err) {
-        const now = new Date();
-        console.error(`[${now.toLocaleString()}] Ошибка батча ${i+1} (попытка ${retryCount}): ${err.message}`);
-        await sleep(60000); // 1 минута паузы при любой другой ошибке
+        console.error(`[${new Date().toLocaleString()}] Ошибка батча ${i + 1} (попытка ${retryCount}): ${err.message}`);
+        await sleep(60000);
       }
     }
 
@@ -462,30 +503,44 @@ async function downloadBatchedImages(assets, dir, format = "png") {
       for (const item of batch) {
         const imgUrl = data.images?.[item.id];
         if (imgUrl) {
-          await downloadFile(imgUrl, path.join(dir, `${item.name}.${format}`));
+          const res = await fetchWithRetry(imgUrl);
+          const arrayBuffer = await res.arrayBuffer(); // убрал buffer(), чтобы избежать deprecation
+          const buffer = Buffer.from(arrayBuffer);
+          const hash = crypto.createHash("md5").update(buffer).digest("hex");
+
+          if (existingHashes.has(hash)) {
+            console.log(`Дубликат: ${item.name}.${format}`);
+            continue;
+          }
+
+          existingHashes.add(hash);
+          fs.writeFileSync(path.join(dir, `${item.name}.${format}`), buffer);
+          console.log(`Сохранено: ${item.name}.${format}`);
+
+          // cache
+          downloadedCache[format] ??= [];
+          downloadedCache[format].push(item.id);
+          fs.writeFileSync(CACHE_FILE, JSON.stringify(downloadedCache, null, 2), "utf8");
+          // console.log(`Добавлен в кеш: ${item.id} (${format})`); // опционально
         } else {
           console.warn(`Пропущен ${item.id} — нет URL`);
         }
       }
     } else {
-      console.error(`Батч ${i+1} провален после 5 попыток`);
+      console.error(`Батч ${i + 1} пропущен после 5 попыток`);
     }
 
-    // Пауза между батчами даже при успехе
     if (i < batches.length - 1) {
-      const pauseSec = 15;
-      const now = new Date();
-      console.log(
-        `[${now.toLocaleString()}] Пауза ${pauseSec} сек перед батчем ${i+2}...`
-      );
-      await sleep(pauseSec * 1000);
+      console.log(`[${new Date().toLocaleString()}] Пауза 30 сек...`);
+      await sleep(30000);
     }
   }
 }
 
 async function downloadFile(url, filepath) {
   const res = await fetchWithRetry(url);
-  const buffer = await res.buffer();
+  const arrayBuffer = await res.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
   const hash = crypto.createHash("md5").update(buffer).digest("hex");
 
   if (existingHashes.has(hash)) {
@@ -547,10 +602,7 @@ const existingHashes = new Set();
     const pageExclude = [...TOP_EXCLUDE, normalizeSectionKey(pageName)];
 
     for (const container of containers) {
-      const excludeNames = [
-        ...pageExclude,
-        normalizeSectionKey(container.name),
-      ];
+      const excludeNames = [...pageExclude, normalizeSectionKey(container.name)];
 
       if (doText) {
         const sections = extractTextFromPage(container, excludeNames);
@@ -567,11 +619,7 @@ const existingHashes = new Set();
 
   if (doText) {
     const transformed = { text: allSectionsText };
-    fs.writeFileSync(
-      "assets/extractedText.js",
-      `export default ${JSON.stringify(transformed, null, 2)};`,
-      "utf8",
-    );
+    fs.writeFileSync("assets/extractedText.js", `export default ${JSON.stringify(transformed, null, 2)};`, "utf8");
     console.log("Текст сохранён → assets/extractedText.js");
   }
 

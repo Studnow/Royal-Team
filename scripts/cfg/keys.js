@@ -11,7 +11,7 @@ const customPagesPath = path.resolve(__dirname, "../../assets/figma-frames.js");
 const generatedPagesPath = path.resolve(__dirname, "../../assets/generated/figma-frames.auto.js");
 
 // seed — если assets ещё не сгенерирован и нет ручного файла
-const SEED_PAGES = ["макет"];
+const SEED_PAGES = ["Design"];
 
 let pages = {};
 try {

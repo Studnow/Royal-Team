@@ -18,7 +18,7 @@ const __dirname = path.dirname(__filename);
 
 const CONFIG = {
   // Путь к сохранённому файлу (можно менять)
-  INPUT_FILE: path.resolve(__dirname, "../cache/figma-latest.json"),
+  INPUT_FILE: path.resolve(__dirname, "../cache/g-msk/figma-latest.json"),
 
   // Максимальная глубина поиска (1 = только топ-уровневые дети canvas)
   MAX_DEPTH: 1,
@@ -27,7 +27,7 @@ const CONFIG = {
   EXCLUDE_PATTERNS: [/^\d+$/, /^Frame \d+$/i, /^group/i, /^rectangle/i, /^artboard/i, /^copy/i, /^backup/i],
 
   // Куда сохраняем результат
-  OUTPUT_FILE: path.resolve(__dirname, "../assets/generated/file/figma-frames.auto.js"),
+  OUTPUT_FILE: path.resolve(__dirname, "../assets/generated/g-msk/file/figma-frames.auto.js"),
 };
 
 // Список страниц, которые нужно обработать (можно указать названия или оставить пустым → все страницы)
