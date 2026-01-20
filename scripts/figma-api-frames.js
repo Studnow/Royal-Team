@@ -27,7 +27,7 @@ const CONFIG = {
   EXCLUDE_PATTERNS: [/^\d+$/, /^Frame \d+$/i, /^group/i, /^rectangle/i, /^artboard/i, /^copy/i, /^backup/i],
 
   // Куда сохраняем результат
-  OUTPUT_FILE: path.resolve(__dirname, "../assets/generated/g-msk/file/figma-frames.auto.js"),
+  OUTPUT_FILE: path.resolve(__dirname, "../assets/generated/g-msk/frames/figma-frames.auto.js"),
 };
 
 // Список страниц, которые нужно обработать (можно указать названия или оставить пустым → все страницы)

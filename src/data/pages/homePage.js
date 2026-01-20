@@ -3,7 +3,7 @@ import { buildPage } from "../../utils/buildPage";
 import pageConfig from "../../config/pagesConfig";
 // import pageData from "./home/homePageData";
 // import pageStyles from "./home/homePageStyles";
-import { sectionsMap } from "../../config/sections";
+import { sectionsMap } from "../../config/sections-RT_AI_components";
 import { layoutsMap } from "../../config/layouts";
 
 

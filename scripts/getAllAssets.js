@@ -17,8 +17,8 @@ import keys from "./cfg/keys.js";
 const PAGES = keys.PAGES;
 const FRAMES_TO_EXTRACT = keys.FRAMES_TO_EXTRACT;
 
-const IMAGE_DIR = "assets/generated/images/";
-const ICON_DIR = "assets/generated/icons/";
+const IMAGE_DIR = "assets/generated/g-msk/images/";
+const ICON_DIR = "assets/generated/g-msk/icons/";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -199,7 +199,7 @@ async function fetchWithRetry(url, options = {}, retries = DEFAULT_RETRIES, time
 }
 
 function loadFigmaData() {
-  const INPUT_FILE = path.resolve(__dirname, "../cache/figma-latest.json");
+  const INPUT_FILE = path.resolve(__dirname, "../cache/g-msk/figma-latest.json");
   try {
     console.log("📂 Чтение локального файла:", INPUT_FILE);
     const content = fs.readFileSync(INPUT_FILE, "utf8");
