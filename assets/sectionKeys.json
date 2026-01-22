@@ -1,14 +1,25 @@
 {
-  "макет": [
-    "cover",
-    "equipment",
-    "reviews",
+  "Design": [
+    "hero",
+    "btn",
+    "headline",
+    "servicecard",
+    "set",
+    "section5",
+    "section3",
+    "pic",
+    "list",
+    "item",
+    "section",
+    "country",
+    "menuitem",
+    "dropitem",
     "footer",
-    "faq",
-    "extra",
-    "price",
-    "howitwork",
-    "aboutus",
-    "misc"
+    "mobilehero",
+    "mobsection3",
+    "mobsection4",
+    "mobsection5",
+    "mobsection6",
+    "no-section"
   ]
 }
